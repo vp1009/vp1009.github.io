@@ -674,7 +674,7 @@
 <p>2.URL访问过滤  –&gt; 如果用户访问的是logo视图（放过）如果访问其他视图，需要检测是否已经有session或localstrage，已经有了放行，如果没有返回login，这样就省的在多个视图函数上写装饰器了！</p>
 ]]></content>
       <tags>
-        <tag>Python</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -713,7 +713,7 @@
 <p>以上代码，我们默认赋值为中文，里层的If是为变量双赋值！</p>
 ]]></content>
       <tags>
-        <tag>Python</tag>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
