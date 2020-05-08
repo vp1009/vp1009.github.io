@@ -25,6 +25,64 @@
       </tags>
   </entry>
   <entry>
+    <title>Django--创建虚拟环境</title>
+    <url>/vg009/2020/04/17/django_virtualenv/</url>
+    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><h3 id="为什么需要虚拟环境："><a href="#为什么需要虚拟环境：" class="headerlink" title="为什么需要虚拟环境："></a>为什么需要虚拟环境：</h3><p>到目前位置，我们所有的第三方包安装都是直接通过<code>pip install xx</code>的方式进行安装的，这样安装会将那个包安装到你的系统级的<code>Python</code>环境中。但是这样有一个问题，就是如果你现在用<code>Django 1.18.x</code>写了个网站，然后你的领导跟你说，之前有一个旧项目是用<code>Django 2.1.x</code>开发的，让你来维护，但是<code>Django 1.18.x</code>不再兼容<code>Django 2.1.x</code>的一些语法了。这时候就会碰到一个问题，我如何在我的电脑中同时拥有<code>Django 1.18.x</code>和<code>Django 2.1.x</code>两套环境呢？这时候我们就可以通过虚拟环境来解决这个问题。</p>
+<h3 id="虚拟环境原理介绍："><a href="#虚拟环境原理介绍：" class="headerlink" title="虚拟环境原理介绍："></a>虚拟环境原理介绍：</h3><p>虚拟环境相当于一个抽屉，在这个抽屉中安装的任何软件包都不会影响到其他抽屉。并且在项目中，我可以指定这个项目的虚拟环境来配合我的项目。比如我们现在有一个项目是基于<code>Django 1.18.x</code>版本，又有一个项目是基于<code>Django 2.1.x</code>的版本，那么这时候就可以创建两个虚拟环境，在这两个虚拟环境中分别安装<code>Django 1.18.x</code>和<code>Django 2.1.x</code>来适配我们的项目。</p>
+<h3 id="安装virtualenv："><a href="#安装virtualenv：" class="headerlink" title="安装virtualenv："></a>安装<code>virtualenv</code>：</h3><p><code>virtualenv</code>是用来创建虚拟环境的软件工具，我们可以通过<code>pip</code>或者<code>pip3</code>来安装：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br><span class="line">pip3 install virtualenv  # 一般在linux下用这个命令</span><br><span class="line">pip install virtualenvwrapper-win</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p>创建虚拟环境非常简单，通过以下命令就可以创建了：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mkvirtualenv [虚拟环境的名字]</span></span><br><span class="line">mkvirtualenv py_dj2</span><br></pre></td></tr></table></figure>
+
+<p>如果你当前的<code>Python3/Scripts</code>的查找路径在<code>Python2/Scripts</code>的前面，那么将会使用<code>python3</code>作为这个虚拟环境的解释器。如果<code>python2/Scripts</code>在<code>python3/Scripts</code>前面，那么将会使用<code>Python2</code>来作为这个虚拟环境的解释器。</p>
+<h3 id="进入环境："><a href="#进入环境：" class="headerlink" title="进入环境："></a>进入环境：</h3><p>虚拟环境创建好了以后，那么可以进入到这个虚拟环境中，然后安装一些第三方包，进入虚拟环境在不同的操作系统中有不同的方式，一般分为两种，第一种是<code>Windows</code>，第二种是<code>Linux</code>：</p>
+<ol>
+<li><code>windows</code>进入虚拟环境：进入到虚拟环境的<code>Scripts</code>文件夹中，然后执行workon py_dj2。</li>
+<li><code>Linux</code>进入虚拟环境：<code>source /path/to/virtualenv/bin/activate</code><br>一旦你进入到了这个虚拟环境中，你安装包，卸载包都是在这个虚拟环境中，不会影响到外面的环境。</li>
+</ol>
+<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p>退出虚拟环境很简单，通过一个命令就可以完成：<code>deactivate</code>。</p>
+<h3 id="virtualenvwrapper："><a href="#virtualenvwrapper：" class="headerlink" title="virtualenvwrapper："></a>virtualenvwrapper：</h3><p><code>virtualenvwrapper</code>这个软件包可以让我们管理虚拟环境变得更加简单。不用再跑到某个目录下通过<code>virtualenv</code>来创建虚拟环境，并且激活的时候也要跑到具体的目录下去激活。</p>
+<h4 id="安装virtualenvwrapper："><a href="#安装virtualenvwrapper：" class="headerlink" title="安装virtualenvwrapper："></a>安装<code>virtualenvwrapper</code>：</h4><ol>
+<li>Linux：<code>pip install virtualenvwrapper</code>。</li>
+<li>windows：<code>pip install virtualenvwrapper-win</code>。</li>
+</ol>
+<h4 id="virtualenvwrapper基本使用："><a href="#virtualenvwrapper基本使用：" class="headerlink" title="virtualenvwrapper基本使用："></a><code>virtualenvwrapper</code>基本使用：</h4><ol>
+<li>创建虚拟环境：</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env</span><br></pre></td></tr></table></figure>
+
+<p>   那么会在你当前用户下创建一个<code>Env</code>的文件夹，然后将这个虚拟环境安装到这个目录下。<br>   如果你电脑中安装了<code>python2</code>和<code>python3</code>，并且两个版本中都安装了<code>virtualenvwrapper</code>，那么将会使用环境变量中第一个出现的<code>Python</code>版本来作为这个虚拟环境的<code>Python</code>解释器。</p>
+<ol start="2">
+<li>切换到某个虚拟环境：</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>退出当前虚拟环境：</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>删除某个虚拟环境：</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>列出所有虚拟环境：</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>创建虚拟环境的时候指定<code>Python</code>版本：</li>
+</ol>
+<p>在使用<code>mkvirtualenv</code>的时候，可以指定<code>--python</code>的参数来指定具体的<code>python</code>路径：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkvirtualenv --python&#x3D;&#x3D;C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>Django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>docker命令集</title>
     <url>/vg009/2020/04/26/docker/</url>
     <content><![CDATA[<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>显示版本号</p>
@@ -145,64 +203,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Django--创建虚拟环境</title>
-    <url>/vg009/2020/04/17/django_virtualenv/</url>
-    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><h3 id="为什么需要虚拟环境："><a href="#为什么需要虚拟环境：" class="headerlink" title="为什么需要虚拟环境："></a>为什么需要虚拟环境：</h3><p>到目前位置，我们所有的第三方包安装都是直接通过<code>pip install xx</code>的方式进行安装的，这样安装会将那个包安装到你的系统级的<code>Python</code>环境中。但是这样有一个问题，就是如果你现在用<code>Django 1.18.x</code>写了个网站，然后你的领导跟你说，之前有一个旧项目是用<code>Django 2.1.x</code>开发的，让你来维护，但是<code>Django 1.18.x</code>不再兼容<code>Django 2.1.x</code>的一些语法了。这时候就会碰到一个问题，我如何在我的电脑中同时拥有<code>Django 1.18.x</code>和<code>Django 2.1.x</code>两套环境呢？这时候我们就可以通过虚拟环境来解决这个问题。</p>
-<h3 id="虚拟环境原理介绍："><a href="#虚拟环境原理介绍：" class="headerlink" title="虚拟环境原理介绍："></a>虚拟环境原理介绍：</h3><p>虚拟环境相当于一个抽屉，在这个抽屉中安装的任何软件包都不会影响到其他抽屉。并且在项目中，我可以指定这个项目的虚拟环境来配合我的项目。比如我们现在有一个项目是基于<code>Django 1.18.x</code>版本，又有一个项目是基于<code>Django 2.1.x</code>的版本，那么这时候就可以创建两个虚拟环境，在这两个虚拟环境中分别安装<code>Django 1.18.x</code>和<code>Django 2.1.x</code>来适配我们的项目。</p>
-<h3 id="安装virtualenv："><a href="#安装virtualenv：" class="headerlink" title="安装virtualenv："></a>安装<code>virtualenv</code>：</h3><p><code>virtualenv</code>是用来创建虚拟环境的软件工具，我们可以通过<code>pip</code>或者<code>pip3</code>来安装：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install virtualenv</span><br><span class="line">pip3 install virtualenv  # 一般在linux下用这个命令</span><br><span class="line">pip install virtualenvwrapper-win</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建虚拟环境："><a href="#创建虚拟环境：" class="headerlink" title="创建虚拟环境："></a>创建虚拟环境：</h3><p>创建虚拟环境非常简单，通过以下命令就可以创建了：</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># mkvirtualenv [虚拟环境的名字]</span></span><br><span class="line">mkvirtualenv py_dj2</span><br></pre></td></tr></table></figure>
-
-<p>如果你当前的<code>Python3/Scripts</code>的查找路径在<code>Python2/Scripts</code>的前面，那么将会使用<code>python3</code>作为这个虚拟环境的解释器。如果<code>python2/Scripts</code>在<code>python3/Scripts</code>前面，那么将会使用<code>Python2</code>来作为这个虚拟环境的解释器。</p>
-<h3 id="进入环境："><a href="#进入环境：" class="headerlink" title="进入环境："></a>进入环境：</h3><p>虚拟环境创建好了以后，那么可以进入到这个虚拟环境中，然后安装一些第三方包，进入虚拟环境在不同的操作系统中有不同的方式，一般分为两种，第一种是<code>Windows</code>，第二种是<code>Linux</code>：</p>
-<ol>
-<li><code>windows</code>进入虚拟环境：进入到虚拟环境的<code>Scripts</code>文件夹中，然后执行workon py_dj2。</li>
-<li><code>Linux</code>进入虚拟环境：<code>source /path/to/virtualenv/bin/activate</code><br>一旦你进入到了这个虚拟环境中，你安装包，卸载包都是在这个虚拟环境中，不会影响到外面的环境。</li>
-</ol>
-<h3 id="退出虚拟环境："><a href="#退出虚拟环境：" class="headerlink" title="退出虚拟环境："></a>退出虚拟环境：</h3><p>退出虚拟环境很简单，通过一个命令就可以完成：<code>deactivate</code>。</p>
-<h3 id="virtualenvwrapper："><a href="#virtualenvwrapper：" class="headerlink" title="virtualenvwrapper："></a>virtualenvwrapper：</h3><p><code>virtualenvwrapper</code>这个软件包可以让我们管理虚拟环境变得更加简单。不用再跑到某个目录下通过<code>virtualenv</code>来创建虚拟环境，并且激活的时候也要跑到具体的目录下去激活。</p>
-<h4 id="安装virtualenvwrapper："><a href="#安装virtualenvwrapper：" class="headerlink" title="安装virtualenvwrapper："></a>安装<code>virtualenvwrapper</code>：</h4><ol>
-<li>Linux：<code>pip install virtualenvwrapper</code>。</li>
-<li>windows：<code>pip install virtualenvwrapper-win</code>。</li>
-</ol>
-<h4 id="virtualenvwrapper基本使用："><a href="#virtualenvwrapper基本使用：" class="headerlink" title="virtualenvwrapper基本使用："></a><code>virtualenvwrapper</code>基本使用：</h4><ol>
-<li>创建虚拟环境：</li>
-</ol>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env</span><br></pre></td></tr></table></figure>
-
-<p>   那么会在你当前用户下创建一个<code>Env</code>的文件夹，然后将这个虚拟环境安装到这个目录下。<br>   如果你电脑中安装了<code>python2</code>和<code>python3</code>，并且两个版本中都安装了<code>virtualenvwrapper</code>，那么将会使用环境变量中第一个出现的<code>Python</code>版本来作为这个虚拟环境的<code>Python</code>解释器。</p>
-<ol start="2">
-<li>切换到某个虚拟环境：</li>
-</ol>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>退出当前虚拟环境：</li>
-</ol>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>删除某个虚拟环境：</li>
-</ol>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>列出所有虚拟环境：</li>
-</ol>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>创建虚拟环境的时候指定<code>Python</code>版本：</li>
-</ol>
-<p>在使用<code>mkvirtualenv</code>的时候，可以指定<code>--python</code>的参数来指定具体的<code>python</code>路径：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mkvirtualenv --python&#x3D;&#x3D;C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>滑动验证码</title>
     <url>/vg009/2020/04/27/huadong/</url>
     <content><![CDATA[<h4 id="在template中"><a href="#在template中" class="headerlink" title="在template中"></a>在template中</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;drag-verify :width=<span class="string">"width"</span></span><br><span class="line">             :height=<span class="string">"height"</span></span><br><span class="line">             :text=<span class="string">"text"</span></span><br><span class="line">             ref=<span class="string">"Verify"</span>&gt;</span><br><span class="line">&lt;/drag-verify&gt;</span><br></pre></td></tr></table></figure>
@@ -240,9 +240,9 @@
       </tags>
   </entry>
   <entry>
-    <title>安慰剂进度条</title>
-    <url>/vg009/2020/05/07/jdt/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+    <title>拦截器</title>
+    <url>/vg009/2020/05/01/ljq/</url>
+    <content><![CDATA[<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">beforeEnter:(to,from,next) =&gt;&#123;</span><br><span class="line">  <span class="keyword">if</span> (localStorage.getItem(<span class="string">"username"</span>))&#123;</span><br><span class="line">    console.log(<span class="string">'已经登陆'</span>)</span><br><span class="line">    next();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  console.log(<span class="string">'没有登陆'</span>)</span><br><span class="line">  next(<span class="string">'/login'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -287,6 +287,16 @@
       </tags>
   </entry>
   <entry>
+    <title>安慰剂进度条</title>
+    <url>/vg009/2020/05/07/jdt/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LocalStorage简介</title>
     <url>/vg009/2020/04/27/localStorage/</url>
     <content><![CDATA[<h4 id="localstorage（本地存储）与sessionStorage-会话存储"><a href="#localstorage（本地存储）与sessionStorage-会话存储" class="headerlink" title="localstorage（本地存储）与sessionStorage( 会话存储 )"></a>localstorage（本地存储）与sessionStorage( 会话存储 )</h4><p> localstorage（本地存储）以文件的方式存储在本地,永久保存（不主动删除，则一直存在）；sessionstorage( 会话存储 ) ,临时保存。 </p>
@@ -303,16 +313,6 @@
 ]]></content>
       <tags>
         <tag>localstorage</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拦截器</title>
-    <url>/vg009/2020/05/01/ljq/</url>
-    <content><![CDATA[<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">beforeEnter:(to,from,next) =&gt;&#123;</span><br><span class="line">  <span class="keyword">if</span> (localStorage.getItem(<span class="string">"username"</span>))&#123;</span><br><span class="line">    console.log(<span class="string">'已经登陆'</span>)</span><br><span class="line">    next();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  console.log(<span class="string">'没有登陆'</span>)</span><br><span class="line">  next(<span class="string">'/login'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -447,26 +447,6 @@
       </tags>
   </entry>
   <entry>
-    <title>又拍云存储</title>
-    <url>/vg009/2020/05/06/upyun/</url>
-    <content><![CDATA[<h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure>
-
-<h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>爬虫概述</title>
     <url>/vg009/2020/04/26/spider/</url>
     <content><![CDATA[<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 爬虫分类</span></span><br><span class="line">聚焦爬虫: 针对特定领域, 抓取特定数据的爬虫程序</span><br><span class="line">    <span class="number">1.</span>确定url, 发起请求, 获取响应</span><br><span class="line">    2.数据解析  --&gt; 目标数据</span><br><span class="line">    <span class="number">3.</span>数据持久化</span><br><span class="line">通用爬虫: 爬取数据, 为搜索引擎提供检索服务</span><br><span class="line">    <span class="number">1.</span>将自己的网站被搜索引擎收录的手段: 竞价排名, 主动提交, 友情链接, DNS服务商</span><br><span class="line">    <span class="number">2.</span>SEO: seo搜索引擎优化, 提高排名</span><br><span class="line">    <span class="number">3.</span>robots协议:规定哪些爬虫不能够爬取本网站的哪些页面, 聚焦爬虫不遵守, robots协议是道德层面.</span><br></pre></td></tr></table></figure>
@@ -498,6 +478,26 @@
 ]]></content>
       <tags>
         <tag>spider</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>又拍云存储</title>
+    <url>/vg009/2020/05/06/upyun/</url>
+    <content><![CDATA[<h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure>
+
+<h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
