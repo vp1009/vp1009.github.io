@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    jwt认证 |  L-Blog
+    国际化支持 |  L-Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -41,7 +41,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-jwt" class="article article-type-post" itemscope
+  <article id="post-gjhzz" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -49,7 +49,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  jwt认证
+  国际化支持
 </h1>
  
 
@@ -58,8 +58,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/07/jwt/" class="article-date">
-  <time datetime="2020-05-07T09:40:02.000Z" itemprop="datePublished">2020-05-07</time>
+      <a href="/2020/05/08/gjhzz/" class="article-date">
+  <time datetime="2020-05-07T21:00:02.000Z" itemprop="datePublished">2020-05-08</time>
 </a>
       
       
@@ -69,7 +69,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">632</span>
+            <span class="post-count">754</span>
         </span>
     </span>
 
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -103,35 +103,37 @@
       
 
       
-      <h4 id="JWT认证"><a href="#JWT认证" class="headerlink" title="JWT认证"></a>JWT认证</h4><p> <code>Json web token (JWT)</code>, 根据官网的定义，是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密 </p>
-<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>发送请求用户信息   —&gt;   axios(uid)(同时获取令牌)   —&gt;   获取uid查询数据库以Json的形式返回给前端（验证token成功返回）   —&gt;   发送请求用户信息（如果错误返回没有权限）(正确返回用户信息)</p>
-<h4 id="token的构成"><a href="#token的构成" class="headerlink" title="token的构成"></a>token的构成</h4><ol>
-<li>头部信息.载荷(playload) –&gt; uid或username</li>
-<li>密钥</li>
-<li>jwt=&gt;token</li>
-</ol>
-<h4 id="jwt安装"><a href="#jwt安装" class="headerlink" title="jwt安装"></a>jwt安装</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyjwt</span><br></pre></td></tr></table></figure>
+      <h4 id="首先-我们需要一个库：国际化支持模块"><a href="#首先-我们需要一个库：国际化支持模块" class="headerlink" title="首先 我们需要一个库：国际化支持模块"></a>首先 我们需要一个库：国际化支持模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-i18n -- save</span><br></pre></td></tr></table></figure>
 
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li><p>体积小,传输快</p>
-</li>
-<li><p>支持跨域验证</p>
-</li>
-<li><p>基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。 </p>
-</li>
-</ul>
-<h4 id="在用户登陆成功生成token"><a href="#在用户登陆成功生成token" class="headerlink" title="在用户登陆成功生成token"></a>在用户登陆成功生成token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">encode_jwt = jwt.encode(&#123;<span class="string">'uid'</span>: user.id&#125;, <span class="string">'qwe123'</span>, algorithm=<span class="string">'HS256'</span>)</span><br><span class="line">encode_str = str(encode_jwt, <span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<p>save -&gt; 在当前项目下安装</p>
+<h4 id="在您的项目main-js下-导入"><a href="#在您的项目main-js下-导入" class="headerlink" title="在您的项目main.js下 导入"></a>在您的项目main.js下 导入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import VueI18n from &#39;vue-i18n&#39;</span><br></pre></td></tr></table></figure>
 
-<p> 将这个token交给前端，前端访问任意接口都将在header里带着jwt也就指token，用来做认证，我们把代码逻辑写成装饰器，这样前端访问那个接口，后端直接调用装饰器！</p>
-<h4 id="定义装饰器"><a href="#定义装饰器" class="headerlink" title="定义装饰器"></a>定义装饰器</h4><p>因为在每次登陆时，我们将jwt的值存入localstorage中，所以我们在前端param传参将其读出，这样后端接收jwt 。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类视图专用</span></span><br><span class="line"><span class="keyword">from</span> django.utils.decorators <span class="keyword">import</span> method_decorator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义权限检测装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(request, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 接收参数</span></span><br><span class="line">        uid = request.GET.get(<span class="string">"uid"</span>, <span class="literal">None</span>)</span><br><span class="line">	    <span class="comment"># 变量不能是关键字 </span></span><br><span class="line">        myjwt = request.GET.get(<span class="string">"jwt"</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        print(myjwt)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 验证用户合法性</span></span><br><span class="line">        decode_jwt = jwt.decode(myjwt, <span class="string">'qwe123'</span>, algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行比对</span></span><br><span class="line">        <span class="keyword">if</span> int(uid) != int(decode_jwt[<span class="string">'uid'</span>]):</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>: <span class="number">401</span>, <span class="string">'message'</span>: <span class="string">'您的密钥无权限'</span>&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#  最后类视图使用method_decorator(装饰器名称)调用</span></span><br></pre></td></tr></table></figure>
+<h4 id="导入成功进行注册使用"><a href="#导入成功进行注册使用" class="headerlink" title="导入成功进行注册使用"></a>导入成功进行注册使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(VueI18n)</span><br></pre></td></tr></table></figure>
 
+<h4 id="在你的src下创建语言包文件"><a href="#在你的src下创建语言包文件" class="headerlink" title="在你的src下创建语言包文件"></a>在你的src下创建语言包文件</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件夹名称  简写成：lang</span><br></pre></td></tr></table></figure>
 
+<h4 id="在lang文件夹中创建中文包-zh-js-and英文包-en-js"><a href="#在lang文件夹中创建中文包-zh-js-and英文包-en-js" class="headerlink" title="在lang文件夹中创建中文包(zh.js)and英文包(en.js)"></a>在lang文件夹中创建中文包(zh.js)and英文包(en.js)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（英文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;Mei Duo Shp&#39;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（中文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;美多商城&#39;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="载荷中加入生命周期"><a href="#载荷中加入生命周期" class="headerlink" title="载荷中加入生命周期"></a>载荷中加入生命周期</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">playload = &#123;</span><br><span class="line">	// 代表过期时间        当前时间+延迟加载（以秒计时）</span><br><span class="line">	<span class="string">'exp'</span>: int((datatime.datatime.now() + datetime.timedelta(seconds=<span class="number">30</span>)).timestamp())  //强转时间戳 按照整形</span><br><span class="line">	<span class="string">'data'</span>:&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">encode_jwt = jwt.encode(playload,<span class="string">'lhn123'</span>,algorithm=<span class="string">'HS256'</span>)</span><br><span class="line"><span class="comment"># 转码</span></span><br><span class="line">encode_str = str(encode_jwt,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 解密操作</span></span><br><span class="line">decode_jwt = jwt.decode(encode_str,<span class="string">'lhn123'</span>,algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line">print(encode_str)</span><br><span class="line">print(decode_jwt[<span class="string">'uid'</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="回到main-js-导入语言包"><a href="#回到main-js-导入语言包" class="headerlink" title="回到main.js 导入语言包"></a>回到main.js 导入语言包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 导入语言包</span><br><span class="line">const i18n &#x3D; new VueI18n(&#123;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 当前默认语言的声明</span><br><span class="line">  locale:&#39;zh&#39;,</span><br><span class="line">  messages:&#123;</span><br><span class="line">     		&#x2F;&#x2F; 相对路径</span><br><span class="line">    &#39;zh&#39;:require(&#39;.&#x2F;lang&#x2F;zh&#39;),</span><br><span class="line">    &#39;en&#39;:require(&#39;.&#x2F;lang&#x2F;en&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引用i18n</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#39;#app&#39;,</span><br><span class="line">  router,</span><br><span class="line">  i18n, </span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#39;&lt;App&#x2F;&gt;&#39;,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
+<h4 id="最后使用"><a href="#最后使用" class="headerlink" title="最后使用"></a>最后使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;$t(&#39;m.index&#39;)&#125;&#125;</span><br><span class="line">m:代表规范的变量</span><br><span class="line">index: key的名称  也就是你自己定义的变量</span><br></pre></td></tr></table></figure>
 
+<h4 id="在钩子方法中可以自动切换语言"><a href="#在钩子方法中可以自动切换语言" class="headerlink" title="在钩子方法中可以自动切换语言"></a>在钩子方法中可以自动切换语言</h4><p>指在浏览器中，例如默认是中文，我们就切换成中文，也就可以理解成老外访问直接是英文状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(navigator.language &#x3D;&#x3D; &#39;en&#39;)&#123;	</span><br><span class="line">		&#x2F;&#x2F; 切换语言</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="添加个按钮切换语言"><a href="#添加个按钮切换语言" class="headerlink" title="添加个按钮切换语言"></a>添加个按钮切换语言</h4><p>首先我们得有个开关标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h-switch v-model&#x3D;&quot;lang&quot; @change&#x3D;&quot;lang_change&quot;&gt;中&#x2F;英&lt;&#x2F;h-switch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>定义开关变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">       return&#123;</span><br><span class="line">		&#x2F;&#x2F;定义开关变量</span><br><span class="line">		lang:1  &#x2F;&#x2F; 代表中文</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>定义切换时间 change  也就是在你methods方法中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">	&#x2F;&#x2F; 切换方法</span><br><span class="line">	lang_change:function()&#123;</span><br><span class="line">		console.log(this.lang)</span><br><span class="line">		if(this.lang &#x3D;&#x3D; true)&#123;</span><br><span class="line">			&#x2F;&#x2F; 切换语言</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;zh&#39;)</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">			</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;en&#39;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>简述逻辑： 首先我们在控制台打印按钮默认为1,0，也就时候判断是true，false。得到之后，我们需要判断如果lang为true 则赋值为中文，则else则是英文，同时我们将lang值存入localstorage中，在钩子函数中判断。首先我们考虑到问题是，用户是否点击按钮切换语言，只要用户发生动作，我们则记录在localstorage中，最终我们判断用户是否点过按钮，如果没有则默认赋值到localstorage里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 判断本地local有没有</span><br><span class="line">		var lang_locale &#x3D; localStorage.getItem(&quot;lang&quot;)</span><br><span class="line">		if(lang_locale)&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; lang_locale</span><br><span class="line">			if(lang_locale &#x3D;&#x3D; &#39;zh&#39;)&#123;</span><br><span class="line">				this.lang &#x3D; 1</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.lang &#x3D; 0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;;</span><br><span class="line">			this.lang &#x3D; 1</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码，我们默认赋值为中文，里层的If是为变量双赋值！</p>
 
       
       <!-- reward -->
@@ -190,14 +192,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jwt/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/05/08/gjhzz/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
 
 
     </footer>
@@ -208,19 +210,10 @@
   
   <nav class="article-nav">
     
+    
       <a href="/2020/05/08/zjj/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            中间件应用
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/05/07/jdt/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">安慰剂进度条</div>
+        <div class="article-nav-title">中间件应用</div>
       </a>
     
   </nav>
