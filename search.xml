@@ -803,4 +803,69 @@
         <tag>Django</tag>
       </tags>
   </entry>
+  <entry>
+    <title>分页</title>
+    <url>/2020/05/12/drffy/</url>
+    <content><![CDATA[<h4 id="分页后端逻辑"><a href="#分页后端逻辑" class="headerlink" title="分页后端逻辑"></a>分页后端逻辑</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsList</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#当前页</span></span><br><span class="line">        page = request.GET.get(<span class="string">'page'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#一页显示的个数</span></span><br><span class="line">        size = request.GET.get(<span class="string">'size'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#计算从哪开始切</span></span><br><span class="line">        data_start = (int(page)<span class="number">-1</span>) *int(size)</span><br><span class="line">        <span class="comment">#计算切到哪</span></span><br><span class="line">        data_end = int(page) * int(size)</span><br><span class="line">        <span class="comment">#查询 切片成当前页数据</span></span><br><span class="line">        goods = Goods.objects.all()[data_start:data_end]</span><br><span class="line">        <span class="comment">#查询所有商品个数</span></span><br><span class="line">        count = Goods.objects.count()</span><br><span class="line">        <span class="comment">#序列化</span></span><br><span class="line">        goods_ser = GoodsSer(goods,many=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'data'</span>:goods_ser.data,<span class="string">'total'</span>:count&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="前端template中"><a href="#前端template中" class="headerlink" title="前端template中"></a>前端template中</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!-- heyui分页器 --&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    	&lt;Pagination v-model&#x3D;&quot;pagination&quot; @change&#x3D;&quot;get_goods&quot;&gt;&lt;&#x2F;Pagination&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>data中定义分页器变量</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;定义分页器变量</span><br><span class="line">  pagination:&#123;</span><br><span class="line">	  page:2,</span><br><span class="line">	  size:2,</span><br><span class="line">	  total:5,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取商品类表接口</span><br><span class="line">  get_goods:function()&#123;</span><br><span class="line">		&#x2F;&#x2F; 拼接路由</span><br><span class="line">	  this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodslist&#x2F;&#39;,&#123;params:&#123;page:this.pagination.page,size:this.pagination.size&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line">		  console.log(res)</span><br><span class="line"></span><br><span class="line">		  this.goodslist &#x3D; res.data.data</span><br><span class="line">		  </span><br><span class="line">			&#x2F;&#x2F;将商品总数传递给total</span><br><span class="line">		  this.pagination.total &#x3D; res.data.total</span><br><span class="line">	  &#125;))</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="获取文件"><a href="#获取文件" class="headerlink" title="获取文件"></a>获取文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">图片：&lt;input type&#x3D;&quot;file&quot; ref&#x3D;&quot;upload&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 接收表单数据</span><br><span class="line">var pc &#x3D; this.$refs.upload</span><br><span class="line">let file &#x3D; pc.files[0]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简述逻辑外键</title>
+    <url>/2020/05/11/jsonb/</url>
+    <content><![CDATA[<h4 id="goods表创建逻辑外键"><a href="#goods表创建逻辑外键" class="headerlink" title="goods表创建逻辑外键"></a>goods表创建逻辑外键</h4><p>前端数据我需要做二次处理，获取表单数据进行二次处理，转成json数据，这样后端接收存入数据库。</p>
+<h4 id="之后在添加方法中获取id-向后端发起请求"><a href="#之后在添加方法中获取id-向后端发起请求" class="headerlink" title="之后在添加方法中获取id 向后端发起请求"></a>之后在添加方法中获取id 向后端发起请求</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加商品事件</span><br><span class="line">submit:function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 非空验证</span><br><span class="line">    if (this.name &#x3D;&#x3D; &#39;&#39;)&#123;</span><br><span class="line">        this.$Message(&quot;商品名称不能为空&quot;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &#x2F;&#x2F; 存入字段为json</span><br><span class="line">        var param &#x3D; &#123;&#125;;</span><br><span class="line">        param[&#39;color&#39;] &#x3D; this.color</span><br><span class="line">        param[&#39;size&#39;] &#x3D; this.size</span><br><span class="line">        param[&#39;season&#39;] &#x3D; this.season</span><br><span class="line">        &#x2F;&#x2F;转为json数据</span><br><span class="line">        param&#x3D;JSON.stringify(param)</span><br><span class="line">        &#x2F;&#x2F; 接收表单数据</span><br><span class="line">        var pc &#x3D; this.$refs.upload</span><br><span class="line">        let file &#x3D; pc.files[0]</span><br><span class="line">        var data &#x3D; new FormData()</span><br><span class="line">        data.append(&#39;img&#39;,file)</span><br><span class="line">        data.append(&#39;flows&#39;,this.flows)</span><br><span class="line">        &#x2F;&#x2F; 反向赋值</span><br><span class="line">        data.append(&#39;cid&#39;,this.cate[this.selected])</span><br><span class="line">        &#x2F;&#x2F; 声明请求头</span><br><span class="line">        let config&#x3D;&#123;</span><br><span class="line">            &#39;Content-Type&#39;:&#39;multipart&#x2F;form-data&#39;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 发起请求</span><br><span class="line">        this.axios.post(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;addgoods&#x2F;&#39;,data,config).then((res&#x3D;&gt;&#123;</span><br><span class="line">            console.log(res)</span><br><span class="line">            this.$Message(res.data.msg)</span><br><span class="line">        &#125;))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把json数据存入规格字段中，cid存入外键的cid</p>
+<p>之后，我们展示分类</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">// 定义规格名称</span><br><span class="line">color:<span class="string">''</span>,</span><br><span class="line">       size:<span class="string">''</span>,</span><br><span class="line">       season:<span class="string">''</span>,</span><br><span class="line">       // 分类表默认选中</span><br><span class="line">       selected:<span class="string">'衣服'</span>,</span><br><span class="line">       cate:[]，</span><br><span class="line">       // 接受商品分类</span><br><span class="line">       category:[]</span><br><span class="line">       </span><br><span class="line">       // 创建方法</span><br><span class="line">       	</span><br><span class="line">       // 获取商品分类</span><br><span class="line">       get_cate:function()&#123;</span><br><span class="line">           //发送请求</span><br><span class="line">           this.axios.get('http://127.0.0.1:8000/cate/').then((res=&gt;&#123;</span><br><span class="line">               console.log(res)</span><br><span class="line">               // 二次处理数据</span><br><span class="line">               var mycate=[]</span><br><span class="line">               <span class="keyword">for</span>(let i=<span class="number">0</span>;i&lt;res.data.length;i++)&#123;</span><br><span class="line">                   mycate.push(res.data[i][<span class="string">'name'</span>])</span><br><span class="line">                   // 反向赋值 将分类表的id存入goods表中</span><br><span class="line">                   this.cate[res.data[i][<span class="string">'name'</span>]] = res.data[i][<span class="string">'id'</span>];</span><br><span class="line">               &#125;</span><br><span class="line">               // 赋值</span><br><span class="line">               this.category = mycate</span><br><span class="line">           &#125;))</span><br><span class="line">       &#125;,</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简述详情页</title>
+    <url>/2020/05/11/detail/</url>
+    <content><![CDATA[<h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 商品详情</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodInfo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        id = request.GET.get(<span class="string">'id'</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="comment"># 查询</span></span><br><span class="line">        good = Goods.objects.get(id=id)</span><br><span class="line">        <span class="comment"># 序列化 </span></span><br><span class="line">        good_str = GoodsSer(good)</span><br><span class="line">        <span class="keyword">return</span> Response(good_str.data)</span><br></pre></td></tr></table></figure>
+
+<p>前端代码</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 带参跳转</span><br><span class="line">&lt;a :href&#x3D;&quot;&#39;http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;item?id&#x3D;&#39;+item.id&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取商品id</span><br><span class="line"> this.id &#x3D; this.$route.query.id</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">param:&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 获取商品详情</span><br><span class="line">   get_good:function()&#123;</span><br><span class="line"> this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodinfo&#x2F;?id&#x3D;&#39;,&#123;params:&#123;&#39;id&#39;:this.id&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line">	 console.log(res)</span><br><span class="line">	 &#x2F;&#x2F; 赋值</span><br><span class="line">	 this.info&#x3D;res.data</span><br><span class="line">	 &#x2F;&#x2F; 类型转换</span><br><span class="line">	 this.param &#x3D; JSON.parse(this.info.params)</span><br><span class="line"> &#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="展示规格"><a href="#展示规格" class="headerlink" title="展示规格"></a>展示规格</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">颜色：&#123;&#123;param.color&#125;&#125; </span><br><span class="line">&lt;br&gt;</span><br><span class="line">尺码：&#123;&#123;param.size&#125;&#125;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">季节：&#123;&#123;param.season&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
 </search>
