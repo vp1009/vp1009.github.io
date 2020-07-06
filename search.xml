@@ -981,7 +981,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Python面试题</title>
+    <title>Python面试算法题</title>
     <url>/2020/07/06/pyms/</url>
     <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">num</span><span class="params">()</span>:</span></span><br><span class="line">          <span class="keyword">return</span> [<span class="keyword">lambda</span> x: i*x <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">print([m(<span class="number">2</span>) <span class="keyword">for</span> m <span class="keyword">in</span> num()])     <span class="comment"># 输出: [6, 6, 6, 6]</span></span><br></pre></td></tr></table></figure>
 
