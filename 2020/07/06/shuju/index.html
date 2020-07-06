@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">469</span>
+            <span class="post-count">683</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -104,21 +104,46 @@
       
 
       
-      <h4 id="python的主要类型包括："><a href="#python的主要类型包括：" class="headerlink" title="python的主要类型包括："></a>python的主要类型包括：</h4><ol>
+      <h4 id="python的主要数据类型包括："><a href="#python的主要数据类型包括：" class="headerlink" title="python的主要数据类型包括："></a>python的主要数据类型包括：</h4><ol>
 <li>int (整形)</li>
 <li>long(长整型)</li>
 <li>float(浮点型)</li>
+<li>complex（复数）</li>
+<li>字符串</li>
+<li>布尔型</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>集合</li>
 </ol>
 <h5 id="int（整型）"><a href="#int（整型）" class="headerlink" title="int（整型）"></a>int（整型）</h5><p>在32位机器上，整数的位数是32位，取值范围是-231<del>231-1，即-2147483648</del>214748364；在64位系统上，整数的位数为64位，取值范围为-263<del>263-1，即9223372036854775808</del>9223372036854775807。</p>
 <h5 id="long（长整型）"><a href="#long（长整型）" class="headerlink" title="long（长整型）"></a>long（长整型）</h5><p>Python长整型没有指定位宽，但是由于机器内存有限，使用长的长整数数值也不可能无限大。</p>
 <h5 id="float（浮点型）"><a href="#float（浮点型）" class="headerlink" title="float（浮点型）"></a>float（浮点型）</h5><p>浮点型也就是带有小数点的数，其精度和机器有关。</p>
 <h5 id="complex（复数）"><a href="#complex（复数）" class="headerlink" title="complex（复数）"></a>complex（复数）</h5><p>Python还支持复数，复数由实数部分和虚数部分构成，可以用 a + bj,或者 complex(a,b) 表示， 复数的实部 a 和虚部 b 都是浮点型。</p>
 <h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>Python中的字符串有两种数据类型，分别是str类型和unicode类型，str类型采用的ASCII编码，无法表示中文，unicode类型采用unicode编码，能够表示任意字符，包括中文和其他语言。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">状态获取：islower，isupper，isdigit，isalpha，isalnum，istitle，startswith，endswith</span><br><span class="line">状态转换：lower，casefold，upper，swapcase，title(单词首字母大写)，capitalize(字符串首字母大写)</span><br><span class="line">格式转换：strip(去掉左右两边参数字符串中的字符)，ljust，rjust，center，zfill（左侧补零）</span><br><span class="line">拆分：partition，rpartiton，spilt，splitlines</span><br><span class="line">连接：join，+</span><br><span class="line">查询：index，find，count</span><br><span class="line">替换操作：replace，expandtabs</span><br><span class="line">基本操作：索引取值，len，max，min，<span class="keyword">in</span>，<span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><p>和其他编程语言一样，Python布尔类型也是用于逻辑运算，有两个值：True（真）和False（假）。</p>
 <h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><p>列表是Python中使用最频繁的数据类型，集合中可以放任何数据类型，可对集合进行创建、查找、切片、增加、修改、删除、循环和排序操作。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加：append,insert,extend</span><br><span class="line">删除：remove,pop,clear</span><br><span class="line">查询：index,count</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h5><p>元组和列表一样，也是一种序列，与列表不同的是，元组是不可修改的，元组用”()”标识，内部元素用逗号隔开。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：index，count</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h5><p>字典是一种键值对的集合，是除列表以外Python之中最灵活的内置数据结构类型，列表是有序的对象集合，字典是无序的对象集合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">增加：add</span><br><span class="line">删除：pop（第一个），clear，remove</span><br><span class="line">交集：&amp;</span><br><span class="line">并集：|</span><br><span class="line">差集：set1-set2</span><br><span class="line">对称差集：并集-交集</span><br></pre></td></tr></table></figure>
+
+
+
 <h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><p>集合是一个无序的、不重复的数据组合，它的主要作用有两个，分别是去重和关系测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">增加:字典[<span class="string">'键'</span>] = 值</span><br><span class="line">删除：pop,popitem,clear</span><br><span class="line">修改：update(dict)</span><br><span class="line">查询：get,keys,items,values,setdefault:有对应的键则返回对应的值，没有则返回默认给定的值</span><br></pre></td></tr></table></figure>
+
 
       
       <!-- reward -->
