@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Python基础数据类型 |  L-Blog
+    Python五大排序算法 |  L-Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-shuju" class="article article-type-post" itemscope
+  <article id="post-suan" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Python基础数据类型
+  Python五大排序算法
 </h1>
  
 
@@ -59,8 +59,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/06/shuju/" class="article-date">
-  <time datetime="2020-07-06T01:02:20.000Z" itemprop="datePublished">2020-07-06</time>
+      <a href="/2020/07/06/suan/" class="article-date">
+  <time datetime="2020-07-06T02:00:20.000Z" itemprop="datePublished">2020-07-06</time>
 </a>
       
       
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">683</span>
+            <span class="post-count">821</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">2 min</span>
+            <span class="post-count">3 min</span>
         </span>
     </span>
 </div>
@@ -104,45 +104,35 @@
       
 
       
-      <h4 id="python的主要数据类型包括："><a href="#python的主要数据类型包括：" class="headerlink" title="python的主要数据类型包括："></a>python的主要数据类型包括：</h4><ol>
-<li>int (整形)</li>
-<li>long(长整型)</li>
-<li>float(浮点型)</li>
-<li>complex（复数）</li>
-<li>字符串</li>
-<li>布尔型</li>
-<li>列表</li>
-<li>元组</li>
-<li>字典</li>
-<li>集合</li>
-</ol>
-<h5 id="int（整型）"><a href="#int（整型）" class="headerlink" title="int（整型）"></a>int（整型）</h5><p>在32位机器上，整数的位数是32位，取值范围是-231<del>231-1，即-2147483648</del>214748364；在64位系统上，整数的位数为64位，取值范围为-263<del>263-1，即9223372036854775808</del>9223372036854775807。</p>
-<h5 id="long（长整型）"><a href="#long（长整型）" class="headerlink" title="long（长整型）"></a>long（长整型）</h5><p>Python长整型没有指定位宽，但是由于机器内存有限，使用长的长整数数值也不可能无限大。</p>
-<h5 id="float（浮点型）"><a href="#float（浮点型）" class="headerlink" title="float（浮点型）"></a>float（浮点型）</h5><p>浮点型也就是带有小数点的数，其精度和机器有关。</p>
-<h5 id="complex（复数）"><a href="#complex（复数）" class="headerlink" title="complex（复数）"></a>complex（复数）</h5><p>Python还支持复数，复数由实数部分和虚数部分构成，可以用 a + bj,或者 complex(a,b) 表示， 复数的实部 a 和虚部 b 都是浮点型。</p>
-<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>Python中的字符串有两种数据类型，分别是str类型和unicode类型，str类型采用的ASCII编码，无法表示中文，unicode类型采用unicode编码，能够表示任意字符，包括中文和其他语言。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">状态获取：islower，isupper，isdigit，isalpha，isalnum，istitle，startswith，endswith</span><br><span class="line">状态转换：lower，casefold，upper，swapcase，title(单词首字母大写)，capitalize(字符串首字母大写)</span><br><span class="line">格式转换：strip(去掉左右两边参数字符串中的字符)，ljust，rjust，center，zfill（左侧补零）</span><br><span class="line">拆分：partition，rpartiton，spilt，splitlines</span><br><span class="line">连接：join，+</span><br><span class="line">查询：index，find，count</span><br><span class="line">替换操作：replace，expandtabs</span><br><span class="line">基本操作：索引取值，len，max，min，<span class="keyword">in</span>，<span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+      <h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p>插入排序：插入排序的基本操作就是将一个数据插入到已经排好序的有序数据中，从而得到一个新的、个数加一的有序数据，算法适用于少量数据的排序；首先将第一个作为已经排好序的，然后每次从后的取出插入到前面并排序；</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(ilist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ilist)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            <span class="keyword">if</span> ilist[i] &lt; ilist[j]:</span><br><span class="line">                ilist.insert(j, ilist.pop(i))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> ilist</span><br></pre></td></tr></table></figure>
 
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>冒泡排序：它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(blist)</span>:</span></span><br><span class="line">    count = len(blist)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, count):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, count):</span><br><span class="line">            <span class="keyword">if</span> blist[i] &gt; blist[j]:</span><br><span class="line">                blist[i], blist[j] = blist[j], blist[i]</span><br><span class="line">    <span class="keyword">return</span> blist</span><br><span class="line"></span><br><span class="line">blist = bubble_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br><span class="line">print(blist)</span><br></pre></td></tr></table></figure>
 
+<h4 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h4><p>快速排序：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列</p>
+<p>时间复杂度：O(nlog₂n)</p>
+<p>空间复杂度：O(nlog₂n)</p>
+<p>稳定性：不稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(qlist)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> qlist == []:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        qfirst = qlist[<span class="number">0</span>]</span><br><span class="line">        qless = quick_sort([l <span class="keyword">for</span> l <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> l &lt; qfirst])</span><br><span class="line">        qmore = quick_sort([m <span class="keyword">for</span> m <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> m &gt;= qfirst])</span><br><span class="line">        <span class="keyword">return</span> qless + [qfirst] + qmore</span><br><span class="line"></span><br><span class="line">qlist = quick_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
 
-<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><p>和其他编程语言一样，Python布尔类型也是用于逻辑运算，有两个值：True（真）和False（假）。</p>
-<h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><p>列表是Python中使用最频繁的数据类型，集合中可以放任何数据类型，可对集合进行创建、查找、切片、增加、修改、删除、循环和排序操作。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加：append,insert,extend</span><br><span class="line">删除：remove,pop,clear</span><br><span class="line">查询：index,count</span><br></pre></td></tr></table></figure>
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序：第1趟，在待排序记录r1 ~ r[n]中选出最小的记录，将它与r1交换；第2趟，在待排序记录r2 ~ r[n]中选出最小的记录，将它与r2交换；以此类推，第i趟在待排序记录r[i] ~ r[n]中选出最小的记录，将它与r[i]交换，使有序序列不断增长直到全部排序完毕</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：不稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(slist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(slist)):</span><br><span class="line">        x = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(slist)):</span><br><span class="line">            <span class="keyword">if</span> slist[j] &lt; slist[x]:</span><br><span class="line">                x = j</span><br><span class="line">        slist[i], slist[x] = slist[x], slist[i]</span><br><span class="line">    <span class="keyword">return</span> slist</span><br><span class="line"></span><br><span class="line">slist = select_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
 
-
-
-<h5 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h5><p>元组和列表一样，也是一种序列，与列表不同的是，元组是不可修改的，元组用”()”标识，内部元素用逗号隔开。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：index，count</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h5><p>字典是一种键值对的集合，是除列表以外Python之中最灵活的内置数据结构类型，列表是有序的对象集合，字典是无序的对象集合。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">增加：add</span><br><span class="line">删除：pop（第一个），clear，remove</span><br><span class="line">交集：&amp;</span><br><span class="line">并集：|</span><br><span class="line">差集：set1-set2</span><br><span class="line">对称差集：并集-交集</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><p>集合是一个无序的、不重复的数据组合，它的主要作用有两个，分别是去重和关系测试。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">增加:字典[<span class="string">'键'</span>] = 值</span><br><span class="line">删除：pop,popitem,clear</span><br><span class="line">修改：update(dict)</span><br><span class="line">查询：get,keys,items,values,setdefault:有对应的键则返回对应的值，没有则返回默认给定的值</span><br></pre></td></tr></table></figure>
+<h4 id="归并算法"><a href="#归并算法" class="headerlink" title="归并算法"></a>归并算法</h4><p>归并排序：采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并</p>
+<p>时间复杂度：O(nlog₂n)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_arr</span><span class="params">(arr_l, arr_r)</span>:</span></span><br><span class="line">        array = []</span><br><span class="line">        <span class="keyword">while</span> len(arr_l) <span class="keyword">and</span> len(arr_r):</span><br><span class="line">            <span class="keyword">if</span> arr_l[<span class="number">0</span>] &lt;= arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_l.pop(<span class="number">0</span>))</span><br><span class="line">            <span class="keyword">elif</span> arr_l[<span class="number">0</span>] &gt; arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_r.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">if</span> len(arr_l) != <span class="number">0</span>:</span><br><span class="line">            array += arr_l</span><br><span class="line">        <span class="keyword">elif</span> len(arr_r) != <span class="number">0</span>:</span><br><span class="line">            array += arr_r</span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recursive</span><span class="params">(array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(array) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> array</span><br><span class="line">        mid = len(array) // <span class="number">2</span></span><br><span class="line">        arr_l = recursive(array[:mid])</span><br><span class="line">        arr_r = recursive(array[mid:])</span><br><span class="line">        <span class="keyword">return</span> merge_arr(arr_l, arr_r)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> recursive(array)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -202,7 +192,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/07/06/shuju/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/07/06/suan/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -220,19 +210,10 @@
   
   <nav class="article-nav">
     
+    
       <a href="/2020/07/06/sjfzd/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Python算法及时间复杂度
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2020/05/12/drffy/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">分页</div>
+        <div class="article-nav-title">Python算法及时间复杂度</div>
       </a>
     
   </nav>
