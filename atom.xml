@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/vp1009/vp1009.github.io.git/"/>
-  <updated>2020-07-06T03:59:14.143Z</updated>
+  <updated>2020-07-14T13:53:45.807Z</updated>
   <id>https://github.com/vp1009/vp1009.github.io.git/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>验证码的时效性</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
+    <published>2020-07-14T01:02:20.000Z</published>
+    <updated>2020-07-14T13:53:45.807Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p><p>一，增加内存</p><p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p><p>二，搭建Redis集群</p><ol><li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li><li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li><li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li><li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li></ol><p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p><p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p><p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p><p>(2):什么时候整个集群不可用(cluster_state:fail)? </p><ul><li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li><li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li></ul><h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p><p>　　RDB：对redis中的数据周期性的持久化</p><h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p><p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p><p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p><p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p><p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p><p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p><p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p><p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p><p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p><p>AOF： append-only : true 开启aof策略</p><p>　　　　everysec: 每秒备份</p><p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p><p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p><h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？&lt;/p&gt;
+&lt;h3 id=&quot;思路&quot;&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Redis" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux文件操作</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/linux1/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/linux1/</id>
+    <published>2020-07-14T01:02:20.000Z</published>
+    <updated>2020-07-14T14:09:19.511Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p><p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p><p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p><p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p><p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p><p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot;&gt;&lt;a href=&quot;#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot; class=&quot;headerlink&quot; title=&quot;Li
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>Python面试算法题</title>
@@ -449,54 +498,6 @@
       
         &lt;h4 id=&quot;利用redis数据库实现账户锁定&quot;&gt;&lt;a href=&quot;#利用redis数据库实现账户锁定&quot; class=&quot;headerlink&quot; title=&quot;利用redis数据库实现账户锁定&quot;&gt;&lt;/a&gt;利用redis数据库实现账户锁定&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;需求 –&amp;gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>图片压缩水印</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/04/29/pcys/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/04/29/pcys/</id>
-    <published>2020-04-28T18:10:20.000Z</published>
-    <updated>2020-05-06T13:06:48.219Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#压缩 两种压缩模式，png不适合压缩，jpg适合</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment">#读图</span></span><br><span class="line">img = cv2.imread(<span class="string">'./dingding.png'</span>)</span><br><span class="line"><span class="comment">#开始压缩 png压缩等级清晰0-9模糊</span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.png'</span>,img,[cv2.IMWRITE_PNG_COMPRESSION,<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#jpg压缩等级清晰0-100模糊 </span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.jpg'</span>,img,[cv2.IMWRITE_JPEG_QUALITY,<span class="number">50</span>])</span><br></pre></td></tr></table></figure><h4 id="加水印"><a href="#加水印" class="headerlink" title="加水印"></a>加水印</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘画库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw</span><br><span class="line"><span class="comment">#字体库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont</span><br><span class="line"><span class="comment">#图片库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment">#加水印</span></span><br><span class="line">img = Image.open(<span class="string">'.//static/upload/'</span>+myfile_name)</span><br><span class="line"><span class="comment"># 获取宽高</span></span><br><span class="line">width, height = img.size</span><br><span class="line"><span class="comment"># 根据图片大小定义logo大小</span></span><br><span class="line">text = <span class="string">'哈哈哈'</span></span><br><span class="line"><span class="comment">#字体</span></span><br><span class="line">font = ImageFont.truetype(font=<span class="string">'C:\Windows\Fonts\FZXKJW.TTF'</span>,size=<span class="number">35</span>)</span><br><span class="line"><span class="comment"># 获取字体宽高</span></span><br><span class="line">font_width, font_height = font.getsize(text)</span><br><span class="line"><span class="comment"># 使用画笔</span></span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"><span class="comment"># 写入文本 参数（（x,y），水印文字，颜色，字体）</span></span><br><span class="line">draw.text((width-font_width,height-font_height), text,fill=(<span class="number">76</span>,<span class="number">234</span>,<span class="number">124</span>,<span class="number">180</span>), font=font)</span><br><span class="line"><span class="comment"># 根据路径保存文件 </span></span><br><span class="line">img.save(os.path.join(UPLOAD_ROOT, <span class="string">''</span>, myfile_name))</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;图片压缩&quot;&gt;&lt;a href=&quot;#图片压缩&quot; class=&quot;headerlink&quot; title=&quot;图片压缩&quot;&gt;&lt;/a&gt;图片压缩&lt;/h4&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微博的第三方登陆</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/04/28/login_weibo/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/04/28/login_weibo/</id>
-    <published>2020-04-28T11:19:20.000Z</published>
-    <updated>2020-04-28T14:52:30.913Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="申请新浪微博应用流程"><a href="#申请新浪微博应用流程" class="headerlink" title="申请新浪微博应用流程"></a>申请新浪微博应用流程</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建微博账号 --&gt; 完善开发者信息 --&gt; 点击应用 --&gt; 如果没有应用我们 点击微连接 --&gt;网站接入 --&gt; 点击立即接入 --&gt; 创建就OK</span><br><span class="line"></span><br><span class="line">创建完成后 -- 点击应用信息</span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>  App Key：<span class="number">4216464481</span> -- appID</span><br><span class="line">    App Secret：a58f0f7f68a0c78fecbb150c163035c9 -- app秘钥</span><br><span class="line"> <span class="number">2</span> 高级信息 -- 自定义回调页</span><br><span class="line"> <span class="number">3</span> 测试信息 -- 加入测试账号</span><br></pre></td></tr></table></figure><h4 id="第三方登陆流程图"><a href="#第三方登陆流程图" class="headerlink" title="第三方登陆流程图"></a>第三方登陆流程图</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">login (登陆页面)--&gt;新浪微博拼接跳转地址--&gt;新浪微博登陆--&gt;1:如果登陆不成功，则需找回密码 2:如果成功</span><br><span class="line">2 --&gt; 成功之后，回调到django系统 返回code --&gt; 后端接收code，利用code和新浪微博交换token,token带表获取新浪微博的名称 -----&gt;&gt;&gt; 以下 有两种情况</span><br><span class="line"></span><br><span class="line">1：曾经登陆过--&gt; 我们直接帮助用户登陆</span><br><span class="line"><span class="number">2</span>：如果没有登陆过，我直接存入到user库中</span><br><span class="line"></span><br><span class="line">   最后共同目标将账号返回给前端</span><br></pre></td></tr></table></figure><h4 id="创建-click点击事件"><a href="#创建-click点击事件" class="headerlink" title="创建@click点击事件"></a>创建@click点击事件</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 新浪微博</span><br><span class="line">xinliang:function()&#123;</span><br><span class="line"></span><br><span class="line">//拼接url</span><br><span class="line"> let clinet_id = <span class="number">4216464481</span>;</span><br><span class="line"></span><br><span class="line"> let url = <span class="string">"https://api.weibo.com/oauth2/authorize?client_id=4216464481&amp;redirect_uri=http://127.0.0.1:8000/md_admin_weibo"</span>;</span><br><span class="line"></span><br><span class="line"> //跳转</span><br><span class="line">  window.location.href = url;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><h4 id="将urls路由中配置回调参数"><a href="#将urls路由中配置回调参数" class="headerlink" title="将urls路由中配置回调参数"></a>将urls路由中配置回调参数</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'md_admin_weibo/'</span>,wb_back),</span><br></pre></td></tr></table></figure><h4 id="获取code值"><a href="#获取code值" class="headerlink" title="获取code值"></a>获取code值</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wb_back</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 接收参数</span></span><br><span class="line">    code = request.GET.get(<span class="string">'code'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义token接口地址</span></span><br><span class="line">    url = <span class="string">"https://api.weibo.com/oauth2/access_token"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义参数</span></span><br><span class="line">    re = requests.post(url, data=&#123;</span><br><span class="line">        <span class="string">"client_id"</span>: <span class="string">"4216464481"</span>,</span><br><span class="line">        <span class="string">"client_secret"</span>: <span class="string">"a58f0f7f68a0c78fecbb150c163035c9"</span>,</span><br><span class="line">        <span class="string">"grant_type"</span>: <span class="string">"authorization_code"</span>, <span class="comment"># 写死</span></span><br><span class="line">        <span class="string">"code"</span>: code,</span><br><span class="line">        <span class="comment"># 回调的地址</span></span><br><span class="line">        <span class="string">"redirect_uri"</span>: <span class="string">"http://127.0.0.1:8000/md_admin_weibo"</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure><h5 id="post-请求-是将access-token值-取出来，-还有你的微博user-id"><a href="#post-请求-是将access-token值-取出来，-还有你的微博user-id" class="headerlink" title="post 请求 是将access_token值 取出来， 还有你的微博user_id"></a>post 请求 是将access_token值 取出来， 还有你的微博user_id</h5><h4 id="之后换取新浪微博用户昵称"><a href="#之后换取新浪微博用户昵称" class="headerlink" title="之后换取新浪微博用户昵称"></a>之后换取新浪微博用户昵称</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">'https://api.weibo.com/users/show.json'</span>,params=&#123;<span class="string">'access_token'</span>:re.json()[<span class="string">'access_token'</span>],<span class="string">'uid'</span>:re.json()[<span class="string">'uid'</span>]&#125;)</span><br><span class="line"></span><br><span class="line">    sina_id = <span class="string">''</span>  <span class="comment"># 1009_nan</span></span><br><span class="line">    user_id = <span class="string">''</span>  <span class="comment"># 10</span></span><br><span class="line">    <span class="comment"># 判断是否用新浪微博登陆过</span></span><br><span class="line">    user = User.objects.filter(username=str(res.json()[<span class="string">'name'</span>])).first()</span><br><span class="line">    <span class="keyword">if</span> user:</span><br><span class="line">        <span class="comment"># 代表曾经用账号登陆过</span></span><br><span class="line">        sina_id = user.username</span><br><span class="line">        user_id = user.id</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 首次登陆，入库新浪微博账号</span></span><br><span class="line">        user = User(username=str(res.json()[<span class="string">'name'</span>]),password=<span class="string">''</span>)</span><br><span class="line">        user.save()</span><br><span class="line">        user = User.objects.filter(username=str(res.json()[<span class="string">'name'</span>])).first()</span><br><span class="line">    <span class="comment"># 重定向到主页面</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">"http://localhost:8080?sina_id="</span>+str(sina_id)+<span class="string">"&amp;uid="</span>+str(user_id))</span><br></pre></td></tr></table></figure><h4 id="返回前端-接收第三方参数"><a href="#返回前端-接收第三方参数" class="headerlink" title="返回前端 接收第三方参数"></a>返回前端 接收第三方参数</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var sina_id = this.$route.query.sina_id  // weibo名称</span><br><span class="line">var user_id = this.$route.query.uid   // userid</span><br><span class="line"><span class="keyword">if</span> (sina_id)&#123;</span><br><span class="line">//自动帮用户进行登录操作</span><br><span class="line">// 存入localStorage 取则用localStorage.getItem()</span><br><span class="line">localStorage.setItem(<span class="string">"username"</span>,sina_id)</span><br><span class="line">localStorage.setItem(<span class="string">"uid"</span>,user_id)</span><br><span class="line">this.username = sina_id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;申请新浪微博应用流程&quot;&gt;&lt;a href=&quot;#申请新浪微博应用流程&quot; class=&quot;headerlink&quot; title=&quot;申请新浪微博应用流程&quot;&gt;&lt;/a&gt;申请新浪微博应用流程&lt;/h4&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
       
     
     </summary>

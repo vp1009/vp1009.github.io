@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     L-Blog
+    验证码的时效性 |  L-Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -41,52 +41,17 @@
 <body>
   <div id="app">
     <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/timg.png" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">L-Blog</a></h1>
-      <div id="subtitle-box">
-        
-        <span id="subtitle"></span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
-
-<div id="main">
-  <section class="outer">
-  <article class="articles">
-    
-    
-    
-    
-    <article id="post-redis1" class="article article-type-post" itemscope
+      <section class="outer">
+  <article id="post-redis1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
     
     <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/redis1/"
-    >验证码的时效性</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  验证码的时效性
+</h1>
  
 
     </header>
@@ -100,18 +65,144 @@
       
       
       
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+
       
     </div>
     
 
     
+    
+    <div class="tocbot"></div>
+
+
+
+
 
     
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p>
+<p>一，增加内存</p>
+<p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p>
+<p>二，搭建Redis集群</p>
+<ol>
+<li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li>
+<li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li>
+<li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li>
+<li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li>
+</ol>
+<p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p>
+<p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p>
+<p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p>
+<p>(2):什么时候整个集群不可用(cluster_state:fail)? </p>
+<ul>
+<li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li>
+<li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li>
+</ul>
+<h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p>
+<p>　　RDB：对redis中的数据周期性的持久化</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p>
+<p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p>
+<p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p>
+<p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p>
+<p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p>
+<p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p>
+<p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p>
+<p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p>
+<p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p>
+<p>AOF： append-only : true 开启aof策略</p>
+<p>　　　　everysec: 每秒备份</p>
+<p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p>
+<p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p>
+<h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        Donate
+      </div>
+      
+    </div>
     
     
       <!-- copyright -->
       
     <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
@@ -122,542 +213,82 @@
   </div>
 
   
-
   
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-linux1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/linux1/"
-    >Linux文件操作</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/14/linux1/" class="article-date">
-  <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-pyms" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/pyms/"
-    >Python面试算法题</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/pyms/" class="article-date">
-  <time datetime="2020-07-06T03:00:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-suan" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/suan/"
-    >Python五大排序算法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/suan/" class="article-date">
-  <time datetime="2020-07-06T02:00:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-sjfzd" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/sjfzd/"
-    >Python算法时间复杂度</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/sjfzd/" class="article-date">
-  <time datetime="2020-07-06T01:20:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-shuju" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/shuju/"
-    >Python基础数据类型</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/shuju/" class="article-date">
-  <time datetime="2020-07-06T01:02:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
+  <nav class="article-nav">
     
     
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-drffy" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/12/drffy/"
-    >分页</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/12/drffy/" class="article-date">
-  <time datetime="2020-05-11T21:12:22.000Z" itemprop="datePublished">2020-05-12</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-detail" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/11/detail/"
-    >简述详情页</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/11/detail/" class="article-date">
-  <time datetime="2020-05-10T20:20:22.000Z" itemprop="datePublished">2020-05-11</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-jsonb" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/11/jsonb/"
-    >简述逻辑外键</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/11/jsonb/" class="article-date">
-  <time datetime="2020-05-10T19:20:22.000Z" itemprop="datePublished">2020-05-11</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-ahms" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/10/ahms/"
-    >暗夜模式配置</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/10/ahms/" class="article-date">
-  <time datetime="2020-05-10T05:53:00.000Z" itemprop="datePublished">2020-05-10</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/" rel="tag">Django</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
+      <a href="/2020/07/14/linux1/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Linux文件操作</div>
+      </a>
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
-  
-</section>
-</div>
 
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -788,6 +419,23 @@
 </script>
 
 <!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">

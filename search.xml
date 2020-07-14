@@ -1042,4 +1042,62 @@
         <tag>python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>验证码的时效性</title>
+    <url>/2020/07/14/redis1/</url>
+    <content><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p>
+<p>一，增加内存</p>
+<p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p>
+<p>二，搭建Redis集群</p>
+<ol>
+<li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li>
+<li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li>
+<li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li>
+<li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li>
+</ol>
+<p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p>
+<p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p>
+<p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p>
+<p>(2):什么时候整个集群不可用(cluster_state:fail)? </p>
+<ul>
+<li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li>
+<li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li>
+</ul>
+<h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p>
+<p>　　RDB：对redis中的数据周期性的持久化</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p>
+<p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p>
+<p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p>
+<p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p>
+<p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p>
+<p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p>
+<p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p>
+<p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p>
+<p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p>
+<p>AOF： append-only : true 开启aof策略</p>
+<p>　　　　everysec: 每秒备份</p>
+<p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p>
+<p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p>
+<h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>
+]]></content>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux文件操作</title>
+    <url>/2020/07/14/linux1/</url>
+    <content><![CDATA[<h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p>
+<p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p>
+<p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p>
+<p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p>
+<p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p>
+<p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
 </search>
