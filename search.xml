@@ -1100,4 +1100,24 @@
         <tag>Linux</tag>
       </tags>
   </entry>
+  <entry>
+    <title>django之redis和django-redis的使用</title>
+    <url>/2020/07/15/redis_cz/</url>
+    <content><![CDATA[<p>-redis</p>
+<p>　　-非关系型内存数据（nosql:mongodb,redis），key-value的存储<br>　　-单线程单进程，qps:10w<br>　　-Memcached：多线程，支持的数据类型少：只支持字符串类型，不支持持久化<br>　　-redis：5大数据类型<br>　　　　k1:‘123‘, 字符串<br>　　　　k2:[1,2,3,4], 列表/数组<br>　　　　k3:{1,2,3,4} 集合：去重，爬虫去重<br>　　　　k4:{name:lqz,age:12} 字典/哈希表<br>　　　　k5:{(‘lqz‘,18),(‘egon‘,33)} 有序集合：游戏排行榜<br>　　-redis支持持久化：两种持久化的方案</p>
+<p>-python操作redis<br>　　from redis import Redis<br>　　conn=Redis()</p>
+<p>-redis连接池<br>　　#pool需要做成单例<br>　　pool=ConnectionPool(host=‘127.0.0.1‘,port=6379,max_connections=100)<br>　　conn=Redis(connection_pool=pool)</p>
+<p>-redis之字符串操作<br>　　-set<br>　　-get<br>　　-mset<br>　　-mget<br>　　-incr<br>　　-decr<br>　　-append</p>
+<p>-redis之hash操作<br>　　-hset<br>　　-hmset<br>　　-hget<br>　　-hmget<br>　　-hgetall<br>　　-hlen<br>　　-hdel<br>　　-hincrby<br>　　-hscan<br>　　-hscan_iter</p>
+<p>-redis之列表操作<br>　　-lpush<br>　　-llen<br>　　-linsert<br>　　-lpop<br>　　-blpop</p>
+<p>　　-自定义增量迭代</p>
+<p>只支持一层的5大数据类型：也就是说字典的value值只能是字符串，列表的value值只能是字符串</p>
+<p>-redis的其他操作<br>　　-delete<br>　　-exisit<br>　　-rename<br>　　-keys 模糊匹配key值<br>　　-expire<br>　　-type</p>
+<p>-事务（重点）<br>　　conn=Redis()<br>　　pipe = conn.pipeline(transaction=True)<br>　　pipe.multi()<br>　　pipe.set(‘name‘, ‘alex‘)<br>　　pipe.set(‘role‘, ‘sb‘)<br>　　pipe.execute()</p>
+<p>-在django中使用redis<br>　　-所有框架都能用的方式：<br>　　　　-先新建一个py文件，生成一个redis连接池<br>　　　　-在哪用，导过来，<br>　　　　　　conn=Redis(connection_pool=POOL)<br>　　　　　　conn.set(‘xxx‘,‘yyyy‘)<br>　　-django中使用：django-redis模块<br>　　　　-在setting中配置：<br>　　　　　　CACHES = {<br>　　　　　　　　“default”: {<br>　　　　　　　　　　“BACKEND”: “django_redis.cache.RedisCache”,<br>　　　　　　　　　　“LOCATION”: “redis://127.0.0.1:6379”,<br>　　　　　　　　　　“OPTIONS”: {<br>　　　　　　　　　　　　“CLIENT_CLASS”: “django_redis.client.DefaultClient”,<br>　　　　　　　　　　　　“CONNECTION_POOL_KWARGS”: {“max_connections”: 100}}}}<br>　　　　-使用<br>　　　　　　在使用的位置：<br>　　　　　　from django_redis import get_redis_connection<br>　　　　　　conn=get_redis_connection()<br>　　　　　　conn.set</p>
+]]></content>
+      <tags>
+        <tag>Redis</tag>
+      </tags>
+  </entry>
 </search>
