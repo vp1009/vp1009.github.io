@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     L-Blog
+     Originally
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -33,7 +33,7 @@
 
   
 
-<link rel="alternate" href="/atom.xml" title="L-Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
 </head>
 
 </html>
@@ -49,7 +49,7 @@
       <img src="/images/timg.png" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">L-Blog</a></h1>
+      <h1><a href="/">Originally</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -75,6 +75,86 @@
     
     
     
+    
+    <article id="post-celery" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/17/celery/"
+    >Celery+Redis</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/17/celery/" class="article-date">
+  <time datetime="2020-07-17T05:53:00.000Z" itemprop="datePublished">2020-07-17</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><img src="../images/005.jpeg" alt="sad"><br>1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务</p>
+<p>2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取</p>
+<p>3、执行者（Worker）–用于执行tasks，也就是真正调用我们在tasks中定义的函数</p>
+<p>4、存储（Backend）–把执行tasks返回的结果进行存储，以供用户查看或调用</p>
+<h2 id="1、各模块功能"><a href="#1、各模块功能" class="headerlink" title="1、各模块功能"></a>1、各模块功能</h2><p>Celery中，以上组件具体功能如下：</p>
+<p><strong>任务模块 Task</strong></p>
+<p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p>
+<p><strong>消息中间件 Broker</strong></p>
+<p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p>
+<p><strong>任务执行单元 Worker</strong></p>
+<p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p>
+<p><strong>任务结果存储 Backend</strong></p>
+<p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
     
     <article id="post-redis_cz" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
@@ -107,6 +187,28 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>-redis</p>
+<p>　　-非关系型内存数据（nosql:mongodb,redis），key-value的存储<br>　　-单线程单进程，qps:10w<br>　　-Memcached：多线程，支持的数据类型少：只支持字符串类型，不支持持久化<br>　　-redis：5大数据类型<br>　　　　k1:‘123‘, 字符串<br>　　　　k2:[1,2,3,4], 列表/数组<br>　　　　k3:{1,2,3,4} 集合：去重，爬虫去重<br>　　　　k4:{name:lqz,age:12} 字典/哈希表<br>　　　　k5:{(‘lqz‘,18),(‘egon‘,33)} 有序集合：游戏排行榜<br>　　-redis支持持久化：两种持久化的方案</p>
+<p>-python操作redis<br>　　from redis import Redis<br>　　conn=Redis()</p>
+<p>-redis连接池<br>　　#pool需要做成单例<br>　　pool=ConnectionPool(host=‘127.0.0.1‘,port=6379,max_connections=100)<br>　　conn=Redis(connection_pool=pool)</p>
+<p>-redis之字符串操作<br>　　-set<br>　　-get<br>　　-mset<br>　　-mget<br>　　-incr<br>　　-decr<br>　　-append</p>
+<p>-redis之hash操作<br>　　-hset<br>　　-hmset<br>　　-hget<br>　　-hmget<br>　　-hgetall<br>　　-hlen<br>　　-hdel<br>　　-hincrby<br>　　-hscan<br>　　-hscan_iter</p>
+<p>-redis之列表操作<br>　　-lpush<br>　　-llen<br>　　-linsert<br>　　-lpop<br>　　-blpop</p>
+<p>　　-自定义增量迭代</p>
+<p>只支持一层的5大数据类型：也就是说字典的value值只能是字符串，列表的value值只能是字符串</p>
+<p>-redis的其他操作<br>　　-delete<br>　　-exisit<br>　　-rename<br>　　-keys 模糊匹配key值<br>　　-expire<br>　　-type</p>
+<p>-事务（重点）<br>　　conn=Redis()<br>　　pipe = conn.pipeline(transaction=True)<br>　　pipe.multi()<br>　　pipe.set(‘name‘, ‘alex‘)<br>　　pipe.set(‘role‘, ‘sb‘)<br>　　pipe.execute()</p>
+<p>-在django中使用redis<br>　　-所有框架都能用的方式：<br>　　　　-先新建一个py文件，生成一个redis连接池<br>　　　　-在哪用，导过来，<br>　　　　　　conn=Redis(connection_pool=POOL)<br>　　　　　　conn.set(‘xxx‘,‘yyyy‘)<br>　　-django中使用：django-redis模块<br>　　　　-在setting中配置：<br>　　　　　　CACHES = {<br>　　　　　　　　“default”: {<br>　　　　　　　　　　“BACKEND”: “django_redis.cache.RedisCache”,<br>　　　　　　　　　　“LOCATION”: “redis://127.0.0.1:6379”,<br>　　　　　　　　　　“OPTIONS”: {<br>　　　　　　　　　　　　“CLIENT_CLASS”: “django_redis.client.DefaultClient”,<br>　　　　　　　　　　　　“CONNECTION_POOL_KWARGS”: {“max_connections”: 100}}}}<br>　　　　-使用<br>　　　　　　在使用的位置：<br>　　　　　　from django_redis import get_redis_connection<br>　　　　　　conn=get_redis_connection()<br>　　　　　　conn.set</p>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -133,7 +235,7 @@
 
 </article>
     
-    <article id="post-redis1" class="article article-type-post" itemscope
+    <article id="post-mysql_yh" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -141,8 +243,8 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/redis1/"
-    >验证码的时效性</a> 
+  <a class="article-title" href="/2020/07/14/mysql_yh/"
+    >关于mysql优化</a> 
 </h2>
  
 
@@ -151,7 +253,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/07/14/redis1/" class="article-date">
+      <a href="/2020/07/14/mysql_yh/" class="article-date">
   <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
 </a>
       
@@ -164,6 +266,36 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="优化数据的访问"><a href="#优化数据的访问" class="headerlink" title="优化数据的访问"></a>优化数据的访问</h4><ol>
+<li><p>确认应用程序是否检索了大量超过需要的数据。通常以为访问太多的行，或者访问太多的列</p>
+</li>
+<li><p>确认mysql服务器层是否存在分析大量超过需要的数据行</p>
+</li>
+<li><p>当访问量过大时，考虑数据库读写分离原则，当我们使用分离，数据库的压力还是很大的时候，这就需要使用数据拆分了。数据库的拆分原则：就是通过某种特定的条件，按照某个维度，将我们存放同一个数据库中的数据分散存到多个数据库（主机）上面已达到分散单裤（主机）负载的效果。</p>
+<ul>
+<li><p>首选是垂直拆分：一个数据库是由多个表组成，每个表对应着不同的业务，垂直切分指按照业务进行分类，分布到不同的数据库上面，这样也就将压力分布到不同的数据库上。 <strong>优点</strong> ：1 拆分后业务清晰，拆分规则明确 2 系统之间整合或扩展容易 3 数据维护简单 <strong>缺点</strong> ：1 部分代码无法join，只能通过接口方式解决，提高了系统复杂度 2 事物处理复杂</p>
+</li>
+<li><p>水平拆分：相似与垂直拆分，水平拆分不是将表的数据做分类，而是按照某个字段的某种规则分散到多个库之中，每个表包含一部分数据。简单来说，我们可以将数据的水平切分理解为是按照数据行进行切分，就是讲表中的某些行切分到一个数据库，而另外的某些行又切分到其他的数据库中。</p>
+</li>
+<li><p><strong>总</strong> ： 如果分库后仍然查的满的话，按照分库的思想做分表的工作数据库采用分布式数据库（所有的节点加起来才是整体数据），服务器满足不了大型系统增长的业务需求，数据库读写分离随着业务的发展，最终也无法满足，需要分布式数据库及分布式文件系统来支撑。</p>
+<p>优先考虑缓存讲题对数据库的操作</p>
+<p>在考录读写分离，降低数据库写操作</p>
+<p>首先垂直拆分在水平拆分</p>
+<p>先分库在分表</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -171,7 +303,7 @@
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul>
 
 
     </footer>
@@ -221,6 +353,22 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p>
+<p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p>
+<p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p>
+<p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p>
+<p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p>
+<p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -229,6 +377,109 @@
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-redis1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/14/redis1/"
+    >验证码的时效性</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/14/redis1/" class="article-date">
+  <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p>
+<p>一，增加内存</p>
+<p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p>
+<p>二，搭建Redis集群</p>
+<ol>
+<li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li>
+<li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li>
+<li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li>
+<li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li>
+</ol>
+<p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p>
+<p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p>
+<p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p>
+<p>(2):什么时候整个集群不可用(cluster_state:fail)? </p>
+<ul>
+<li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li>
+<li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li>
+</ul>
+<h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p>
+<p>　　RDB：对redis中的数据周期性的持久化</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p>
+<p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p>
+<p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p>
+<p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p>
+<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p>
+<p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p>
+<p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p>
+<p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p>
+<p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p>
+<p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p>
+<p>AOF： append-only : true 开启aof策略</p>
+<p>　　　　everysec: 每秒备份</p>
+<p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p>
+<p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p>
+<h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
 
     </footer>
@@ -278,6 +529,70 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">num</span><span class="params">()</span>:</span></span><br><span class="line">          <span class="keyword">return</span> [<span class="keyword">lambda</span> x: i*x <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">print([m(<span class="number">2</span>) <span class="keyword">for</span> m <span class="keyword">in</span> num()])     <span class="comment"># 输出: [6, 6, 6, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>这题涉及到了闭包延时绑定，当循环执行完了之后才会执行传参，循环四次，每一次循环完 i=3 然后再和x相乘 所以结果是6，6，6，6。 如果把 [ lambda x: i<em>x for i in range(4) ] 改成 （ lambda x: i</em>x for i in range(4) ）这样就变成了一个生成器 自动实现迭代器协议，一边循环一边计算的机制， 这样结果就是 0，2，4，6.</p>
+<hr>
+<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9</span><br><span class="line">因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>这里可以使用字典来解题，通过enumerate方法遍历获取数据的下标包括对应值，然后以key，value形式把该数据的下标和对应值存入字典，然后再出通过enumerate方法遍历数据，每一次获取数据就从字典拿出一个值，用目标值减去从字典拿出的这个值得到一个结果值，如果结果值存在字典当中，那么返回两个数的下标，如果为None，说明字典中没有这个值。</p>
+<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_index_list</span><span class="params">(nums, target)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Todo 作为一个方法来实现，批量解决这个获取索引的问题</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params nums：传的参数的列表</span></span><br><span class="line"><span class="string">    :params target: 目标值</span></span><br><span class="line"><span class="string">    :return: 返回索引</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> a, b <span class="keyword">in</span> enumerate(nums):  <span class="comment"># a是下标 b是对应值</span></span><br><span class="line"></span><br><span class="line">        dic[b] = a  <span class="comment"># 对应值存入字典</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b <span class="keyword">in</span> enumerate(nums):</span><br><span class="line"></span><br><span class="line">        j = dic.get(target-b)  <span class="comment"># 从字典中拿出对应值 用目标值减去对应值</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> j <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  <span class="comment"># 判断如果减去的对应值不为空，则返回下标</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> [i, j]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="数组中重复的数字"><a href="#数组中重复的数字" class="headerlink" title="数组中重复的数字"></a>数组中重复的数字</h2><p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>]</span><br><span class="line">输出: <span class="number">2</span> 或 <span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><p>这道题想到的是，使用列表中的count方法，定义一个空列表，遍历数据然后进行判断，如果数据值出现个数大于或等于2，说明该数据是重复的，然后把重复的筛取出来之后存入空列表，再进行返回输出。</p>
+<h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params nums：传的参数的数组</span></span><br><span class="line"><span class="string">    :return: 返回重复数字</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    nub = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> nums.count(i) &gt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">if</span> str(i) <span class="keyword">not</span> <span class="keyword">in</span> nub:</span><br><span class="line">                nub.append(str(i))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'或'</span>.join(nub))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    get_number([<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="队列实现一个栈"><a href="#队列实现一个栈" class="headerlink" title="队列实现一个栈"></a>队列实现一个栈</h2><h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p>使用一个队列，实现栈的一些基本操作，栈（后进先出）的特性。</p>
+<h3 id="实现代码：-2"><a href="#实现代码：-2" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 队列实现一个栈 （栈：后进先出）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 定义一个队列</span></span><br><span class="line">        self.lst = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_None</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 判断栈是否为空 返回 ture false</span></span><br><span class="line">        <span class="keyword">return</span> self.lst == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        <span class="comment"># 加入元素</span></span><br><span class="line">        self.lst.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 出栈</span></span><br><span class="line">        <span class="keyword">return</span> self.lst.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stack_top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 返回栈顶元素</span></span><br><span class="line">        <span class="keyword">return</span> self.lst[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 栈的大小</span></span><br><span class="line">        <span class="keyword">return</span> len(self.lst)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    stack = Stack()</span><br><span class="line">    print(stack.is_None())</span><br><span class="line">    stack.push(<span class="number">1</span>)</span><br><span class="line">    stack.push(<span class="number">2</span>)</span><br><span class="line">    stack.push(<span class="number">3</span>)</span><br><span class="line">    print(stack.lst)</span><br><span class="line">    print(stack.pop())</span><br><span class="line">    print(stack.stack_top())</span><br><span class="line">    print(stack.size())</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<p>示例1：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="number">121</span></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p>示例2：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="number">-121</span></span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右，为 <span class="number">-121</span> 。 从右向左读，为<span class="number">121</span>- 。 因此它不是一个回文数</span><br></pre></td></tr></table></figure>
+
+<p>示例3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读，为 01 。 因此它不是一个回文数</span><br></pre></td></tr></table></figure>
+
+<h3 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h3><p>这题可以使用字符串 双指针的方法 将数据转化为字符串 首先定义好第一个元素下标和最后一个元素下标，while循环 只要条件不满足 一直循环 循环判断第一个和最后一个元素是否相等 不相等返回false 相等继续循环，如果循环条件满足之后都相等，返回 false</p>
+<h3 id="实现代码：-3"><a href="#实现代码：-3" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">palindromic_number</span><span class="params">(x)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params x：传的参数的列表</span></span><br><span class="line"><span class="string">    :return: 返回Ture False</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    lst = list(str(x))</span><br><span class="line">    print(lst)</span><br><span class="line">    L, R = <span class="number">0</span>, len(lst)<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> L &lt;= R:</span><br><span class="line">        print(L, R)</span><br><span class="line">        <span class="keyword">if</span> lst[L] != lst[R]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        L += <span class="number">1</span></span><br><span class="line">        R -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(palindromic_number(<span class="number">1231</span>))</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="分别用生成器和迭代器生成斐波那契数列"><a href="#分别用生成器和迭代器生成斐波那契数列" class="headerlink" title="分别用生成器和迭代器生成斐波那契数列"></a>分别用生成器和迭代器生成斐波那契数列</h2><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出: 1 1 2 3 5 8 13</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用迭代器生成斐波那契数列</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fibonacii</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,all_num)</span>:</span></span><br><span class="line">        self.all_num = all_num</span><br><span class="line">        self.cur_idx = <span class="number">0</span></span><br><span class="line">        self.a = <span class="number">0</span>  </span><br><span class="line">        self.b = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.cur_idx &gt;= self.all_num:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line">        ret = self.a</span><br><span class="line">        </span><br><span class="line">        self.a, self.b = self.b, self.a + self.b</span><br><span class="line">        self.cur_idx += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"> </span><br><span class="line">fibo = Fibonacii(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fibo:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用生成器生成斐波那契数列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibnacii</span><span class="params">(count)</span>:</span></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> num &lt; count:</span><br><span class="line">        <span class="keyword">yield</span> a</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fi = fibnacii(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fi:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
+
+<h2 id="反转字符数组"><a href="#反转字符数组" class="headerlink" title="反转字符数组"></a>反转字符数组</h2><h3 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h3><p>直接使用反转</p>
+<h3 id="实现代码：-4"><a href="#实现代码：-4" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 反转字符串</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(s)</span>:</span></span><br><span class="line">    s[<span class="number">0</span>::] = s[::<span class="number">-1</span>]</span><br><span class="line">    print(s)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    reverseString([<span class="string">'b'</span>, <span class="string">''</span>, <span class="string">'a'</span>, <span class="string">'r'</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -335,6 +650,46 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p>插入排序：插入排序的基本操作就是将一个数据插入到已经排好序的有序数据中，从而得到一个新的、个数加一的有序数据，算法适用于少量数据的排序；首先将第一个作为已经排好序的，然后每次从后的取出插入到前面并排序；</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(ilist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ilist)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            <span class="keyword">if</span> ilist[i] &lt; ilist[j]:</span><br><span class="line">                ilist.insert(j, ilist.pop(i))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> ilist</span><br></pre></td></tr></table></figure>
+
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>冒泡排序：它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(blist)</span>:</span></span><br><span class="line">    count = len(blist)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, count):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, count):</span><br><span class="line">            <span class="keyword">if</span> blist[i] &gt; blist[j]:</span><br><span class="line">                blist[i], blist[j] = blist[j], blist[i]</span><br><span class="line">    <span class="keyword">return</span> blist</span><br><span class="line"></span><br><span class="line">blist = bubble_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br><span class="line">print(blist)</span><br></pre></td></tr></table></figure>
+
+<h4 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h4><p>快速排序：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列</p>
+<p>时间复杂度：O(nlog₂n)</p>
+<p>空间复杂度：O(nlog₂n)</p>
+<p>稳定性：不稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(qlist)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> qlist == []:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        qfirst = qlist[<span class="number">0</span>]</span><br><span class="line">        qless = quick_sort([l <span class="keyword">for</span> l <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> l &lt; qfirst])</span><br><span class="line">        qmore = quick_sort([m <span class="keyword">for</span> m <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> m &gt;= qfirst])</span><br><span class="line">        <span class="keyword">return</span> qless + [qfirst] + qmore</span><br><span class="line"></span><br><span class="line">qlist = quick_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序：第1趟，在待排序记录r1 ~ r[n]中选出最小的记录，将它与r1交换；第2趟，在待排序记录r2 ~ r[n]中选出最小的记录，将它与r2交换；以此类推，第i趟在待排序记录r[i] ~ r[n]中选出最小的记录，将它与r[i]交换，使有序序列不断增长直到全部排序完毕</p>
+<p>时间复杂度：O(n²)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：不稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(slist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(slist)):</span><br><span class="line">        x = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(slist)):</span><br><span class="line">            <span class="keyword">if</span> slist[j] &lt; slist[x]:</span><br><span class="line">                x = j</span><br><span class="line">        slist[i], slist[x] = slist[x], slist[i]</span><br><span class="line">    <span class="keyword">return</span> slist</span><br><span class="line"></span><br><span class="line">slist = select_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="归并算法"><a href="#归并算法" class="headerlink" title="归并算法"></a>归并算法</h4><p>归并排序：采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并</p>
+<p>时间复杂度：O(nlog₂n)</p>
+<p>空间复杂度：O(1)</p>
+<p>稳定性：稳定</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_arr</span><span class="params">(arr_l, arr_r)</span>:</span></span><br><span class="line">        array = []</span><br><span class="line">        <span class="keyword">while</span> len(arr_l) <span class="keyword">and</span> len(arr_r):</span><br><span class="line">            <span class="keyword">if</span> arr_l[<span class="number">0</span>] &lt;= arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_l.pop(<span class="number">0</span>))</span><br><span class="line">            <span class="keyword">elif</span> arr_l[<span class="number">0</span>] &gt; arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_r.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">if</span> len(arr_l) != <span class="number">0</span>:</span><br><span class="line">            array += arr_l</span><br><span class="line">        <span class="keyword">elif</span> len(arr_r) != <span class="number">0</span>:</span><br><span class="line">            array += arr_r</span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recursive</span><span class="params">(array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(array) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> array</span><br><span class="line">        mid = len(array) // <span class="number">2</span></span><br><span class="line">        arr_l = recursive(array[:mid])</span><br><span class="line">        arr_r = recursive(array[mid:])</span><br><span class="line">        <span class="keyword">return</span> merge_arr(arr_l, arr_r)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> recursive(array)</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -392,6 +747,34 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p> 时间复杂度分为：</p>
+<ul>
+<li><p>时间复杂度</p>
+</li>
+<li><p>空间复杂度</p>
+<p>时间复杂度用于度量算法的计算工作量，空间复杂度用于度量算法占用的内存空间。 </p>
+</li>
+</ul>
+<p><strong>渐进时间复杂度</strong></p>
+<p>时间复杂度是算法运算所消耗的时间，因为不同大小的输入数据，算法处理所要消耗的时间是不同的，因此评估一个算运行时间是比较困难的，所以通常关注的是时间频度，即算法运行计算操作的次数，记为T(n)，其中n称为问题的规模。</p>
+<p>同样，因为n是一个变量，n发生变化时，时间频度T(n) 也在发生变化，我们称时间复杂度的极限情形称为算法的渐近时间复杂度，记为O(n)，不包含函数的低阶和首项系数。</p>
+<h5 id="时间复杂度分为："><a href="#时间复杂度分为：" class="headerlink" title="时间复杂度分为："></a>时间复杂度分为：</h5><ul>
+<li>常数阶 O(1) </li>
+<li>线性阶 O(n) </li>
+<li>平方阶 O(n^2) </li>
+<li>立方阶 O(n^3) </li>
+<li>对数阶 O(logn) </li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -449,6 +832,56 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="python的主要数据类型包括："><a href="#python的主要数据类型包括：" class="headerlink" title="python的主要数据类型包括："></a>python的主要数据类型包括：</h4><ol>
+<li>int (整形)</li>
+<li>long(长整型)</li>
+<li>float(浮点型)</li>
+<li>complex（复数）</li>
+<li>字符串</li>
+<li>布尔型</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>集合</li>
+</ol>
+<h5 id="int（整型）"><a href="#int（整型）" class="headerlink" title="int（整型）"></a>int（整型）</h5><p>在32位机器上，整数的位数是32位，取值范围是-231<del>231-1，即-2147483648</del>214748364；在64位系统上，整数的位数为64位，取值范围为-263<del>263-1，即9223372036854775808</del>9223372036854775807。</p>
+<h5 id="long（长整型）"><a href="#long（长整型）" class="headerlink" title="long（长整型）"></a>long（长整型）</h5><p>Python长整型没有指定位宽，但是由于机器内存有限，使用长的长整数数值也不可能无限大。</p>
+<h5 id="float（浮点型）"><a href="#float（浮点型）" class="headerlink" title="float（浮点型）"></a>float（浮点型）</h5><p>浮点型也就是带有小数点的数，其精度和机器有关。</p>
+<h5 id="complex（复数）"><a href="#complex（复数）" class="headerlink" title="complex（复数）"></a>complex（复数）</h5><p>Python还支持复数，复数由实数部分和虚数部分构成，可以用 a + bj,或者 complex(a,b) 表示， 复数的实部 a 和虚部 b 都是浮点型。</p>
+<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>Python中的字符串有两种数据类型，分别是str类型和unicode类型，str类型采用的ASCII编码，无法表示中文，unicode类型采用unicode编码，能够表示任意字符，包括中文和其他语言。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">状态获取：islower，isupper，isdigit，isalpha，isalnum，istitle，startswith，endswith</span><br><span class="line">状态转换：lower，casefold，upper，swapcase，title(单词首字母大写)，capitalize(字符串首字母大写)</span><br><span class="line">格式转换：strip(去掉左右两边参数字符串中的字符)，ljust，rjust，center，zfill（左侧补零）</span><br><span class="line">拆分：partition，rpartiton，spilt，splitlines</span><br><span class="line">连接：join，+</span><br><span class="line">查询：index，find，count</span><br><span class="line">替换操作：replace，expandtabs</span><br><span class="line">基本操作：索引取值，len，max，min，<span class="keyword">in</span>，<span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><p>和其他编程语言一样，Python布尔类型也是用于逻辑运算，有两个值：True（真）和False（假）。</p>
+<h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><p>列表是Python中使用最频繁的数据类型，集合中可以放任何数据类型，可对集合进行创建、查找、切片、增加、修改、删除、循环和排序操作。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加：append,insert,extend</span><br><span class="line">删除：remove,pop,clear</span><br><span class="line">查询：index,count</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h5><p>元组和列表一样，也是一种序列，与列表不同的是，元组是不可修改的，元组用”()”标识，内部元素用逗号隔开。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：index，count</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h5><p>字典是一种键值对的集合，是除列表以外Python之中最灵活的内置数据结构类型，列表是有序的对象集合，字典是无序的对象集合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">增加：add</span><br><span class="line">删除：pop（第一个），clear，remove</span><br><span class="line">交集：&amp;</span><br><span class="line">并集：|</span><br><span class="line">差集：set1-set2</span><br><span class="line">对称差集：并集-交集</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><p>集合是一个无序的、不重复的数据组合，它的主要作用有两个，分别是去重和关系测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">增加:字典[<span class="string">'键'</span>] = 值</span><br><span class="line">删除：pop,popitem,clear</span><br><span class="line">修改：update(dict)</span><br><span class="line">查询：get,keys,items,values,setdefault:有对应的键则返回对应的值，没有则返回默认给定的值</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -506,120 +939,29 @@
     
 
     
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
+    <div class="article-entry" itemprop="articleBody">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
 
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-detail" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/11/detail/"
-    >简述详情页</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/11/detail/" class="article-date">
-  <time datetime="2020-05-10T20:20:22.000Z" itemprop="datePublished">2020-05-11</time>
-</a>
       
+      <h4 id="分页后端逻辑"><a href="#分页后端逻辑" class="headerlink" title="分页后端逻辑"></a>分页后端逻辑</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsList</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#当前页</span></span><br><span class="line">        page = request.GET.get(<span class="string">'page'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#一页显示的个数</span></span><br><span class="line">        size = request.GET.get(<span class="string">'size'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#计算从哪开始切</span></span><br><span class="line">        data_start = (int(page)<span class="number">-1</span>) *int(size)</span><br><span class="line">        <span class="comment">#计算切到哪</span></span><br><span class="line">        data_end = int(page) * int(size)</span><br><span class="line">        <span class="comment">#查询 切片成当前页数据</span></span><br><span class="line">        goods = Goods.objects.all()[data_start:data_end]</span><br><span class="line">        <span class="comment">#查询所有商品个数</span></span><br><span class="line">        count = Goods.objects.count()</span><br><span class="line">        <span class="comment">#序列化</span></span><br><span class="line">        goods_ser = GoodsSer(goods,many=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'data'</span>:goods_ser.data,<span class="string">'total'</span>:count&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="前端template中"><a href="#前端template中" class="headerlink" title="前端template中"></a>前端template中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- heyui分页器 --&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    	&lt;Pagination v-model&#x3D;&quot;pagination&quot; @change&#x3D;&quot;get_goods&quot;&gt;&lt;&#x2F;Pagination&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>data中定义分页器变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;定义分页器变量</span><br><span class="line">  pagination:&#123;</span><br><span class="line">	  page:2,</span><br><span class="line">	  size:2,</span><br><span class="line">	  total:5,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取商品类表接口</span><br><span class="line">  get_goods:function()&#123;</span><br><span class="line">		&#x2F;&#x2F; 拼接路由</span><br><span class="line">	  this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodslist&#x2F;&#39;,&#123;params:&#123;page:this.pagination.page,size:this.pagination.size&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line">		  console.log(res)</span><br><span class="line"></span><br><span class="line">		  this.goodslist &#x3D; res.data.data</span><br><span class="line">		  </span><br><span class="line">			&#x2F;&#x2F;将商品总数传递给total</span><br><span class="line">		  this.pagination.total &#x3D; res.data.total</span><br><span class="line">	  &#125;))</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="获取文件"><a href="#获取文件" class="headerlink" title="获取文件"></a>获取文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">图片：&lt;input type&#x3D;&quot;file&quot; ref&#x3D;&quot;upload&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 接收表单数据</span><br><span class="line">var pc &#x3D; this.$refs.upload</span><br><span class="line">let file &#x3D; pc.files[0]</span><br></pre></td></tr></table></figure>
+
+
       
-      
+      <!-- reward -->
       
     </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-jsonb" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/11/jsonb/"
-    >简述逻辑外键</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/11/jsonb/" class="article-date">
-  <time datetime="2020-05-10T19:20:22.000Z" itemprop="datePublished">2020-05-11</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
     
     
       <!-- copyright -->
@@ -686,10 +1028,6 @@
     </ul>
     <ul>
       
-        <li>
-          <a href="http://www.beian.miit.gov.cn/" target="_black">浙ICP备88888888</a>
-        </li>
-        
     </ul>
     <ul>
       <li>
@@ -758,7 +1096,7 @@
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
   <div class="reward-box">
     
     
@@ -907,6 +1245,15 @@
 <!-- MathJax -->
 
 <!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
 
 <!-- busuanzi  -->
 

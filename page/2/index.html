@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     L-Blog
+     Originally
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -33,7 +33,7 @@
 
   
 
-<link rel="alternate" href="/atom.xml" title="L-Blog" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
 </head>
 
 </html>
@@ -49,7 +49,7 @@
       <img src="/images/timg.png" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">L-Blog</a></h1>
+      <h1><a href="/">Originally</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -75,6 +75,168 @@
     
     
     
+    
+    <article id="post-detail" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/11/detail/"
+    >简述详情页</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/11/detail/" class="article-date">
+  <time datetime="2020-05-10T20:20:22.000Z" itemprop="datePublished">2020-05-11</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 商品详情</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodInfo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        id = request.GET.get(<span class="string">'id'</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="comment"># 查询</span></span><br><span class="line">        good = Goods.objects.get(id=id)</span><br><span class="line">        <span class="comment"># 序列化 </span></span><br><span class="line">        good_str = GoodsSer(good)</span><br><span class="line">        <span class="keyword">return</span> Response(good_str.data)</span><br></pre></td></tr></table></figure>
+
+<p>前端代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 带参跳转</span><br><span class="line">&lt;a :href&#x3D;&quot;&#39;http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;item?id&#x3D;&#39;+item.id&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取商品id</span><br><span class="line"> this.id &#x3D; this.$route.query.id</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">param:&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 获取商品详情</span><br><span class="line">   get_good:function()&#123;</span><br><span class="line"> this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodinfo&#x2F;?id&#x3D;&#39;,&#123;params:&#123;&#39;id&#39;:this.id&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line">	 console.log(res)</span><br><span class="line">	 &#x2F;&#x2F; 赋值</span><br><span class="line">	 this.info&#x3D;res.data</span><br><span class="line">	 &#x2F;&#x2F; 类型转换</span><br><span class="line">	 this.param &#x3D; JSON.parse(this.info.params)</span><br><span class="line"> &#125;))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="展示规格"><a href="#展示规格" class="headerlink" title="展示规格"></a>展示规格</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">颜色：&#123;&#123;param.color&#125;&#125; </span><br><span class="line">&lt;br&gt;</span><br><span class="line">尺码：&#123;&#123;param.size&#125;&#125;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">季节：&#123;&#123;param.season&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-jsonb" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/11/jsonb/"
+    >简述逻辑外键</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/11/jsonb/" class="article-date">
+  <time datetime="2020-05-10T19:20:22.000Z" itemprop="datePublished">2020-05-11</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="goods表创建逻辑外键"><a href="#goods表创建逻辑外键" class="headerlink" title="goods表创建逻辑外键"></a>goods表创建逻辑外键</h4><p>前端数据我需要做二次处理，获取表单数据进行二次处理，转成json数据，这样后端接收存入数据库。</p>
+<h4 id="之后在添加方法中获取id-向后端发起请求"><a href="#之后在添加方法中获取id-向后端发起请求" class="headerlink" title="之后在添加方法中获取id 向后端发起请求"></a>之后在添加方法中获取id 向后端发起请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加商品事件</span><br><span class="line">submit:function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 非空验证</span><br><span class="line">    if (this.name &#x3D;&#x3D; &#39;&#39;)&#123;</span><br><span class="line">        this.$Message(&quot;商品名称不能为空&quot;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &#x2F;&#x2F; 存入字段为json</span><br><span class="line">        var param &#x3D; &#123;&#125;;</span><br><span class="line">        param[&#39;color&#39;] &#x3D; this.color</span><br><span class="line">        param[&#39;size&#39;] &#x3D; this.size</span><br><span class="line">        param[&#39;season&#39;] &#x3D; this.season</span><br><span class="line">        &#x2F;&#x2F;转为json数据</span><br><span class="line">        param&#x3D;JSON.stringify(param)</span><br><span class="line">        &#x2F;&#x2F; 接收表单数据</span><br><span class="line">        var pc &#x3D; this.$refs.upload</span><br><span class="line">        let file &#x3D; pc.files[0]</span><br><span class="line">        var data &#x3D; new FormData()</span><br><span class="line">        data.append(&#39;img&#39;,file)</span><br><span class="line">        data.append(&#39;flows&#39;,this.flows)</span><br><span class="line">        &#x2F;&#x2F; 反向赋值</span><br><span class="line">        data.append(&#39;cid&#39;,this.cate[this.selected])</span><br><span class="line">        &#x2F;&#x2F; 声明请求头</span><br><span class="line">        let config&#x3D;&#123;</span><br><span class="line">            &#39;Content-Type&#39;:&#39;multipart&#x2F;form-data&#39;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 发起请求</span><br><span class="line">        this.axios.post(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;addgoods&#x2F;&#39;,data,config).then((res&#x3D;&gt;&#123;</span><br><span class="line">            console.log(res)</span><br><span class="line">            this.$Message(res.data.msg)</span><br><span class="line">        &#125;))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把json数据存入规格字段中，cid存入外键的cid</p>
+<p>之后，我们展示分类</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// 定义规格名称</span><br><span class="line">color:<span class="string">''</span>,</span><br><span class="line">       size:<span class="string">''</span>,</span><br><span class="line">       season:<span class="string">''</span>,</span><br><span class="line">       // 分类表默认选中</span><br><span class="line">       selected:<span class="string">'衣服'</span>,</span><br><span class="line">       cate:[]，</span><br><span class="line">       // 接受商品分类</span><br><span class="line">       category:[]</span><br><span class="line">       </span><br><span class="line">       // 创建方法</span><br><span class="line">       	</span><br><span class="line">       // 获取商品分类</span><br><span class="line">       get_cate:function()&#123;</span><br><span class="line">           //发送请求</span><br><span class="line">           this.axios.get('http://127.0.0.1:8000/cate/').then((res=&gt;&#123;</span><br><span class="line">               console.log(res)</span><br><span class="line">               // 二次处理数据</span><br><span class="line">               var mycate=[]</span><br><span class="line">               <span class="keyword">for</span>(let i=<span class="number">0</span>;i&lt;res.data.length;i++)&#123;</span><br><span class="line">                   mycate.push(res.data[i][<span class="string">'name'</span>])</span><br><span class="line">                   // 反向赋值 将分类表的id存入goods表中</span><br><span class="line">                   this.cate[res.data[i][<span class="string">'name'</span>]] = res.data[i][<span class="string">'id'</span>];</span><br><span class="line">               &#125;</span><br><span class="line">               // 赋值</span><br><span class="line">               this.category = mycate</span><br><span class="line">           &#125;))</span><br><span class="line">       &#125;,</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
     
     <article id="post-ahms" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
@@ -107,6 +269,37 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="首先在页面找到您要修改的页面的选择器，之后在您的项目中js文件中进行搜索"><a href="#首先在页面找到您要修改的页面的选择器，之后在您的项目中js文件中进行搜索" class="headerlink" title="首先在页面找到您要修改的页面的选择器，之后在您的项目中js文件中进行搜索"></a>首先在页面找到您要修改的页面的选择器，之后在您的项目中js文件中进行搜索</h4><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">:root&#123;</span><br><span class="line">  --bg--color:&#39;#fff&#39;;</span><br><span class="line">  --a-color:&#39;black&#39;;</span><br><span class="line">&#125;</span><br><span class="line">a.navbar-brand, a.logo &#123;</span><br><span class="line">  font-family: &quot;Lato&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;</span><br><span class="line">  color:var(--a-color);</span><br><span class="line">  font-size: 2rem;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  margin-top: 0; &#125;</span><br><span class="line">  </span><br><span class="line"> .header &#123;</span><br><span class="line">  background:var(--bg-color);</span><br><span class="line">  min-height: 7em;</span><br><span class="line">  height: auto;</span><br><span class="line">  border-radius: 0;</span><br><span class="line">  width: 100%;</span><br><span class="line">  color: #444342;</span><br><span class="line">  padding-top: 1em;</span><br><span class="line">  padding-bottom: 1em;</span><br><span class="line">  border-bottom: 1px solid rgba(0, 0, 0, 0.05); &#125;</span><br><span class="line">  .header li.nav-item &#123;</span><br><span class="line">    font-size: 1.05em;</span><br><span class="line">    margin-left: .5em;</span><br><span class="line">    padding: .75em .35em; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们将颜色用变量控制</p>
+<h4 id="通过变量控制"><a href="#通过变量控制" class="headerlink" title="通过变量控制"></a>通过变量控制</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 声明变量</span><br><span class="line">:root&#123;</span><br><span class="line">  --bg--color:&#39;#fff&#39;;</span><br><span class="line">  --a-color:&#39;black&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 变量用法</span><br><span class="line">color:var(--a-color);</span><br></pre></td></tr></table></figure>
+
+<h4 id="写方法控制背景和字体颜色"><a href="#写方法控制背景和字体颜色" class="headerlink" title="写方法控制背景和字体颜色"></a>写方法控制背景和字体颜色</h4><p>1 需要个开关按钮</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h-switch v-model&#x3D;&quot;colors&quot; @change&#x3D;&quot;change_back&quot;&gt;白&#x2F;黑&lt;&#x2F;h-switch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注：利用双向绑定给其默认值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">        return&#123;</span><br><span class="line">			colors:0, &#x2F;&#x2F; 默认代表白色</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 创建change_back方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">change_back:function()&#123;</span><br><span class="line">		&#x2F;&#x2F; 获取样式表</span><br><span class="line">		var styles &#x3D; getComputedStyle(document.documentElement) </span><br><span class="line">		if (this.colors !&#x3D; 0 )&#123;</span><br><span class="line">			&#x2F;&#x2F; 给背景赋值</span><br><span class="line">			document.documentElement.style.setProperty(&#39;--bg-color&#39;,&quot;#292a2b&quot;)</span><br><span class="line">			&#x2F;&#x2F; 设置字体颜色</span><br><span class="line">			document.documentElement.style.setProperty(&#39;--a-color&#39;,&quot;white&quot;)</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			&#x2F;&#x2F; 给背景赋值</span><br><span class="line">			document.documentElement.style.setProperty(&#39;--bg-color&#39;,&quot;#white&quot;)</span><br><span class="line">			&#x2F;&#x2F; 设置字体颜色</span><br><span class="line">			document.documentElement.style.setProperty(&#39;--a-color&#39;,&quot;#292a2b&quot;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：切换到暗黑主题时我们将字体改成白色</p>
+<h4 id="在指定时间运行代码"><a href="#在指定时间运行代码" class="headerlink" title="在指定时间运行代码"></a>在指定时间运行代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 指定时间运行代码</span><br><span class="line">		runtime:function()&#123;;		</span><br><span class="line">			var data &#x3D; new Date()</span><br><span class="line">			&#x2F;&#x2F; 获取当前hours</span><br><span class="line">			var time &#x3D; data.getHours()</span><br><span class="line">			if(time &#x3D;&#x3D; 22)&#123;</span><br><span class="line">				&#x2F;&#x2F; 获取样式表</span><br><span class="line">				var styles &#x3D; getComputedStyle(document.documentElement) </span><br><span class="line">				&#x2F;&#x2F; 给背景赋值</span><br><span class="line">				document.documentElement.style.setProperty(&#39;--bg-color&#39;,&quot;#292a2b&quot;)</span><br><span class="line">				&#x2F;&#x2F; 设置字体颜色</span><br><span class="line">				document.documentElement.style.setProperty(&#39;--a-color&#39;,&quot;white&quot;)</span><br><span class="line">				this.$Message(&quot;夜深了 您以进入暗黑模式&quot;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<p>到22:00的时候切换到自动切换到暗黑模式，在钩子方法调用这个方法。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -164,6 +357,66 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>需求：如果您是超级管理员可以修改轮播图权限，如果你是普通用户则浏览，没有权限，我们将轮播图作为动态浏览，通过前后端分离实现，等一些增删改查操作。</p>
+<h4 id="首先我们做添加前端表单提交"><a href="#首先我们做添加前端表单提交" class="headerlink" title="首先我们做添加前端表单提交"></a>首先我们做添加前端表单提交</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">标题：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;title&quot;&gt;</span><br><span class="line">连接：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;link&quot;&gt;</span><br><span class="line">上传图片：&lt;input type&#x3D;&quot;file&quot; @change&#x3D;&quot;addpc&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="双向绑定数据"><a href="#双向绑定数据" class="headerlink" title="双向绑定数据"></a>双向绑定数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">	return&#123;</span><br><span class="line">		   &#x2F;&#x2F; 创建展示列表</span><br><span class="line">            carousel_list : [</span><br><span class="line">                &#123;   </span><br><span class="line">                    title:&#39;&#39;,</span><br><span class="line">                    link:&#39;&#39;,</span><br><span class="line">                    image:&#39;&#39;,</span><br><span class="line">                &#125;</span><br><span class="line">            &#x2F;&#x2F; 定义轮播图变量</span><br><span class="line">            title:&#39;&#39;,</span><br><span class="line">            link:&#39;&#39;,</span><br><span class="line">            image:&#39;&#39;,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="写change方法向后端发起请求"><a href="#写change方法向后端发起请求" class="headerlink" title="写change方法向后端发起请求"></a>写change方法向后端发起请求</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 向后端发起请求</span><br><span class="line">      addpc:function(e)&#123;</span><br><span class="line">          let data &#x3D; new FormData()</span><br><span class="line">          data.append(&#39;title&#39;,this.title)</span><br><span class="line">          data.append(&#39;link&#39;,this.link)</span><br><span class="line">          data.append(&#39;image&#39;,e.target.files[0])</span><br><span class="line">          &#x2F;&#x2F; 声明上传头部</span><br><span class="line">          let config&#x3D;&#123;</span><br><span class="line">              &#39;Content-Type&#39;:&#39;multipart&#x2F;form-data&#39;</span><br><span class="line">          &#125;</span><br><span class="line">          &#x2F;&#x2F; 发起请求</span><br><span class="line">          this.axios.post(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;addcarousel&#x2F;&#39;,data,config).then((res&#x3D;&gt;&#123;</span><br><span class="line">              console.log(res)</span><br><span class="line">              this.$Message(res.data.msg)</span><br><span class="line">              &#x2F;&#x2F; 刷新页面</span><br><span class="line">              this.$router.go(0)</span><br><span class="line">          &#125;))</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">第一步：</span><br><span class="line">&#x2F;&#x2F; 导入</span><br><span class="line">import carouselin from &#39;@&#x2F;components&#x2F;carouselin&#39;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;配置路由</span><br><span class="line">      &#123;</span><br><span class="line">        path:&#39;&#x2F;carouselin&#39;,</span><br><span class="line">        name:&#39;carouselin&#39;,</span><br><span class="line">        component:carouselin,</span><br><span class="line">        beforeEnter:(to,from,next) &#x3D;&gt;&#123;</span><br><span class="line">          if (localStorage.getItem(&#39;type&#39;) &#x3D;&#x3D; 1)&#123;</span><br><span class="line">            console.log(&#39;欢迎超级管理员&#39;)</span><br><span class="line">            next();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          console.log(&#39;普通用户&#39;)</span><br><span class="line">          next(&#39;&#x2F;&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path:&#39;&#x2F;upcarousel&#39;,</span><br><span class="line">        name:&#39;upcarousel&#39;,</span><br><span class="line">        component:upcarousel,</span><br><span class="line">        beforeEnter:(to,from,next) &#x3D;&gt;&#123;</span><br><span class="line">          if (localStorage.getItem(&#39;type&#39;) &#x3D;&#x3D; 1)&#123;</span><br><span class="line">            console.log(&#39;您有修改权限&#39;)</span><br><span class="line">            next();</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          console.log(&#39;普您没有修改权限&#39;)</span><br><span class="line">          next(&#39;&#x2F;&#39;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：在这里我们使用拦截器方法实现您不是超级管理员则没有权限操作跳转到轮播图修改，这个操作也很简单在您login页面登陆成功之后，将用户类型存入localstorage中，访问后台接口，前端获取他的类型存入localstorage，之后我们可以判断用户类型。</p>
+<p>1 首先判断myheader头部，如果是超级管理，我们则给您跳转轮播图修改页面，普通用户则没有。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 在您的methods方法中</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			guanliyuan:0 &#x2F;&#x2F;默认是普通用户</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		&#x2F;&#x2F; 判断管理员</span><br><span class="line">		ifget:function()&#123;</span><br><span class="line">			&#x2F;&#x2F; 首先判断用户是否注册管理员 如果没有则默认普通用户</span><br><span class="line">			var guanliyuan &#x3D; localStorage.getItem(&quot;type&quot;)</span><br><span class="line">			if (guanliyuan &#x3D;&#x3D; &#39;&#39;)&#123;</span><br><span class="line">				this.guanliyuan.locale &#x3D; 0</span><br><span class="line">				this.guanliyuan &#x3D; 0</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				if(guanliyuan &#x3D;&#x3D; 1)&#123;</span><br><span class="line">					this.guanliyuan &#x3D; 1</span><br><span class="line">				&#125;else&#123;</span><br><span class="line">					this.guanliyuan &#x3D; 0</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 在template中判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-if&#x3D;&quot;guanliyuan &#x3D;&#x3D; 1&quot;&gt;</span><br><span class="line">	&lt;Button&gt;</span><br><span class="line">	&lt;router-link to&#x3D;&#39;carouselin&#39;&gt;跳转操作轮播图&lt;&#x2F;router-link&gt;</span><br><span class="line">	&lt;&#x2F;Button&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样就OK了！</p>
+<h4 id="下来后端我们创建个轮播图库"><a href="#下来后端我们创建个轮播图库" class="headerlink" title="下来后端我们创建个轮播图库"></a>下来后端我们创建个轮播图库</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 轮播图 Base基类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Carousel</span><span class="params">(Base)</span>:</span></span><br><span class="line">    title = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    link = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">    image = models.CharField(max_length=<span class="number">200</span>)</span><br><span class="line">	<span class="comment"># 声明表名</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'carousel'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建OK之后我们写类视图添加方法"><a href="#创建OK之后我们写类视图添加方法" class="headerlink" title="创建OK之后我们写类视图添加方法"></a>创建OK之后我们写类视图添加方法</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加轮播图接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ACarousel</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取数据</span></span><br><span class="line">        title = request.POST.get(<span class="string">'title'</span>,<span class="literal">None</span>)</span><br><span class="line">        link = request.POST.get(<span class="string">'link'</span>,<span class="literal">None</span>)</span><br><span class="line">        image = request.FILES.get(<span class="string">'image'</span>)</span><br><span class="line">        print(title)</span><br><span class="line">        <span class="comment"># 排重</span></span><br><span class="line">        carousel = Carousel.objects.filter(title=title).first()</span><br><span class="line">        <span class="keyword">if</span> carousel:</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">"code"</span>:<span class="number">404</span>,<span class="string">'msg'</span>:<span class="string">'轮播图已存在'</span>&#125;)</span><br><span class="line">        carousel = Carousel(title=title,link=link,image=<span class="string">'http://localhost:8000/static/upload/'</span>+ image.name)</span><br><span class="line">        carousel.save()</span><br><span class="line">        <span class="comment"># 建立文件流 存入本地</span></span><br><span class="line">        <span class="keyword">with</span> open(os.path.join(UPLOAD_ROOT,<span class="string">''</span>,image.name),<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            <span class="keyword">for</span> chunk <span class="keyword">in</span> image.chunks():</span><br><span class="line">                f.write(chunk)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">200</span>,<span class="string">'msg'</span>:<span class="string">'成功'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>注：获取数据名，一定和前端传来的数据温和，否则为None。</p>
+<h4 id="urls配置路由"><a href="#urls配置路由" class="headerlink" title="urls配置路由"></a>urls配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 首先导入类视图</span><br><span class="line">	// 之后配置路由</span><br><span class="line">    path(<span class="string">'getcarousel/'</span>,GetCarousel.as_view()), // 展示</span><br><span class="line">    path(<span class="string">'addcarousel/'</span>,ACarousel.as_view()),  // 添加</span><br><span class="line">    path(<span class="string">'delcarousel/'</span>,DelCarousel.as_view()), // 删除</span><br><span class="line">    path(<span class="string">'upcarousel/'</span>,Upcarousel.as_view())  // 修改</span><br></pre></td></tr></table></figure>
+
+<h4 id="展示操作"><a href="#展示操作" class="headerlink" title="展示操作"></a>展示操作</h4><p>下面我们做的是展示，在做删除修改操作，首先我们想到的是将用户的id传到后台进行删改操作，所以我们在前端从数据库中获取数据展示轮播图。</p>
+<p>1.请求后台轮播图接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 请求轮播图接口</span><br><span class="line">      get_carousel:function()&#123;</span><br><span class="line">          this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;getcarousel&#x2F;&#39;).then((res&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; console.log(res)</span><br><span class="line">              &#x2F;&#x2F; 创建容器</span><br><span class="line">              var mylist&#x3D;[]</span><br><span class="line">              &#x2F;&#x2F; 遍历轮播图数组</span><br><span class="line">              for(let i&#x3D;0;i&lt;res.data.length;i++)&#123;</span><br><span class="line">                  console.log(res.data[i])</span><br><span class="line">                  &#x2F;&#x2F; 进行赋值</span><br><span class="line">                  mylist.push(&#123;title:res.data[i].title,link:res.data[i].link,image:res.data[i].image&#125;)</span><br><span class="line">                  this.carousel_list &#x3D; mylist</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;))</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 后台类视图函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 轮播图后台接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GetCarousel</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 读库</span></span><br><span class="line">        carousels = Carousel.objects.all()</span><br><span class="line">        <span class="comment"># 序列化操作</span></span><br><span class="line">        carousels_ser = CarouseSer(carousels,many=<span class="literal">True</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> Response(carousels_ser.data)</span><br></pre></td></tr></table></figure>
+
+<p>3 回到前段进行展示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 再上门面我们已经定义，接收轮播图列表 carousel_list[]</span><br><span class="line">       &lt;table&gt;</span><br><span class="line">           &lt;tr&gt;</span><br><span class="line">               &lt;td&gt;标题&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;超链接&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;照片&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;操作&lt;&#x2F;td&gt;</span><br><span class="line">           &lt;&#x2F;tr&gt;</span><br><span class="line">           &lt;tr v-for&#x3D;&quot;(item,index) in carousel_list&quot;&gt;</span><br><span class="line">               &lt;td&gt;&#123;&#123;index+1&#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;&#123;&#123;item.title&#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;&#123;&#123;item.link&#125;&#125;&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;&lt;img :src&#x3D;&quot;item.image&quot; alt&#x3D;&quot;&quot; width&#x3D;&quot;100px&quot; height&#x3D;&quot;100px&quot;&gt;&lt;&#x2F;td&gt;</span><br><span class="line">               &lt;td&gt;</span><br><span class="line">                   &lt;Button @click&#x3D;&quot;delcarousel(item.id)&quot;&gt;删除&lt;&#x2F;Button&gt;</span><br><span class="line">                   &lt;Button @click&#x3D;&quot;upcarousel(item.id)&quot;&gt;修改&lt;&#x2F;Button&gt;</span><br><span class="line">               &lt;&#x2F;td&gt;</span><br><span class="line">           &lt;&#x2F;tr&gt;</span><br><span class="line">       &lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除轮播图"><a href="#删除轮播图" class="headerlink" title="删除轮播图"></a>删除轮播图</h4><p>1 我们将获取用户id传到方法函数中，将他传给后台进行删除操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 删除轮播图</span><br><span class="line">       delcarousel:function(uid)&#123;</span><br><span class="line">           &#x2F;&#x2F;请求接口</span><br><span class="line">           this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;delcarousel&#x2F;&#39;,&#123;params:&#123;id:uid&#125;&#125;).then((res)&#x3D;&gt;&#123;</span><br><span class="line">               </span><br><span class="line">               console.log(uid)</span><br><span class="line"></span><br><span class="line">               this.$Message(res.data.msg)</span><br><span class="line">               &#x2F;&#x2F;刷新页面</span><br><span class="line">               this.$router.go(0)</span><br><span class="line">           &#125;)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 后台类视图删除函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除轮播图</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DelCarousel</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#获取id</span></span><br><span class="line">        aid = request.GET.get(<span class="string">"id"</span>,<span class="literal">None</span>)</span><br><span class="line">        print(aid)</span><br><span class="line">        <span class="comment"># 进行删除</span></span><br><span class="line">        carousel = Carousel.objects.filter(id=aid).delete()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">if</span> carousel:</span><br><span class="line">                <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">200</span>,<span class="string">'msg'</span>:<span class="string">'删除成功'</span>&#125;)</span><br><span class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">200</span>,<span class="string">'msg'</span>:e&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改轮播图"><a href="#修改轮播图" class="headerlink" title="修改轮播图"></a>修改轮播图</h4><p>1 我们给它一个跳转页面，跳转的同时带的您的用户id，也就是带参跳转。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;跳转修改页面</span><br><span class="line">     upcarousel:function(id)&#123;</span><br><span class="line">         this.$router.push(&#123;&#39;path&#39;:&#39;&#x2F;upcarousel&#39;,query:&#123;id:id&#125;&#125;)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+
+<p>2 我们创建upcarousel修页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;myheader&gt;&lt;&#x2F;myheader&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">          标题：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;title&quot;&gt;</span><br><span class="line">          连接：&lt;input type&#x3D;&quot;text&quot; v-model&#x3D;&quot;link&quot;&gt;</span><br><span class="line">          上传图片：&lt;input type&#x3D;&quot;file&quot; @change&#x3D;&quot;addpc&quot;&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"></span><br><span class="line">import myheader from &#39;.&#x2F;myheader&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  data()&#123;</span><br><span class="line">    return&#123;</span><br><span class="line">        &#x2F;&#x2F; 定义轮播图变量</span><br><span class="line">        title:&#39;&#39;,</span><br><span class="line">        link:&#39;&#39;,</span><br><span class="line">        image:&#39;&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">    &#x2F;&#x2F; 注册组件标签</span><br><span class="line">    components:&#123;</span><br><span class="line">        &#39;myheader&#39;:myheader</span><br><span class="line">    &#125;,</span><br><span class="line">    mounted:function()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123; </span><br><span class="line">        &#x2F;&#x2F; 向后端发起请求</span><br><span class="line">        addpc:function(e)&#123;</span><br><span class="line">            let data &#x3D; new FormData()</span><br><span class="line">            &#x2F;&#x2F; 接收id</span><br><span class="line">            data.append(&#39;id&#39;,this.$route.query.id)</span><br><span class="line">            data.append(&#39;title&#39;,this.title)</span><br><span class="line">            data.append(&#39;link&#39;,this.link)</span><br><span class="line">            data.append(&#39;image&#39;,e.target.files[0])</span><br><span class="line">            &#x2F;&#x2F; 声明上传头部</span><br><span class="line">            let config&#x3D;&#123;</span><br><span class="line">                &#39;Content-Type&#39;:&#39;multipart&#x2F;form-data&#39;</span><br><span class="line">            &#125;</span><br><span class="line">            &#x2F;&#x2F; 发起请求</span><br><span class="line">            this.axios.post(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;upcarousel&#x2F;&#39;,data,config).then((res&#x3D;&gt;&#123;</span><br><span class="line">                console.log(this.$route.query.id)</span><br><span class="line">                this.$Message(res.data.msg)</span><br><span class="line">                &#x2F;&#x2F; 刷新页面</span><br><span class="line">                this.$router.go(0)</span><br><span class="line">            &#125;))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注：逻辑跟您添加页面一致，只不过传个id给后台</p>
+<p>3 后台创建类视图修改函数</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改轮播图</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Upcarousel</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#接收参数</span></span><br><span class="line">        aid = request.POST.get(<span class="string">'id'</span>,<span class="literal">None</span>)</span><br><span class="line">        print(aid)</span><br><span class="line">        title = request.POST.get(<span class="string">'title'</span>,<span class="literal">None</span>)</span><br><span class="line">        link = request.POST.get(<span class="string">'link'</span>,<span class="literal">None</span>)</span><br><span class="line">        image = request.FILES.get(<span class="string">'image'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#过滤查询</span></span><br><span class="line">        carousel = Carousel.objects.filter(id=aid).first()</span><br><span class="line">        <span class="keyword">if</span> carousel:</span><br><span class="line">            <span class="comment"># 建立文件流 存入本地</span></span><br><span class="line">            <span class="keyword">with</span> open(os.path.join(UPLOAD_ROOT,<span class="string">''</span>,image.name),<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">                <span class="keyword">for</span> chunk <span class="keyword">in</span> image.chunks():</span><br><span class="line">                    f.write(chunk)</span><br><span class="line">            <span class="comment">#重新入库</span></span><br><span class="line">            carousel.title = title</span><br><span class="line">            carousel.link = link</span><br><span class="line">            carousel.image = <span class="string">'http://localhost:8000/static/upload/'</span>+image.name</span><br><span class="line">            carousel.save()</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">200</span>,<span class="string">'msg'</span>:<span class="string">'修改成功'</span>&#125;)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">400</span>,<span class="string">'msg'</span>:<span class="string">'修改失败'</span>&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h4>
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -221,6 +474,47 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="首先-我们需要一个库：国际化支持模块"><a href="#首先-我们需要一个库：国际化支持模块" class="headerlink" title="首先 我们需要一个库：国际化支持模块"></a>首先 我们需要一个库：国际化支持模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-i18n -- save</span><br></pre></td></tr></table></figure>
+
+<p>save -&gt; 在当前项目下安装</p>
+<h4 id="在您的项目main-js下-导入"><a href="#在您的项目main-js下-导入" class="headerlink" title="在您的项目main.js下 导入"></a>在您的项目main.js下 导入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import VueI18n from &#39;vue-i18n&#39;</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入成功进行注册使用"><a href="#导入成功进行注册使用" class="headerlink" title="导入成功进行注册使用"></a>导入成功进行注册使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(VueI18n)</span><br></pre></td></tr></table></figure>
+
+<h4 id="在你的src下创建语言包文件"><a href="#在你的src下创建语言包文件" class="headerlink" title="在你的src下创建语言包文件"></a>在你的src下创建语言包文件</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件夹名称  简写成：lang</span><br></pre></td></tr></table></figure>
+
+<h4 id="在lang文件夹中创建中文包-zh-js-and英文包-en-js"><a href="#在lang文件夹中创建中文包-zh-js-and英文包-en-js" class="headerlink" title="在lang文件夹中创建中文包(zh.js)and英文包(en.js)"></a>在lang文件夹中创建中文包(zh.js)and英文包(en.js)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（英文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;Mei Duo Shp&#39;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（中文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;美多商城&#39;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="回到main-js-导入语言包"><a href="#回到main-js-导入语言包" class="headerlink" title="回到main.js 导入语言包"></a>回到main.js 导入语言包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 导入语言包</span><br><span class="line">const i18n &#x3D; new VueI18n(&#123;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 当前默认语言的声明</span><br><span class="line">  locale:&#39;zh&#39;,</span><br><span class="line">  messages:&#123;</span><br><span class="line">     		&#x2F;&#x2F; 相对路径</span><br><span class="line">    &#39;zh&#39;:require(&#39;.&#x2F;lang&#x2F;zh&#39;),</span><br><span class="line">    &#39;en&#39;:require(&#39;.&#x2F;lang&#x2F;en&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引用i18n</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#39;#app&#39;,</span><br><span class="line">  router,</span><br><span class="line">  i18n, </span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#39;&lt;App&#x2F;&gt;&#39;,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="最后使用"><a href="#最后使用" class="headerlink" title="最后使用"></a>最后使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;$t(&#39;m.index&#39;)&#125;&#125;</span><br><span class="line">m:代表规范的变量</span><br><span class="line">index: key的名称  也就是你自己定义的变量</span><br></pre></td></tr></table></figure>
+
+<h4 id="在钩子方法中可以自动切换语言"><a href="#在钩子方法中可以自动切换语言" class="headerlink" title="在钩子方法中可以自动切换语言"></a>在钩子方法中可以自动切换语言</h4><p>指在浏览器中，例如默认是中文，我们就切换成中文，也就可以理解成老外访问直接是英文状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(navigator.language &#x3D;&#x3D; &#39;en&#39;)&#123;	</span><br><span class="line">		&#x2F;&#x2F; 切换语言</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加个按钮切换语言"><a href="#添加个按钮切换语言" class="headerlink" title="添加个按钮切换语言"></a>添加个按钮切换语言</h4><p>首先我们得有个开关标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h-switch v-model&#x3D;&quot;lang&quot; @change&#x3D;&quot;lang_change&quot;&gt;中&#x2F;英&lt;&#x2F;h-switch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>定义开关变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">       return&#123;</span><br><span class="line">		&#x2F;&#x2F;定义开关变量</span><br><span class="line">		lang:1  &#x2F;&#x2F; 代表中文</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>定义切换时间 change  也就是在你methods方法中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">	&#x2F;&#x2F; 切换方法</span><br><span class="line">	lang_change:function()&#123;</span><br><span class="line">		console.log(this.lang)</span><br><span class="line">		if(this.lang &#x3D;&#x3D; true)&#123;</span><br><span class="line">			&#x2F;&#x2F; 切换语言</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;zh&#39;)</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">			</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;en&#39;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>简述逻辑： 首先我们在控制台打印按钮默认为1,0，也就时候判断是true，false。得到之后，我们需要判断如果lang为true 则赋值为中文，则else则是英文，同时我们将lang值存入localstorage中，在钩子函数中判断。首先我们考虑到问题是，用户是否点击按钮切换语言，只要用户发生动作，我们则记录在localstorage中，最终我们判断用户是否点过按钮，如果没有则默认赋值到localstorage里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 判断本地local有没有</span><br><span class="line">		var lang_locale &#x3D; localStorage.getItem(&quot;lang&quot;)</span><br><span class="line">		if(lang_locale)&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; lang_locale</span><br><span class="line">			if(lang_locale &#x3D;&#x3D; &#39;zh&#39;)&#123;</span><br><span class="line">				this.lang &#x3D; 1</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.lang &#x3D; 0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;;</span><br><span class="line">			this.lang &#x3D; 1</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码，我们默认赋值为中文，里层的If是为变量双赋值！</p>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -278,6 +572,28 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p> 客户端发起请求   –&gt;  进到wsgi(模型) –&gt; 中间件(request_process)  –&gt;  路由(urls.py)  –&gt;  中间件(view_process)  –&gt; view(视图操作 -&gt; orm操作 -&gt; mysql )  –&gt; 中间件(process_response before_template) –&gt; wsgi(模型)</p>
+<h4 id="在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项"><a href="#在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项" class="headerlink" title="在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项"></a>在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载自定义中间件   文件夹名.文件名.类名</span></span><br><span class="line"><span class="string">'myapp.md_user.MyMiddleware'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br></pre></td></tr></table></figure>
+
+<h4 id="中间件的四种方法"><a href="#中间件的四种方法" class="headerlink" title="中间件的四种方法"></a>中间件的四种方法</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义中间件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyMiddleware</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="comment"># 请求之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        print(<span class="string">"过滤中间件"</span>)</span><br><span class="line">        <span class="comment"># 获取路由</span></span><br><span class="line">        <span class="keyword">if</span> request.path_info.startswith(<span class="string">"/login"</span>):</span><br><span class="line">            <span class="keyword">return</span> HttpResponse(json.dumps(&#123;<span class="string">'msg'</span>:<span class="string">'您篡改了id'</span>&#125;,ensure_ascii=<span class="literal">False</span>,indent=<span class="number">4</span>),</span><br><span class="line">                            content_type=<span class="string">'application/json'</span>)</span><br><span class="line">    <span class="comment"># 进入视图之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self,request,view_func,view_args,view_kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># request是httprequest对象。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># view_func是即将使用的视图函数，它是实际的函数对象，而不是函数的名称作为字符串。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args是将传递给视图位置的参数的列表。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_kargs是将传递给视图的关键字参数的字典。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args和view_kargs都不包含第一个视图参数（request）</span></span><br><span class="line">    <span class="comment"># 异常捕获方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_exception</span><span class="params">(self,request,exception)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self,request,response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+
+<p>​      1.中间件的process_request方法是在执行视图函数之前执行的</p>
+<p>​      2.当配置中间件时，会按照MIDDLEWARE的注册顺序，也就是列表的索引值，从前到后依次执行的。</p>
+<p>​      3.不同中间件之间传递的request都是同一个对象。</p>
+<h4 id="中间件的应用场景"><a href="#中间件的应用场景" class="headerlink" title="中间件的应用场景"></a>中间件的应用场景</h4><p>1.做IP限制  –&gt; 放在中间件类的列表中，阻止某些ip访问；</p>
+<p>2.URL访问过滤  –&gt; 如果用户访问的是logo视图（放过）如果访问其他视图，需要检测是否已经有session或localstrage，已经有了放行，如果没有返回login，这样就省的在多个视图函数上写装饰器了！</p>
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -335,6 +651,45 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="JWT认证"><a href="#JWT认证" class="headerlink" title="JWT认证"></a>JWT认证</h4><p> <code>Json web token (JWT)</code>, 根据官网的定义，是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密 </p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>发送请求用户信息   —&gt;   axios(uid)(同时获取令牌)   —&gt;   获取uid查询数据库以Json的形式返回给前端（验证token成功返回）   —&gt;   发送请求用户信息（如果错误返回没有权限）(正确返回用户信息)</p>
+<h4 id="token的构成"><a href="#token的构成" class="headerlink" title="token的构成"></a>token的构成</h4><ol>
+<li>头部信息.载荷(playload) –&gt; uid或username</li>
+<li>密钥</li>
+<li>jwt=&gt;token</li>
+</ol>
+<h4 id="jwt安装"><a href="#jwt安装" class="headerlink" title="jwt安装"></a>jwt安装</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyjwt</span><br></pre></td></tr></table></figure>
+
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
+<li><p>体积小,传输快</p>
+</li>
+<li><p>支持跨域验证</p>
+</li>
+<li><p>基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。 </p>
+</li>
+</ul>
+<h4 id="在用户登陆成功生成token"><a href="#在用户登陆成功生成token" class="headerlink" title="在用户登陆成功生成token"></a>在用户登陆成功生成token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">encode_jwt = jwt.encode(&#123;<span class="string">'uid'</span>: user.id&#125;, <span class="string">'qwe123'</span>, algorithm=<span class="string">'HS256'</span>)</span><br><span class="line">encode_str = str(encode_jwt, <span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+
+<p> 将这个token交给前端，前端访问任意接口都将在header里带着jwt也就指token，用来做认证，我们把代码逻辑写成装饰器，这样前端访问那个接口，后端直接调用装饰器！</p>
+<h4 id="定义装饰器"><a href="#定义装饰器" class="headerlink" title="定义装饰器"></a>定义装饰器</h4><p>因为在每次登陆时，我们将jwt的值存入localstorage中，所以我们在前端param传参将其读出，这样后端接收jwt 。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类视图专用</span></span><br><span class="line"><span class="keyword">from</span> django.utils.decorators <span class="keyword">import</span> method_decorator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义权限检测装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(request, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 接收参数</span></span><br><span class="line">        uid = request.GET.get(<span class="string">"uid"</span>, <span class="literal">None</span>)</span><br><span class="line">	    <span class="comment"># 变量不能是关键字 </span></span><br><span class="line">        myjwt = request.GET.get(<span class="string">"jwt"</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        print(myjwt)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 验证用户合法性</span></span><br><span class="line">        decode_jwt = jwt.decode(myjwt, <span class="string">'qwe123'</span>, algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行比对</span></span><br><span class="line">        <span class="keyword">if</span> int(uid) != int(decode_jwt[<span class="string">'uid'</span>]):</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>: <span class="number">401</span>, <span class="string">'message'</span>: <span class="string">'您的密钥无权限'</span>&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#  最后类视图使用method_decorator(装饰器名称)调用</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="载荷中加入生命周期"><a href="#载荷中加入生命周期" class="headerlink" title="载荷中加入生命周期"></a>载荷中加入生命周期</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">playload = &#123;</span><br><span class="line">	// 代表过期时间        当前时间+延迟加载（以秒计时）</span><br><span class="line">	<span class="string">'exp'</span>: int((datatime.datatime.now() + datetime.timedelta(seconds=<span class="number">30</span>)).timestamp())  //强转时间戳 按照整形</span><br><span class="line">	<span class="string">'data'</span>:&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">encode_jwt = jwt.encode(playload,<span class="string">'lhn123'</span>,algorithm=<span class="string">'HS256'</span>)</span><br><span class="line"><span class="comment"># 转码</span></span><br><span class="line">encode_str = str(encode_jwt,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 解密操作</span></span><br><span class="line">decode_jwt = jwt.decode(encode_str,<span class="string">'lhn123'</span>,algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line">print(encode_str)</span><br><span class="line">print(decode_jwt[<span class="string">'uid'</span>])</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -392,6 +747,18 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -449,6 +816,28 @@
     
 
     
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure>
+
+<h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
     
     
       <!-- copyright -->
@@ -506,120 +895,24 @@
     
 
     
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
+    <div class="article-entry" itemprop="articleBody">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
 
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-ljq" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/01/ljq/"
-    >拦截器</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/01/ljq/" class="article-date">
-  <time datetime="2020-04-30T17:10:10.000Z" itemprop="datePublished">2020-05-01</time>
-</a>
       
+      <h4 id="安装七牛云"><a href="#安装七牛云" class="headerlink" title="安装七牛云"></a>安装七牛云</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install qiniu</span><br></pre></td></tr></table></figure>
+
+<h4 id="django接口获取token"><a href="#django接口获取token" class="headerlink" title="django接口获取token"></a>django接口获取token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 七牛云 换取token的一个凭证</span></span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> Auth</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QiNiu</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 声明验证对象   传参数</span></span><br><span class="line">        q = Auth(<span class="string">'xl8p2s1KY20muvLAL6OKNP7LnJhWX_XLiu2I3QhE'</span>,<span class="string">'8y0ehfGfHy55b2Y8ZvMTpOr34SbsS4a5r88v-7jF'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取token           空间的名称</span></span><br><span class="line">        token  = q.upload_token(<span class="string">"pc1009"</span>)</span><br><span class="line">        <span class="comment"># 返回token</span></span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'token'</span>:token&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'qiniu/'</span>,QiNiu.as_view()),</span><br></pre></td></tr></table></figure>
+
+<h4 id="vue接口请求图片上传"><a href="#vue接口请求图片上传" class="headerlink" title="vue接口请求图片上传"></a>vue接口请求图片上传</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                七牛用户头像：</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;input type=<span class="string">"file"</span> @change=<span class="string">"qiniu"</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;img :src=<span class="string">"src"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">        //图片路径变量</span><br><span class="line">            src:<span class="string">''</span>,</span><br><span class="line">        //获取token变量</span><br><span class="line">            token:<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    //钩子函数</span><br><span class="line">    mounted:function()&#123;</span><br><span class="line">        //获取token</span><br><span class="line">        this.get_token();</span><br><span class="line">        &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">    	// 获取后端token</span><br><span class="line">        get_token:function()&#123;</span><br><span class="line">            this.axios.get('http://127.0.0.1:8000/qiniu/').then(res=&gt;&#123;         </span><br><span class="line">                    console.log(res)</span><br><span class="line">                    this.token = res.data.token</span><br><span class="line">                    console.log(this.token)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        //七牛上传</span><br><span class="line">        qiniu:function(e)&#123;</span><br><span class="line">            //获取文件</span><br><span class="line">            let file = e.target.files[<span class="number">0</span>];</span><br><span class="line">            //声明表单</span><br><span class="line">            let param = new FormData()    </span><br><span class="line">            param.append(<span class="string">'file'</span>,file,file.name)</span><br><span class="line">            param.append(<span class="string">'token'</span>,this.token)   </span><br><span class="line">            //自定义zxios</span><br><span class="line">            const axios_qiniu = this.axios.create(&#123;withCredentials:false&#125;)</span><br><span class="line"></span><br><span class="line">            //发送请求</span><br><span class="line">            axios_qiniu(&#123;</span><br><span class="line">                method:<span class="string">'POST'</span>,</span><br><span class="line">                // 华北</span><br><span class="line">                url:<span class="string">'http://up-z1.qiniu.com'</span>,</span><br><span class="line">                data:param,</span><br><span class="line">                timeout:<span class="number">30000</span></span><br><span class="line">            &#125;).then(res=&gt;&#123;</span><br><span class="line">                console.log(res)</span><br><span class="line">   			    // 拼接照片路由</span><br><span class="line">            	this.src = <span class="string">'http://q9v2u2gy5.bkt.clouddn.com/'</span>+result.data.key</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
       
-      
+      <!-- reward -->
       
     </div>
-    
-
-    
-
-    
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-pc" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/30/pc/"
-    >文件上传功能</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/30/pc/" class="article-date">
-  <time datetime="2020-04-30T04:50:20.000Z" itemprop="datePublished">2020-04-30</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
     
     
       <!-- copyright -->
@@ -686,10 +979,6 @@
     </ul>
     <ul>
       
-        <li>
-          <a href="http://www.beian.miit.gov.cn/" target="_black">浙ICP备88888888</a>
-        </li>
-        
     </ul>
     <ul>
       <li>
@@ -758,7 +1047,7 @@
 <!-- #reward -->
 <div id="reward">
   <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
   <div class="reward-box">
     
     
@@ -907,6 +1196,15 @@
 <!-- MathJax -->
 
 <!-- Katex -->
+
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
 
 <!-- busuanzi  -->
 

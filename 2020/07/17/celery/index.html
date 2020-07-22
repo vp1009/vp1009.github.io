@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    安慰剂进度条 |  Originally
+    Celery+Redis |  Originally
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -42,7 +42,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-jdt" class="article article-type-post" itemscope
+  <article id="post-celery" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -50,7 +50,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  安慰剂进度条
+  Celery+Redis
 </h1>
  
 
@@ -59,8 +59,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/07/jdt/" class="article-date">
-  <time datetime="2020-05-07T04:20:02.000Z" itemprop="datePublished">2020-05-07</time>
+      <a href="/2020/07/17/celery/" class="article-date">
+  <time datetime="2020-07-17T05:53:00.000Z" itemprop="datePublished">2020-07-17</time>
 </a>
       
       
@@ -70,7 +70,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">216</span>
+            <span class="post-count">363</span>
         </span>
     </span>
 
@@ -90,6 +90,8 @@
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -102,8 +104,19 @@
       
 
       
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
+      <p><img src="../images/005.jpeg" alt="sad"><br>1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务</p>
+<p>2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取</p>
+<p>3、执行者（Worker）–用于执行tasks，也就是真正调用我们在tasks中定义的函数</p>
+<p>4、存储（Backend）–把执行tasks返回的结果进行存储，以供用户查看或调用</p>
+<h2 id="1、各模块功能"><a href="#1、各模块功能" class="headerlink" title="1、各模块功能"></a>1、各模块功能</h2><p>Celery中，以上组件具体功能如下：</p>
+<p><strong>任务模块 Task</strong></p>
+<p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p>
+<p><strong>消息中间件 Broker</strong></p>
+<p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p>
+<p><strong>任务执行单元 Worker</strong></p>
+<p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p>
+<p><strong>任务结果存储 Backend</strong></p>
+<p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>
 
       
       <!-- reward -->
@@ -158,14 +171,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
 
 
     </footer>
@@ -176,19 +189,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/07/jwt/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            jwt认证
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/06/upyun/" class="article-nav-link">
+      <a href="/2020/07/15/redis_cz/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">又拍云存储</div>
+        <div class="article-nav-title">django之redis和django-redis的使用</div>
       </a>
     
   </nav>
