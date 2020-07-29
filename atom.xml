@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/vp1009/vp1009.github.io.git/"/>
-  <updated>2020-07-22T12:00:45.850Z</updated>
+  <updated>2020-07-29T23:47:43.397Z</updated>
   <id>https://github.com/vp1009/vp1009.github.io.git/</id>
   
   <author>
@@ -17,20 +17,95 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Celery+Redis</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/</id>
-    <published>2020-07-17T05:53:00.000Z</published>
-    <updated>2020-07-22T12:00:45.850Z</updated>
+    <title>面向对象五大原则SOLID</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/solid/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/solid/</id>
+    <published>2020-07-29T15:40:20.000Z</published>
+    <updated>2020-07-29T23:47:43.397Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="../images/005.jpeg" alt="sad"><br>1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务</p><p>2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取</p><p>3、执行者（Worker）–用于执行tasks，也就是真正调用我们在tasks中定义的函数</p><p>4、存储（Backend）–把执行tasks返回的结果进行存储，以供用户查看或调用</p><h2 id="1、各模块功能"><a href="#1、各模块功能" class="headerlink" title="1、各模块功能"></a>1、各模块功能</h2><p>Celery中，以上组件具体功能如下：</p><p><strong>任务模块 Task</strong></p><p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p><p><strong>消息中间件 Broker</strong></p><p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p><p><strong>任务执行单元 Worker</strong></p><p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p><p><strong>任务结果存储 Backend</strong></p><p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="浅谈面向对象五大原则-S-O-L-I-D"><a href="#浅谈面向对象五大原则-S-O-L-I-D" class="headerlink" title="浅谈面向对象五大原则 S.O.L.I.D"></a>浅谈面向对象五大原则 S.O.L.I.D</h4><p>设计模式中的SOLID原则，分别是单一原则、开闭原则、里氏替换原则、接口隔离原则、依赖倒置原则。前辈们总结出来的，遵循五大原则可以使程序解决紧耦合，更加健壮。<br>s<br>SRP    单一责任原则<br>OCP    开放封闭原则<br>LSP    里氏替换原则<br>ISP    接口隔离原则<br>DIP    依赖倒置原则</p><h4 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h4><p>指的是一个类或者一个方法只做一件事。如果一个类承担的职责过多，就等于把这些职责耦合在一起，一个职责的变化就可能抑制或者削弱这个类完成其他职责的能力。例如餐厅服务员负责把订单给厨师去做，而不是服务员又要订单又要炒菜。</p><h4 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h4><p>对扩展开放，对修改关闭。意为一个类独立之后就不应该去修改它，而是以扩展的方式适应新需求。例如一开始做了普通计算器程序，突然添加新需求，要再做一个程序员计算器，这时不应该修改普通计算器内部，应该使用面向接口编程，组合实现扩展</p><h4 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h4><p>所有基类出现的地方都可以用派生类替换而不会程序产生错误。子类可以扩展父类的功能，但不能改变父类原有的功能。例如机动车必须有轮胎和发动机，子类宝马和奔驰不应该改写没轮胎或者没发动机。</p><h4 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h4><p>指的是高级模块不应该依赖低级模块，而是依赖抽象。抽象不能依赖细节，细节要依赖抽象。比如类A内有类B对象，称为类A依赖类B，但是不应该这样做，而是选择类A去依赖抽象。例如垃圾收集器不管垃圾是什么类型，要是垃圾就行。</p><h4 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h4><p>没人写一款程序能完全遵守SOLID原则，甚至有些设计模式是违反SOLID原则。如何权衡就要看利是否大于弊。不足之处望指教。s</p><p>转载于：<a><a href="https://www.cnblogs.com/suli0827/p/9515842.html" target="_blank" rel="noopener">https://www.cnblogs.com/suli0827/p/9515842.html</a></a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;img src=&quot;../images/005.jpeg&quot; alt=&quot;sad&quot;&gt;&lt;br&gt;1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务&lt;/p&gt;
-&lt;p&gt;2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题
+        &lt;h4 id=&quot;浅谈面向对象五大原则-S-O-L-I-D&quot;&gt;&lt;a href=&quot;#浅谈面向对象五大原则-S-O-L-I-D&quot; class=&quot;headerlink&quot; title=&quot;浅谈面向对象五大原则 S.O.L.I.D&quot;&gt;&lt;/a&gt;浅谈面向对象五大原则 S.O.L.I.D&lt;/h4&gt;&lt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/vfw/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/vfw/</id>
+    <published>2020-07-29T15:24:30.000Z</published>
+    <updated>2020-07-29T23:40:12.076Z</updated>
+    
+    <content type="html"><![CDATA[<p>微服务（Microservice）这个概念是2012年出现的，作为加快Web和移动应用程序开发进程的一种方法，2014年开始受到各方的关注，而2015年，可以说是微服务的元年；</p><p>越来越多的论坛、社区、blog以及互联网行业巨头开始对微服务进行讨论、实践，可以说这样更近一步推动了微服务的发展和创新。而微服务的流行，Martin Fowler功不可没。</p><p>1 互联网的快速发展</p><p>2 敏捷开发 精益方法的深入人心</p><p>3 容器技术的成熟</p><h4 id="传统的项目架构？"><a href="#传统的项目架构？" class="headerlink" title="传统的项目架构？"></a>传统的项目架构？</h4><p><strong>优点：</strong></p><p>①开发简单，集中式管理</p><p>②基本不会重复开发</p><p>③功能都在本地，没有分布式的管理和调用消耗</p><p><strong>缺点：</strong></p><p>1、效率低：开发都在同一个项目改代码，相互等待，冲突不断</p><p>2、维护难：代码功功能耦合在一起，新人不知道何从下手</p><p>3、不灵活：构建时间长，任何小修改都要重构整个项目，耗时</p><p>4、稳定性差：一个微小的问题，都可能导致整个应用挂掉</p><p>5、扩展性不够：无法满足高并发下的业务需求</p><p><strong>常见的系统架构遵循的三个标准和业务驱动力：</strong></p><p>1、提高敏捷性：及时响应业务需求，促进企业发展</p><p>2、提升用户体验：提升用户体验，减少用户流失</p><p>3、降低成本：降低增加产品、客户或业务方案的成本</p><h4 id="现在我们来看一下微服务必须需要的原则？"><a href="#现在我们来看一下微服务必须需要的原则？" class="headerlink" title="现在我们来看一下微服务必须需要的原则？"></a>现在我们来看一下微服务必须需要的原则？</h4><p>1，单一功能职责</p><p>   单一功能职责是SOLID设计模式之一，它意味着一个单元，无论是类、函数还是微服务，都应该有且只有一个职责。在任何时候，一个微服务都不应该有一个以上的职责。</p><p>2，围绕着业务功能设计</p><p>   微服务应该专注于特定的业务功能，并确保它有助于完成任务。微服务绝不应限制自己采用最适合解决业务目的的适当技术栈或后端数据库存储。当我们设计单个应用程序时，这常常是一个约束，我们试图在某些领域中使用一些折中来解决多个业务解决方案。微服务使您能够选择最适合当前问题的解决方案。（某个微服务不仅仅只为一个微服务来服务，他要为其他的微服务提供支持，也就是全局的架构）</p><p>3，你建造它，你拥有它。</p><p>这种设计的另一个重要方面与开发前后的职责有关。在大型组织中，通常由一个团队开发app location(应用)，经过一些知识转移会议后，将项目移交给维护团队。在微服务中，构建服务的团队拥有它，并负责在将来维护它。这使开发人员能够接触到他们的软件的日常操作，并且他们能够更好地理解他们构建的产品在现实世界中是如何被客户使用的。</p><p>4，基础设施自动化</p><p>准备和构建微服务的基础设施是另一个非常重要的需求，服务应该是可独立部署的，并且应该捆绑所有依赖项，包括库依赖项，甚至是执行环境，如抽象物理资源（web服务器和容器或虚拟机）。</p><p>微服务和SOA之间的一个主要区别在于它们的自治级别。虽然大多数SOA实现提供了服务级抽象，但是微服务更进一步抽象了实现和执行环境。</p><p>在传统的应用程序开发中，我们构建一个WAR或EAR，然后将其部署到JEE应用程序服务器中，例如使用JBoss、WebLogic、WebSphere等等。我们可以将多个应用程序部署到同一个JEE容器中。在理想的场景中，在微服务方法中，每个微服务将构建为一个胖Jar，嵌入所有依赖项，并作为独立的Java进程运行。</p><p>5，容错设计</p><p>微服务的设计应考虑到故障情况。如果服务失败，或者宕机一段时间，该怎么办?这些都是非常重要的问题，必须在实际编码开始之前解决——以便清楚地估计服务故障将如何影响用户体验。</p><p>快速故障是另一个用于构建容错、弹性系统的概念。这种哲学提倡预期失败的系统，而不是构建永远不会失败的系统。由于服务在任何时候都可能失败，因此能够快速检测故障并在可能的情况下自动恢复服务非常重要。</p><p>微服务应用程序非常重视应用程序的实时监控，检查体系结构元素(数据库每秒接收多少请求)和业务相关指标(例如每分钟接收多少订单)。语义监视可以提供出错的早期预警系统，从而触发开发团队进行跟踪和调查。</p><h4 id="微服务的目的？"><a href="#微服务的目的？" class="headerlink" title="微服务的目的？"></a>微服务的目的？</h4><p><strong>目的：</strong>有效的拆分应用，实现敏捷开发和部署</p><h4 id="微服务的优点-？"><a href="#微服务的优点-？" class="headerlink" title="微服务的优点 ？"></a>微服务的优点 ？</h4><p>微服务有许多优点相比传统的多层架构（单体庞大应用），微服务的优点如下：</p><p>1，使用微服务，架构师和开发人员可以为每个微服务选择适合于特定用途的架构和技术(通晓多种语言对应的熟悉语言的架构)。这为以更经济有效的方式设计更适合的解决方案提供了灵活性。</p><p>2，由于服务相当简单，而且规模更小，企业可以试验新的流程、算法、业务逻辑等等。它通过提供快速试验和失败的能力，使企业能够进行颠覆性创新。</p><p>3，微服务能够实现选择性的可伸缩性，即每个服务都可以独立地伸缩，而且伸缩的成本相对于单体应用方面要低。</p><p>4，微服务是自包含的、独立的部署模块，当第二个微服务没有按照我们的需要执行时，可以使用另一个类似的微服务替换一个微服务。它有助于做出正确的“购买构建”决策，而这通常是许多企业面临的挑战。</p><p>5，微服务帮助我们构建本质上是有机的系统(有机的系统是通过添加越来越多的功能在一段时间内横向增长的系统)。因为微服务都是关于独立可管理的服务——它允许在需要时添加越来越多的服务，而对现有服务的影响最小。</p><p>6，技术变化是软件开发中的障碍之一。使用微服务，可以单独更改或升级每个服务的技术，而不是升级整个应用程序。</p><p>7，由于microservices将服务运行时环境和服务本身打包在一起，因此允许在同一环境中共存多个版本的服务。</p><p>8，最后，微服务还支持更小、更专注的敏捷开发团队。团队将根据微服务的边界进行组织。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;微服务（Microservice）这个概念是2012年出现的，作为加快Web和移动应用程序开发进程的一种方法，2014年开始受到各方的关注，而2015年，可以说是微服务的元年；&lt;/p&gt;
+&lt;p&gt;越来越多的论坛、社区、blog以及互联网行业巨头开始对微服务进行讨论、实践，可以说
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>啊这！生成器</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/scq/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/scq/</id>
+    <published>2020-07-29T11:44:20.000Z</published>
+    <updated>2020-07-29T11:45:14.506Z</updated>
+    
+    <content type="html"><![CDATA[<p>在python中，一边循环一边计算的机制，称之为生成器（generator）</p><h4 id="生成器的存在："><a href="#生成器的存在：" class="headerlink" title="生成器的存在："></a>生成器的存在：</h4><p>列表所有的数据都在内存中，如果有海量的数据将会非常消耗内存。<br>如：仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。<br>如果列表元素按照某种算法退出来，那我们就可以在循环的过程中不断推算出后续的元素，这样就不必创建完整的list，从而节省大量的空间。</p><p>说白点！！ 要想得到庞大的数据，又想让它占用空间少，就就就就用生成器！</p><p>第一种生成生成器的方法把【】改成（）则就是生成器</p><p>第二种 如果一个函数中包含yield关键字，那么这个函数就不在是个普通的函数，而是一个generator。调用函数就是创建了一个生成器。</p><h4 id="生成器的工作原理："><a href="#生成器的工作原理：" class="headerlink" title="生成器的工作原理："></a>生成器的工作原理：</h4><p>首先，生成器是一种特殊的迭代器，它的yield方法将迭代器的next，封装到了yield关键字中，他与return不同的是：遇见return就已经返回了，而遇见yield则我们去计算下一个元素的位置。</p><p>我们也可以通过next（）进行取值，也可以利用for循环（每次执行一次，取生成器里面一个值） 可以使用send（）强行修改yield的值。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>什么是生成器？<br>生成器仅仅保存了一套生成数值的算法，并且没有让这个算法现在就开始执行，而是我什么时候调它，它什么时候开始计算一个新的值，并给你返回。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在python中，一边循环一边计算的机制，称之为生成器（generator）&lt;/p&gt;
+&lt;h4 id=&quot;生成器的存在：&quot;&gt;&lt;a href=&quot;#生成器的存在：&quot; class=&quot;headerlink&quot; title=&quot;生成器的存在：&quot;&gt;&lt;/a&gt;生成器的存在：&lt;/h4&gt;&lt;p&gt;列表所有
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Celery+Redis</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/</id>
+    <published>2020-07-17T05:53:00.000Z</published>
+    <updated>2020-07-23T04:05:08.444Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务</p><p>2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取</p><p>3、执行者（Worker）–用于执行tasks，也就是真正调用我们在tasks中定义的函数</p><p>4、存储（Backend）–把执行tasks返回的结果进行存储，以供用户查看或调用</p><h2 id="1、各模块功能"><a href="#1、各模块功能" class="headerlink" title="1、各模块功能"></a>1、各模块功能</h2><p>Celery中，以上组件具体功能如下：</p><p><strong>任务模块 Task</strong></p><p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p><p><strong>消息中间件 Broker</strong></p><p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p><p><strong>任务执行单元 Worker</strong></p><p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p><p><strong>任务结果存储 Backend</strong></p><p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务&lt;/p&gt;
+&lt;p&gt;2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取&lt;/p&gt;
+
       
     
     </summary>
@@ -56,6 +131,31 @@
       
         &lt;p&gt;-redis&lt;/p&gt;
 &lt;p&gt;　　-非关系型内存数据（nosql:mongodb,redis），key-value的存储&lt;br&gt;　　-单线程单进程，qps:10w&lt;br&gt;　　-Memcached：多线程，支持的数据类型少：只支持字符串类型，不支持持久化&lt;br&gt;　　-redis
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Redis" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>验证码的时效性</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
+    <published>2020-07-14T01:02:20.000Z</published>
+    <updated>2020-07-22T12:00:29.936Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p><p>一，增加内存</p><p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p><p>二，搭建Redis集群</p><ol><li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li><li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li><li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li><li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li></ol><p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p><p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p><p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p><p>(2):什么时候整个集群不可用(cluster_state:fail)? </p><ul><li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li><li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li></ul><h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p><p>　　RDB：对redis中的数据周期性的持久化</p><h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p><p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p><p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p><p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p><p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p><p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p><p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p><p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p><p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p><p>AOF： append-only : true 开启aof策略</p><p>　　　　everysec: 每秒备份</p><p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p><p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p><h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？&lt;/p&gt;
+&lt;h3 id=&quot;思路&quot;&gt;
       
     
     </summary>
@@ -112,31 +212,6 @@
     
     
       <category term="Linux" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>验证码的时效性</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
-    <published>2020-07-14T01:02:20.000Z</published>
-    <updated>2020-07-22T12:00:29.936Z</updated>
-    
-    <content type="html"><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p><p>一，增加内存</p><p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p><p>二，搭建Redis集群</p><ol><li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li><li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li><li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li><li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li></ol><p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p><p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p><p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p><p>(2):什么时候整个集群不可用(cluster_state:fail)? </p><ul><li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li><li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li></ul><h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p><p>　　RDB：对redis中的数据周期性的持久化</p><h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p><p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p><p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p><p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p><p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p><p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p><p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p><p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p><p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p><p>AOF： append-only : true 开启aof策略</p><p>　　　　everysec: 每秒备份</p><p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p><p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p><h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？&lt;/p&gt;
-&lt;h3 id=&quot;思路&quot;&gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Redis" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Redis/"/>
     
   </entry>
   
@@ -428,78 +503,6 @@
       
       
         &lt;h4 id=&quot;JWT认证&quot;&gt;&lt;a href=&quot;#JWT认证&quot; class=&quot;headerlink&quot; title=&quot;JWT认证&quot;&gt;&lt;/a&gt;JWT认证&lt;/h4&gt;&lt;p&gt; &lt;code&gt;Json web token (JWT)&lt;/code&gt;, 根据官网的定义，是为了在网络应用环境间传递声
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安慰剂进度条</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/</id>
-    <published>2020-05-07T04:20:02.000Z</published>
-    <updated>2020-05-07T15:37:05.454Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">data()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">&#x2F;&#x2F; 定义变量</span><br><span class="line">load_percnet&#x3D;&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">&#x2F;&#x2F;在某方法下写入</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>又拍云存储</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/06/upyun/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/06/upyun/</id>
-    <published>2020-05-05T20:04:30.000Z</published>
-    <updated>2020-05-06T13:26:27.157Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure><h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure><h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure><h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure><h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;安装模块&quot;&gt;&lt;a href=&quot;#安装模块&quot; class=&quot;headerlink&quot; title=&quot;安装模块&quot;&gt;&lt;/a&gt;安装模块&lt;/h4&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>七牛云存储</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/01/qiniu/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/01/qiniu/</id>
-    <published>2020-04-30T18:10:20.000Z</published>
-    <updated>2020-05-06T13:13:35.674Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="安装七牛云"><a href="#安装七牛云" class="headerlink" title="安装七牛云"></a>安装七牛云</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install qiniu</span><br></pre></td></tr></table></figure><h4 id="django接口获取token"><a href="#django接口获取token" class="headerlink" title="django接口获取token"></a>django接口获取token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 七牛云 换取token的一个凭证</span></span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> Auth</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QiNiu</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 声明验证对象   传参数</span></span><br><span class="line">        q = Auth(<span class="string">'xl8p2s1KY20muvLAL6OKNP7LnJhWX_XLiu2I3QhE'</span>,<span class="string">'8y0ehfGfHy55b2Y8ZvMTpOr34SbsS4a5r88v-7jF'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取token           空间的名称</span></span><br><span class="line">        token  = q.upload_token(<span class="string">"pc1009"</span>)</span><br><span class="line">        <span class="comment"># 返回token</span></span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'token'</span>:token&#125;)</span><br></pre></td></tr></table></figure><h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'qiniu/'</span>,QiNiu.as_view()),</span><br></pre></td></tr></table></figure><h4 id="vue接口请求图片上传"><a href="#vue接口请求图片上传" class="headerlink" title="vue接口请求图片上传"></a>vue接口请求图片上传</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                七牛用户头像：</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;input type=<span class="string">"file"</span> @change=<span class="string">"qiniu"</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;img :src=<span class="string">"src"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">        //图片路径变量</span><br><span class="line">            src:<span class="string">''</span>,</span><br><span class="line">        //获取token变量</span><br><span class="line">            token:<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    //钩子函数</span><br><span class="line">    mounted:function()&#123;</span><br><span class="line">        //获取token</span><br><span class="line">        this.get_token();</span><br><span class="line">        &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">    // 获取后端token</span><br><span class="line">        get_token:function()&#123;</span><br><span class="line">            this.axios.get('http://127.0.0.1:8000/qiniu/').then(res=&gt;&#123;         </span><br><span class="line">                    console.log(res)</span><br><span class="line">                    this.token = res.data.token</span><br><span class="line">                    console.log(this.token)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        //七牛上传</span><br><span class="line">        qiniu:function(e)&#123;</span><br><span class="line">            //获取文件</span><br><span class="line">            let file = e.target.files[<span class="number">0</span>];</span><br><span class="line">            //声明表单</span><br><span class="line">            let param = new FormData()    </span><br><span class="line">            param.append(<span class="string">'file'</span>,file,file.name)</span><br><span class="line">            param.append(<span class="string">'token'</span>,this.token)   </span><br><span class="line">            //自定义zxios</span><br><span class="line">            const axios_qiniu = this.axios.create(&#123;withCredentials:false&#125;)</span><br><span class="line"></span><br><span class="line">            //发送请求</span><br><span class="line">            axios_qiniu(&#123;</span><br><span class="line">                method:<span class="string">'POST'</span>,</span><br><span class="line">                // 华北</span><br><span class="line">                url:<span class="string">'http://up-z1.qiniu.com'</span>,</span><br><span class="line">                data:param,</span><br><span class="line">                timeout:<span class="number">30000</span></span><br><span class="line">            &#125;).then(res=&gt;&#123;</span><br><span class="line">                console.log(res)</span><br><span class="line">       // 拼接照片路由</span><br><span class="line">            this.src = <span class="string">'http://q9v2u2gy5.bkt.clouddn.com/'</span>+result.data.key</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;安装七牛云&quot;&gt;&lt;a href=&quot;#安装七牛云&quot; class=&quot;headerlink&quot; title=&quot;安装七牛云&quot;&gt;&lt;/a&gt;安装七牛云&lt;/h4&gt;&lt;figure class=&quot;highlight py&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;p
       
     
     </summary>

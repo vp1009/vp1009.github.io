@@ -74,6 +74,278 @@
     
     
     
+    <article id="post-sjfzd" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/06/sjfzd/"
+    >Python算法时间复杂度</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/06/sjfzd/" class="article-date">
+  <time datetime="2020-07-06T01:20:20.000Z" itemprop="datePublished">2020-07-06</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p> 时间复杂度分为：</p>
+<ul>
+<li><p>时间复杂度</p>
+</li>
+<li><p>空间复杂度</p>
+<p>时间复杂度用于度量算法的计算工作量，空间复杂度用于度量算法占用的内存空间。 </p>
+</li>
+</ul>
+<p><strong>渐进时间复杂度</strong></p>
+<p>时间复杂度是算法运算所消耗的时间，因为不同大小的输入数据，算法处理所要消耗的时间是不同的，因此评估一个算运行时间是比较困难的，所以通常关注的是时间频度，即算法运行计算操作的次数，记为T(n)，其中n称为问题的规模。</p>
+<p>同样，因为n是一个变量，n发生变化时，时间频度T(n) 也在发生变化，我们称时间复杂度的极限情形称为算法的渐近时间复杂度，记为O(n)，不包含函数的低阶和首项系数。</p>
+<h5 id="时间复杂度分为："><a href="#时间复杂度分为：" class="headerlink" title="时间复杂度分为："></a>时间复杂度分为：</h5><ul>
+<li>常数阶 O(1) </li>
+<li>线性阶 O(n) </li>
+<li>平方阶 O(n^2) </li>
+<li>立方阶 O(n^3) </li>
+<li>对数阶 O(logn) </li>
+</ul>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-shuju" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/06/shuju/"
+    >Python基础数据类型</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/06/shuju/" class="article-date">
+  <time datetime="2020-07-06T01:02:20.000Z" itemprop="datePublished">2020-07-06</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="python的主要数据类型包括："><a href="#python的主要数据类型包括：" class="headerlink" title="python的主要数据类型包括："></a>python的主要数据类型包括：</h4><ol>
+<li>int (整形)</li>
+<li>long(长整型)</li>
+<li>float(浮点型)</li>
+<li>complex（复数）</li>
+<li>字符串</li>
+<li>布尔型</li>
+<li>列表</li>
+<li>元组</li>
+<li>字典</li>
+<li>集合</li>
+</ol>
+<h5 id="int（整型）"><a href="#int（整型）" class="headerlink" title="int（整型）"></a>int（整型）</h5><p>在32位机器上，整数的位数是32位，取值范围是-231<del>231-1，即-2147483648</del>214748364；在64位系统上，整数的位数为64位，取值范围为-263<del>263-1，即9223372036854775808</del>9223372036854775807。</p>
+<h5 id="long（长整型）"><a href="#long（长整型）" class="headerlink" title="long（长整型）"></a>long（长整型）</h5><p>Python长整型没有指定位宽，但是由于机器内存有限，使用长的长整数数值也不可能无限大。</p>
+<h5 id="float（浮点型）"><a href="#float（浮点型）" class="headerlink" title="float（浮点型）"></a>float（浮点型）</h5><p>浮点型也就是带有小数点的数，其精度和机器有关。</p>
+<h5 id="complex（复数）"><a href="#complex（复数）" class="headerlink" title="complex（复数）"></a>complex（复数）</h5><p>Python还支持复数，复数由实数部分和虚数部分构成，可以用 a + bj,或者 complex(a,b) 表示， 复数的实部 a 和虚部 b 都是浮点型。</p>
+<h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h5><p>Python中的字符串有两种数据类型，分别是str类型和unicode类型，str类型采用的ASCII编码，无法表示中文，unicode类型采用unicode编码，能够表示任意字符，包括中文和其他语言。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">状态获取：islower，isupper，isdigit，isalpha，isalnum，istitle，startswith，endswith</span><br><span class="line">状态转换：lower，casefold，upper，swapcase，title(单词首字母大写)，capitalize(字符串首字母大写)</span><br><span class="line">格式转换：strip(去掉左右两边参数字符串中的字符)，ljust，rjust，center，zfill（左侧补零）</span><br><span class="line">拆分：partition，rpartiton，spilt，splitlines</span><br><span class="line">连接：join，+</span><br><span class="line">查询：index，find，count</span><br><span class="line">替换操作：replace，expandtabs</span><br><span class="line">基本操作：索引取值，len，max，min，<span class="keyword">in</span>，<span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h5><p>和其他编程语言一样，Python布尔类型也是用于逻辑运算，有两个值：True（真）和False（假）。</p>
+<h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5><p>列表是Python中使用最频繁的数据类型，集合中可以放任何数据类型，可对集合进行创建、查找、切片、增加、修改、删除、循环和排序操作。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">增加：append,insert,extend</span><br><span class="line">删除：remove,pop,clear</span><br><span class="line">查询：index,count</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h5><p>元组和列表一样，也是一种序列，与列表不同的是，元组是不可修改的，元组用”()”标识，内部元素用逗号隔开。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查询：index，count</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h5><p>字典是一种键值对的集合，是除列表以外Python之中最灵活的内置数据结构类型，列表是有序的对象集合，字典是无序的对象集合。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">增加：add</span><br><span class="line">删除：pop（第一个），clear，remove</span><br><span class="line">交集：&amp;</span><br><span class="line">并集：|</span><br><span class="line">差集：set1-set2</span><br><span class="line">对称差集：并集-交集</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h5><p>集合是一个无序的、不重复的数据组合，它的主要作用有两个，分别是去重和关系测试。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">增加:字典[<span class="string">'键'</span>] = 值</span><br><span class="line">删除：pop,popitem,clear</span><br><span class="line">修改：update(dict)</span><br><span class="line">查询：get,keys,items,values,setdefault:有对应的键则返回对应的值，没有则返回默认给定的值</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-drffy" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/12/drffy/"
+    >分页</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/12/drffy/" class="article-date">
+  <time datetime="2020-05-11T21:12:22.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h4 id="分页后端逻辑"><a href="#分页后端逻辑" class="headerlink" title="分页后端逻辑"></a>分页后端逻辑</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsList</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#当前页</span></span><br><span class="line">        page = request.GET.get(<span class="string">'page'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#一页显示的个数</span></span><br><span class="line">        size = request.GET.get(<span class="string">'size'</span>,<span class="number">1</span>)</span><br><span class="line">        <span class="comment">#计算从哪开始切</span></span><br><span class="line">        data_start = (int(page)<span class="number">-1</span>) *int(size)</span><br><span class="line">        <span class="comment">#计算切到哪</span></span><br><span class="line">        data_end = int(page) * int(size)</span><br><span class="line">        <span class="comment">#查询 切片成当前页数据</span></span><br><span class="line">        goods = Goods.objects.all()[data_start:data_end]</span><br><span class="line">        <span class="comment">#查询所有商品个数</span></span><br><span class="line">        count = Goods.objects.count()</span><br><span class="line">        <span class="comment">#序列化</span></span><br><span class="line">        goods_ser = GoodsSer(goods,many=<span class="literal">True</span>)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'data'</span>:goods_ser.data,<span class="string">'total'</span>:count&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="前端template中"><a href="#前端template中" class="headerlink" title="前端template中"></a>前端template中</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- heyui分页器 --&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">    	&lt;Pagination v-model&#x3D;&quot;pagination&quot; @change&#x3D;&quot;get_goods&quot;&gt;&lt;&#x2F;Pagination&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>data中定义分页器变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;定义分页器变量</span><br><span class="line">  pagination:&#123;</span><br><span class="line">	  page:2,</span><br><span class="line">	  size:2,</span><br><span class="line">	  total:5,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 获取商品类表接口</span><br><span class="line">  get_goods:function()&#123;</span><br><span class="line">		&#x2F;&#x2F; 拼接路由</span><br><span class="line">	  this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodslist&#x2F;&#39;,&#123;params:&#123;page:this.pagination.page,size:this.pagination.size&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line">		  console.log(res)</span><br><span class="line"></span><br><span class="line">		  this.goodslist &#x3D; res.data.data</span><br><span class="line">		  </span><br><span class="line">			&#x2F;&#x2F;将商品总数传递给total</span><br><span class="line">		  this.pagination.total &#x3D; res.data.total</span><br><span class="line">	  &#125;))</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="获取文件"><a href="#获取文件" class="headerlink" title="获取文件"></a>获取文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">图片：&lt;input type&#x3D;&quot;file&quot; ref&#x3D;&quot;upload&quot;&gt;&lt;br&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 接收表单数据</span><br><span class="line">var pc &#x3D; this.$refs.upload</span><br><span class="line">let file &#x3D; pc.files[0]</span><br></pre></td></tr></table></figure>
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/django/" rel="tag">django</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-detail" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -714,236 +986,13 @@
 
 </article>
     
-    <article id="post-jdt" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/07/jdt/"
-    >安慰剂进度条</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/07/jdt/" class="article-date">
-  <time datetime="2020-05-07T04:20:02.000Z" itemprop="datePublished">2020-05-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-upyun" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/06/upyun/"
-    >又拍云存储</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/06/upyun/" class="article-date">
-  <time datetime="2020-05-05T20:04:30.000Z" itemprop="datePublished">2020-05-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure>
-
-<h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-qiniu" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/01/qiniu/"
-    >七牛云存储</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/01/qiniu/" class="article-date">
-  <time datetime="2020-04-30T18:10:20.000Z" itemprop="datePublished">2020-05-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="安装七牛云"><a href="#安装七牛云" class="headerlink" title="安装七牛云"></a>安装七牛云</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install qiniu</span><br></pre></td></tr></table></figure>
-
-<h4 id="django接口获取token"><a href="#django接口获取token" class="headerlink" title="django接口获取token"></a>django接口获取token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 七牛云 换取token的一个凭证</span></span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> Auth</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QiNiu</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 声明验证对象   传参数</span></span><br><span class="line">        q = Auth(<span class="string">'xl8p2s1KY20muvLAL6OKNP7LnJhWX_XLiu2I3QhE'</span>,<span class="string">'8y0ehfGfHy55b2Y8ZvMTpOr34SbsS4a5r88v-7jF'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取token           空间的名称</span></span><br><span class="line">        token  = q.upload_token(<span class="string">"pc1009"</span>)</span><br><span class="line">        <span class="comment"># 返回token</span></span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'token'</span>:token&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'qiniu/'</span>,QiNiu.as_view()),</span><br></pre></td></tr></table></figure>
-
-<h4 id="vue接口请求图片上传"><a href="#vue接口请求图片上传" class="headerlink" title="vue接口请求图片上传"></a>vue接口请求图片上传</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                七牛用户头像：</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;input type=<span class="string">"file"</span> @change=<span class="string">"qiniu"</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;img :src=<span class="string">"src"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">        //图片路径变量</span><br><span class="line">            src:<span class="string">''</span>,</span><br><span class="line">        //获取token变量</span><br><span class="line">            token:<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    //钩子函数</span><br><span class="line">    mounted:function()&#123;</span><br><span class="line">        //获取token</span><br><span class="line">        this.get_token();</span><br><span class="line">        &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">    	// 获取后端token</span><br><span class="line">        get_token:function()&#123;</span><br><span class="line">            this.axios.get('http://127.0.0.1:8000/qiniu/').then(res=&gt;&#123;         </span><br><span class="line">                    console.log(res)</span><br><span class="line">                    this.token = res.data.token</span><br><span class="line">                    console.log(this.token)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        //七牛上传</span><br><span class="line">        qiniu:function(e)&#123;</span><br><span class="line">            //获取文件</span><br><span class="line">            let file = e.target.files[<span class="number">0</span>];</span><br><span class="line">            //声明表单</span><br><span class="line">            let param = new FormData()    </span><br><span class="line">            param.append(<span class="string">'file'</span>,file,file.name)</span><br><span class="line">            param.append(<span class="string">'token'</span>,this.token)   </span><br><span class="line">            //自定义zxios</span><br><span class="line">            const axios_qiniu = this.axios.create(&#123;withCredentials:false&#125;)</span><br><span class="line"></span><br><span class="line">            //发送请求</span><br><span class="line">            axios_qiniu(&#123;</span><br><span class="line">                method:<span class="string">'POST'</span>,</span><br><span class="line">                // 华北</span><br><span class="line">                url:<span class="string">'http://up-z1.qiniu.com'</span>,</span><br><span class="line">                data:param,</span><br><span class="line">                timeout:<span class="number">30000</span></span><br><span class="line">            &#125;).then(res=&gt;&#123;</span><br><span class="line">                console.log(res)</span><br><span class="line">   			    // 拼接照片路由</span><br><span class="line">            	this.src = <span class="string">'http://q9v2u2gy5.bkt.clouddn.com/'</span>+result.data.key</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>
