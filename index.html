@@ -1,1310 +1,279 @@
 <!DOCTYPE html>
-
-
-<html lang="en">
-
-
+<html lang="zh">
 <head>
-  <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Originally
+    </title>
+    <meta name="description" content=  >
+    <meta name="keywords" content=  >
     
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>
-     Originally
-  </title>
-  <meta name="generator" content="hexo-theme-ayer">
-  
-  <link rel="shortcut icon" href="/favicon.ico" />
-  
-  
-<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-  
-<link rel="stylesheet" href="/css/custom.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
-  
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-  
-  
-
-  
-
-<link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
 </head>
-
-</html>
-
-<body>
-  <div id="app">
-    <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/timg.png" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">Originally</a></h1>
-      <div id="subtitle-box">
-        
-          <span id="subtitle">Make excellence a habit</span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<div id="main">
-  <section class="outer">
-  <article class="articles">
-    
-    
-    
-    
-    <article id="post-solid" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/29/solid/"
-    >面向对象五大原则SOLID</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/29/solid/" class="article-date">
-  <time datetime="2020-07-29T15:40:20.000Z" itemprop="datePublished">2020-07-29</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="浅谈面向对象五大原则-S-O-L-I-D"><a href="#浅谈面向对象五大原则-S-O-L-I-D" class="headerlink" title="浅谈面向对象五大原则 S.O.L.I.D"></a>浅谈面向对象五大原则 S.O.L.I.D</h4><p>设计模式中的SOLID原则，分别是单一原则、开闭原则、里氏替换原则、接口隔离原则、依赖倒置原则。前辈们总结出来的，遵循五大原则可以使程序解决紧耦合，更加健壮。<br>s<br>SRP    单一责任原则<br>OCP    开放封闭原则<br>LSP    里氏替换原则<br>ISP    接口隔离原则<br>DIP    依赖倒置原则</p>
-<h4 id="单一责任原则"><a href="#单一责任原则" class="headerlink" title="单一责任原则"></a>单一责任原则</h4><p>指的是一个类或者一个方法只做一件事。如果一个类承担的职责过多，就等于把这些职责耦合在一起，一个职责的变化就可能抑制或者削弱这个类完成其他职责的能力。例如餐厅服务员负责把订单给厨师去做，而不是服务员又要订单又要炒菜。</p>
-<h4 id="开放封闭原则"><a href="#开放封闭原则" class="headerlink" title="开放封闭原则"></a>开放封闭原则</h4><p>对扩展开放，对修改关闭。意为一个类独立之后就不应该去修改它，而是以扩展的方式适应新需求。例如一开始做了普通计算器程序，突然添加新需求，要再做一个程序员计算器，这时不应该修改普通计算器内部，应该使用面向接口编程，组合实现扩展</p>
-<h4 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h4><p>所有基类出现的地方都可以用派生类替换而不会程序产生错误。子类可以扩展父类的功能，但不能改变父类原有的功能。例如机动车必须有轮胎和发动机，子类宝马和奔驰不应该改写没轮胎或者没发动机。</p>
-<h4 id="依赖倒置原则"><a href="#依赖倒置原则" class="headerlink" title="依赖倒置原则"></a>依赖倒置原则</h4><p>指的是高级模块不应该依赖低级模块，而是依赖抽象。抽象不能依赖细节，细节要依赖抽象。比如类A内有类B对象，称为类A依赖类B，但是不应该这样做，而是选择类A去依赖抽象。例如垃圾收集器不管垃圾是什么类型，要是垃圾就行。</p>
-<h4 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h4><p>没人写一款程序能完全遵守SOLID原则，甚至有些设计模式是违反SOLID原则。如何权衡就要看利是否大于弊。不足之处望指教。s</p>
-<p>转载于：<a><a href="https://www.cnblogs.com/suli0827/p/9515842.html" target="_blank" rel="noopener">https://www.cnblogs.com/suli0827/p/9515842.html</a></a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-vfw" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/29/vfw/"
-    >微服务</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/29/vfw/" class="article-date">
-  <time datetime="2020-07-29T15:24:30.000Z" itemprop="datePublished">2020-07-29</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>微服务（Microservice）这个概念是2012年出现的，作为加快Web和移动应用程序开发进程的一种方法，2014年开始受到各方的关注，而2015年，可以说是微服务的元年；</p>
-<p>越来越多的论坛、社区、blog以及互联网行业巨头开始对微服务进行讨论、实践，可以说这样更近一步推动了微服务的发展和创新。而微服务的流行，Martin Fowler功不可没。</p>
-<p>1 互联网的快速发展</p>
-<p>2 敏捷开发 精益方法的深入人心</p>
-<p>3 容器技术的成熟</p>
-<h4 id="传统的项目架构？"><a href="#传统的项目架构？" class="headerlink" title="传统的项目架构？"></a>传统的项目架构？</h4><p><strong>优点：</strong></p>
-<p>①开发简单，集中式管理</p>
-<p>②基本不会重复开发</p>
-<p>③功能都在本地，没有分布式的管理和调用消耗</p>
-<p><strong>缺点：</strong></p>
-<p>1、效率低：开发都在同一个项目改代码，相互等待，冲突不断</p>
-<p>2、维护难：代码功功能耦合在一起，新人不知道何从下手</p>
-<p>3、不灵活：构建时间长，任何小修改都要重构整个项目，耗时</p>
-<p>4、稳定性差：一个微小的问题，都可能导致整个应用挂掉</p>
-<p>5、扩展性不够：无法满足高并发下的业务需求</p>
-<p><strong>常见的系统架构遵循的三个标准和业务驱动力：</strong></p>
-<p>1、提高敏捷性：及时响应业务需求，促进企业发展</p>
-<p>2、提升用户体验：提升用户体验，减少用户流失</p>
-<p>3、降低成本：降低增加产品、客户或业务方案的成本</p>
-<h4 id="现在我们来看一下微服务必须需要的原则？"><a href="#现在我们来看一下微服务必须需要的原则？" class="headerlink" title="现在我们来看一下微服务必须需要的原则？"></a>现在我们来看一下微服务必须需要的原则？</h4><p>1，单一功能职责</p>
-<p>   单一功能职责是SOLID设计模式之一，它意味着一个单元，无论是类、函数还是微服务，都应该有且只有一个职责。在任何时候，一个微服务都不应该有一个以上的职责。</p>
-<p>2，围绕着业务功能设计</p>
-<p>   微服务应该专注于特定的业务功能，并确保它有助于完成任务。微服务绝不应限制自己采用最适合解决业务目的的适当技术栈或后端数据库存储。当我们设计单个应用程序时，这常常是一个约束，我们试图在某些领域中使用一些折中来解决多个业务解决方案。微服务使您能够选择最适合当前问题的解决方案。（某个微服务不仅仅只为一个微服务来服务，他要为其他的微服务提供支持，也就是全局的架构）</p>
-<p>3，你建造它，你拥有它。</p>
-<p>这种设计的另一个重要方面与开发前后的职责有关。在大型组织中，通常由一个团队开发app location(应用)，经过一些知识转移会议后，将项目移交给维护团队。在微服务中，构建服务的团队拥有它，并负责在将来维护它。这使开发人员能够接触到他们的软件的日常操作，并且他们能够更好地理解他们构建的产品在现实世界中是如何被客户使用的。</p>
-<p>4，基础设施自动化</p>
-<p>准备和构建微服务的基础设施是另一个非常重要的需求，服务应该是可独立部署的，并且应该捆绑所有依赖项，包括库依赖项，甚至是执行环境，如抽象物理资源（web服务器和容器或虚拟机）。</p>
-<p>微服务和SOA之间的一个主要区别在于它们的自治级别。虽然大多数SOA实现提供了服务级抽象，但是微服务更进一步抽象了实现和执行环境。</p>
-<p>在传统的应用程序开发中，我们构建一个WAR或EAR，然后将其部署到JEE应用程序服务器中，例如使用JBoss、WebLogic、WebSphere等等。我们可以将多个应用程序部署到同一个JEE容器中。在理想的场景中，在微服务方法中，每个微服务将构建为一个胖Jar，嵌入所有依赖项，并作为独立的Java进程运行。</p>
-<p>5，容错设计</p>
-<p>微服务的设计应考虑到故障情况。如果服务失败，或者宕机一段时间，该怎么办?这些都是非常重要的问题，必须在实际编码开始之前解决——以便清楚地估计服务故障将如何影响用户体验。</p>
-<p>快速故障是另一个用于构建容错、弹性系统的概念。这种哲学提倡预期失败的系统，而不是构建永远不会失败的系统。由于服务在任何时候都可能失败，因此能够快速检测故障并在可能的情况下自动恢复服务非常重要。</p>
-<p>微服务应用程序非常重视应用程序的实时监控，检查体系结构元素(数据库每秒接收多少请求)和业务相关指标(例如每分钟接收多少订单)。语义监视可以提供出错的早期预警系统，从而触发开发团队进行跟踪和调查。</p>
-<h4 id="微服务的目的？"><a href="#微服务的目的？" class="headerlink" title="微服务的目的？"></a>微服务的目的？</h4><p><strong>目的：</strong>有效的拆分应用，实现敏捷开发和部署</p>
-<h4 id="微服务的优点-？"><a href="#微服务的优点-？" class="headerlink" title="微服务的优点 ？"></a>微服务的优点 ？</h4><p>微服务有许多优点相比传统的多层架构（单体庞大应用），微服务的优点如下：</p>
-<p>1，使用微服务，架构师和开发人员可以为每个微服务选择适合于特定用途的架构和技术(通晓多种语言对应的熟悉语言的架构)。这为以更经济有效的方式设计更适合的解决方案提供了灵活性。</p>
-<p>2，由于服务相当简单，而且规模更小，企业可以试验新的流程、算法、业务逻辑等等。它通过提供快速试验和失败的能力，使企业能够进行颠覆性创新。</p>
-<p>3，微服务能够实现选择性的可伸缩性，即每个服务都可以独立地伸缩，而且伸缩的成本相对于单体应用方面要低。</p>
-<p>4，微服务是自包含的、独立的部署模块，当第二个微服务没有按照我们的需要执行时，可以使用另一个类似的微服务替换一个微服务。它有助于做出正确的“购买构建”决策，而这通常是许多企业面临的挑战。</p>
-<p>5，微服务帮助我们构建本质上是有机的系统(有机的系统是通过添加越来越多的功能在一段时间内横向增长的系统)。因为微服务都是关于独立可管理的服务——它允许在需要时添加越来越多的服务，而对现有服务的影响最小。</p>
-<p>6，技术变化是软件开发中的障碍之一。使用微服务，可以单独更改或升级每个服务的技术，而不是升级整个应用程序。</p>
-<p>7，由于microservices将服务运行时环境和服务本身打包在一起，因此允许在同一环境中共存多个版本的服务。</p>
-<p>8，最后，微服务还支持更小、更专注的敏捷开发团队。团队将根据微服务的边界进行组织。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-scq" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/29/scq/"
-    >啊这！生成器</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/29/scq/" class="article-date">
-  <time datetime="2020-07-29T11:44:20.000Z" itemprop="datePublished">2020-07-29</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>在python中，一边循环一边计算的机制，称之为生成器（generator）</p>
-<h4 id="生成器的存在："><a href="#生成器的存在：" class="headerlink" title="生成器的存在："></a>生成器的存在：</h4><p>列表所有的数据都在内存中，如果有海量的数据将会非常消耗内存。<br>如：仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。<br>如果列表元素按照某种算法退出来，那我们就可以在循环的过程中不断推算出后续的元素，这样就不必创建完整的list，从而节省大量的空间。</p>
-<p>说白点！！ 要想得到庞大的数据，又想让它占用空间少，就就就就用生成器！</p>
-<p>第一种生成生成器的方法把【】改成（）则就是生成器</p>
-<p>第二种 如果一个函数中包含yield关键字，那么这个函数就不在是个普通的函数，而是一个generator。调用函数就是创建了一个生成器。</p>
-<h4 id="生成器的工作原理："><a href="#生成器的工作原理：" class="headerlink" title="生成器的工作原理："></a>生成器的工作原理：</h4><p>首先，生成器是一种特殊的迭代器，它的yield方法将迭代器的next，封装到了yield关键字中，他与return不同的是：遇见return就已经返回了，而遇见yield则我们去计算下一个元素的位置。</p>
-<p>我们也可以通过next（）进行取值，也可以利用for循环（每次执行一次，取生成器里面一个值） 可以使用send（）强行修改yield的值。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>什么是生成器？<br>生成器仅仅保存了一套生成数值的算法，并且没有让这个算法现在就开始执行，而是我什么时候调它，它什么时候开始计算一个新的值，并给你返回。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-celery" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/17/celery/"
-    >Celery+Redis</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/17/celery/" class="article-date">
-  <time datetime="2020-07-17T05:53:00.000Z" itemprop="datePublished">2020-07-17</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>1、任务（tasks）–用户定义的函数，用于实现用户的功能，比如执行一个耗时很长的任务</p>
-<p>2、中间介（Broker）–用于存放tasks的地方，但是这个中间介需要解决一个问题，就是可能需要存放非常非常多的tasks，而且要保证Worker能够从这里拿取</p>
-<p>3、执行者（Worker）–用于执行tasks，也就是真正调用我们在tasks中定义的函数</p>
-<p>4、存储（Backend）–把执行tasks返回的结果进行存储，以供用户查看或调用</p>
-<h2 id="1、各模块功能"><a href="#1、各模块功能" class="headerlink" title="1、各模块功能"></a>1、各模块功能</h2><p>Celery中，以上组件具体功能如下：</p>
-<p><strong>任务模块 Task</strong></p>
-<p>包含异步任务和定时任务。其中，异步任务通常在业务逻辑中被触发并发往任务队列，而定时任务由 Celery Beat 进程周期性地将任务发往任务队列。</p>
-<p><strong>消息中间件 Broker</strong></p>
-<p>Broker，即为任务调度队列，接收任务生产者发来的消息（即任务），将任务存入队列。Celery 本身不提供队列服务，官方推荐使用 RabbitMQ 和 Redis 等。</p>
-<p><strong>任务执行单元 Worker</strong></p>
-<p>Worker 是执行任务的处理单元，它实时监控消息队列，获取队列中调度的任务，并执行它。</p>
-<p><strong>任务结果存储 Backend</strong></p>
-<p>Backend 用于存储任务的执行结果，以供查询。同消息中间件一样，存储也可使用 RabbitMQ, Redis 和 MongoDB 等。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-redis_cz" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/15/redis_cz/"
-    >django之redis和django-redis的使用</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/15/redis_cz/" class="article-date">
-  <time datetime="2020-07-15T13:10:20.000Z" itemprop="datePublished">2020-07-15</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>-redis</p>
-<p>　　-非关系型内存数据（nosql:mongodb,redis），key-value的存储<br>　　-单线程单进程，qps:10w<br>　　-Memcached：多线程，支持的数据类型少：只支持字符串类型，不支持持久化<br>　　-redis：5大数据类型<br>　　　　k1:‘123‘, 字符串<br>　　　　k2:[1,2,3,4], 列表/数组<br>　　　　k3:{1,2,3,4} 集合：去重，爬虫去重<br>　　　　k4:{name:lqz,age:12} 字典/哈希表<br>　　　　k5:{(‘lqz‘,18),(‘egon‘,33)} 有序集合：游戏排行榜<br>　　-redis支持持久化：两种持久化的方案</p>
-<p>-python操作redis<br>　　from redis import Redis<br>　　conn=Redis()</p>
-<p>-redis连接池<br>　　#pool需要做成单例<br>　　pool=ConnectionPool(host=‘127.0.0.1‘,port=6379,max_connections=100)<br>　　conn=Redis(connection_pool=pool)</p>
-<p>-redis之字符串操作<br>　　-set<br>　　-get<br>　　-mset<br>　　-mget<br>　　-incr<br>　　-decr<br>　　-append</p>
-<p>-redis之hash操作<br>　　-hset<br>　　-hmset<br>　　-hget<br>　　-hmget<br>　　-hgetall<br>　　-hlen<br>　　-hdel<br>　　-hincrby<br>　　-hscan<br>　　-hscan_iter</p>
-<p>-redis之列表操作<br>　　-lpush<br>　　-llen<br>　　-linsert<br>　　-lpop<br>　　-blpop</p>
-<p>　　-自定义增量迭代</p>
-<p>只支持一层的5大数据类型：也就是说字典的value值只能是字符串，列表的value值只能是字符串</p>
-<p>-redis的其他操作<br>　　-delete<br>　　-exisit<br>　　-rename<br>　　-keys 模糊匹配key值<br>　　-expire<br>　　-type</p>
-<p>-事务（重点）<br>　　conn=Redis()<br>　　pipe = conn.pipeline(transaction=True)<br>　　pipe.multi()<br>　　pipe.set(‘name‘, ‘alex‘)<br>　　pipe.set(‘role‘, ‘sb‘)<br>　　pipe.execute()</p>
-<p>-在django中使用redis<br>　　-所有框架都能用的方式：<br>　　　　-先新建一个py文件，生成一个redis连接池<br>　　　　-在哪用，导过来，<br>　　　　　　conn=Redis(connection_pool=POOL)<br>　　　　　　conn.set(‘xxx‘,‘yyyy‘)<br>　　-django中使用：django-redis模块<br>　　　　-在setting中配置：<br>　　　　　　CACHES = {<br>　　　　　　　　“default”: {<br>　　　　　　　　　　“BACKEND”: “django_redis.cache.RedisCache”,<br>　　　　　　　　　　“LOCATION”: “redis://127.0.0.1:6379”,<br>　　　　　　　　　　“OPTIONS”: {<br>　　　　　　　　　　　　“CLIENT_CLASS”: “django_redis.client.DefaultClient”,<br>　　　　　　　　　　　　“CONNECTION_POOL_KWARGS”: {“max_connections”: 100}}}}<br>　　　　-使用<br>　　　　　　在使用的位置：<br>　　　　　　from django_redis import get_redis_connection<br>　　　　　　conn=get_redis_connection()<br>　　　　　　conn.set</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-redis1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/redis1/"
-    >验证码的时效性</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/14/redis1/" class="article-date">
-  <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p>
-<p>一，增加内存</p>
-<p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p>
-<p>二，搭建Redis集群</p>
-<ol>
-<li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li>
-<li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li>
-<li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li>
-<li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li>
-</ol>
-<p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p>
-<p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p>
-<p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p>
-<p>(2):什么时候整个集群不可用(cluster_state:fail)? </p>
-<ul>
-<li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li>
-<li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li>
-</ul>
-<h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p>
-<p>　　RDB：对redis中的数据周期性的持久化</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p>
-<p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p>
-<p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p>
-<p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p>
-<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p>
-<p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p>
-<p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p>
-<p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p>
-<p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p>
-<p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p>
-<p>AOF： append-only : true 开启aof策略</p>
-<p>　　　　everysec: 每秒备份</p>
-<p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p>
-<p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p>
-<h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-mysql_yh" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/mysql_yh/"
-    >关于mysql优化</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/14/mysql_yh/" class="article-date">
-  <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="优化数据的访问"><a href="#优化数据的访问" class="headerlink" title="优化数据的访问"></a>优化数据的访问</h4><ol>
-<li><p>确认应用程序是否检索了大量超过需要的数据。通常以为访问太多的行，或者访问太多的列</p>
-</li>
-<li><p>确认mysql服务器层是否存在分析大量超过需要的数据行</p>
-</li>
-<li><p>当访问量过大时，考虑数据库读写分离原则，当我们使用分离，数据库的压力还是很大的时候，这就需要使用数据拆分了。数据库的拆分原则：就是通过某种特定的条件，按照某个维度，将我们存放同一个数据库中的数据分散存到多个数据库（主机）上面已达到分散单裤（主机）负载的效果。</p>
-<ul>
-<li><p>首选是垂直拆分：一个数据库是由多个表组成，每个表对应着不同的业务，垂直切分指按照业务进行分类，分布到不同的数据库上面，这样也就将压力分布到不同的数据库上。 <strong>优点</strong> ：1 拆分后业务清晰，拆分规则明确 2 系统之间整合或扩展容易 3 数据维护简单 <strong>缺点</strong> ：1 部分代码无法join，只能通过接口方式解决，提高了系统复杂度 2 事物处理复杂</p>
-</li>
-<li><p>水平拆分：相似与垂直拆分，水平拆分不是将表的数据做分类，而是按照某个字段的某种规则分散到多个库之中，每个表包含一部分数据。简单来说，我们可以将数据的水平切分理解为是按照数据行进行切分，就是讲表中的某些行切分到一个数据库，而另外的某些行又切分到其他的数据库中。</p>
-</li>
-<li><p><strong>总</strong> ： 如果分库后仍然查的满的话，按照分库的思想做分表的工作数据库采用分布式数据库（所有的节点加起来才是整体数据），服务器满足不了大型系统增长的业务需求，数据库读写分离随着业务的发展，最终也无法满足，需要分布式数据库及分布式文件系统来支撑。</p>
-<p>优先考虑缓存讲题对数据库的操作</p>
-<p>在考录读写分离，降低数据库写操作</p>
-<p>首先垂直拆分在水平拆分</p>
-<p>先分库在分表</p>
-</li>
-</ul>
-</li>
-</ol>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Mysql/" rel="tag">Mysql</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-linux1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/14/linux1/"
-    >Linux文件操作</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/14/linux1/" class="article-date">
-  <time datetime="2020-07-14T01:02:20.000Z" itemprop="datePublished">2020-07-14</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p>
-<p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p>
-<p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p>
-<p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p>
-<p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p>
-<p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-pyms" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/pyms/"
-    >Python面试算法题</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/pyms/" class="article-date">
-  <time datetime="2020-07-06T03:00:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">num</span><span class="params">()</span>:</span></span><br><span class="line">          <span class="keyword">return</span> [<span class="keyword">lambda</span> x: i*x <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>)]</span><br><span class="line">print([m(<span class="number">2</span>) <span class="keyword">for</span> m <span class="keyword">in</span> num()])     <span class="comment"># 输出: [6, 6, 6, 6]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>这题涉及到了闭包延时绑定，当循环执行完了之后才会执行传参，循环四次，每一次循环完 i=3 然后再和x相乘 所以结果是6，6，6，6。 如果把 [ lambda x: i<em>x for i in range(4) ] 改成 （ lambda x: i</em>x for i in range(4) ）这样就变成了一个生成器 自动实现迭代器协议，一边循环一边计算的机制， 这样结果就是 0，2，4，6.</p>
-<hr>
-<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">给定 nums &#x3D; [2, 7, 11, 15], target &#x3D; 9</span><br><span class="line">因为 nums[0] + nums[1] &#x3D; 2 + 7 &#x3D; 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路：-1"><a href="#思路：-1" class="headerlink" title="思路："></a>思路：</h3><p>这里可以使用字典来解题，通过enumerate方法遍历获取数据的下标包括对应值，然后以key，value形式把该数据的下标和对应值存入字典，然后再出通过enumerate方法遍历数据，每一次获取数据就从字典拿出一个值，用目标值减去从字典拿出的这个值得到一个结果值，如果结果值存在字典当中，那么返回两个数的下标，如果为None，说明字典中没有这个值。</p>
-<h3 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_index_list</span><span class="params">(nums, target)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Todo 作为一个方法来实现，批量解决这个获取索引的问题</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params nums：传的参数的列表</span></span><br><span class="line"><span class="string">    :params target: 目标值</span></span><br><span class="line"><span class="string">    :return: 返回索引</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> a, b <span class="keyword">in</span> enumerate(nums):  <span class="comment"># a是下标 b是对应值</span></span><br><span class="line"></span><br><span class="line">        dic[b] = a  <span class="comment"># 对应值存入字典</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i, b <span class="keyword">in</span> enumerate(nums):</span><br><span class="line"></span><br><span class="line">        j = dic.get(target-b)  <span class="comment"># 从字典中拿出对应值 用目标值减去对应值</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> j <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  <span class="comment"># 判断如果减去的对应值不为空，则返回下标</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> [i, j]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="数组中重复的数字"><a href="#数组中重复的数字" class="headerlink" title="数组中重复的数字"></a>数组中重复的数字</h2><p>示例：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入:</span><br><span class="line">[<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">3</span>]</span><br><span class="line">输出: <span class="number">2</span> 或 <span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="思路：-2"><a href="#思路：-2" class="headerlink" title="思路："></a>思路：</h3><p>这道题想到的是，使用列表中的count方法，定义一个空列表，遍历数据然后进行判断，如果数据值出现个数大于或等于2，说明该数据是重复的，然后把重复的筛取出来之后存入空列表，再进行返回输出。</p>
-<h3 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_number</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params nums：传的参数的数组</span></span><br><span class="line"><span class="string">    :return: 返回重复数字</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    nub = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> nums:</span><br><span class="line">        <span class="keyword">if</span> nums.count(i) &gt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">if</span> str(i) <span class="keyword">not</span> <span class="keyword">in</span> nub:</span><br><span class="line">                nub.append(str(i))</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'或'</span>.join(nub))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    get_number([<span class="number">2</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-
-<h2 id="队列实现一个栈"><a href="#队列实现一个栈" class="headerlink" title="队列实现一个栈"></a>队列实现一个栈</h2><h3 id="思路：-3"><a href="#思路：-3" class="headerlink" title="思路："></a>思路：</h3><p>使用一个队列，实现栈的一些基本操作，栈（后进先出）的特性。</p>
-<h3 id="实现代码：-2"><a href="#实现代码：-2" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 队列实现一个栈 （栈：后进先出）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 定义一个队列</span></span><br><span class="line">        self.lst = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_None</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 判断栈是否为空 返回 ture false</span></span><br><span class="line">        <span class="keyword">return</span> self.lst == []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        <span class="comment"># 加入元素</span></span><br><span class="line">        self.lst.append(i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 出栈</span></span><br><span class="line">        <span class="keyword">return</span> self.lst.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stack_top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 返回栈顶元素</span></span><br><span class="line">        <span class="keyword">return</span> self.lst[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">size</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 栈的大小</span></span><br><span class="line">        <span class="keyword">return</span> len(self.lst)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    stack = Stack()</span><br><span class="line">    print(stack.is_None())</span><br><span class="line">    stack.push(<span class="number">1</span>)</span><br><span class="line">    stack.push(<span class="number">2</span>)</span><br><span class="line">    stack.push(<span class="number">3</span>)</span><br><span class="line">    print(stack.lst)</span><br><span class="line">    print(stack.pop())</span><br><span class="line">    print(stack.stack_top())</span><br><span class="line">    print(stack.size())</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<p>示例1：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="number">121</span></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-
-<p>示例2：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: <span class="number">-121</span></span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右，为 <span class="number">-121</span> 。 从右向左读，为<span class="number">121</span>- 。 因此它不是一个回文数</span><br></pre></td></tr></table></figure>
-
-<p>示例3：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读，为 01 。 因此它不是一个回文数</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路：-4"><a href="#思路：-4" class="headerlink" title="思路："></a>思路：</h3><p>这题可以使用字符串 双指针的方法 将数据转化为字符串 首先定义好第一个元素下标和最后一个元素下标，while循环 只要条件不满足 一直循环 循环判断第一个和最后一个元素是否相等 不相等返回false 相等继续循环，如果循环条件满足之后都相等，返回 false</p>
-<h3 id="实现代码：-3"><a href="#实现代码：-3" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">palindromic_number</span><span class="params">(x)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    :params x：传的参数的列表</span></span><br><span class="line"><span class="string">    :return: 返回Ture False</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    lst = list(str(x))</span><br><span class="line">    print(lst)</span><br><span class="line">    L, R = <span class="number">0</span>, len(lst)<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> L &lt;= R:</span><br><span class="line">        print(L, R)</span><br><span class="line">        <span class="keyword">if</span> lst[L] != lst[R]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        L += <span class="number">1</span></span><br><span class="line">        R -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    print(palindromic_number(<span class="number">1231</span>))</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="分别用生成器和迭代器生成斐波那契数列"><a href="#分别用生成器和迭代器生成斐波那契数列" class="headerlink" title="分别用生成器和迭代器生成斐波那契数列"></a>分别用生成器和迭代器生成斐波那契数列</h2><p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出: 1 1 2 3 5 8 13</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用迭代器生成斐波那契数列</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fibonacii</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,all_num)</span>:</span></span><br><span class="line">        self.all_num = all_num</span><br><span class="line">        self.cur_idx = <span class="number">0</span></span><br><span class="line">        self.a = <span class="number">0</span>  </span><br><span class="line">        self.b = <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__iter__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__next__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.cur_idx &gt;= self.all_num:</span><br><span class="line">            <span class="keyword">raise</span> StopIteration</span><br><span class="line">        ret = self.a</span><br><span class="line">        </span><br><span class="line">        self.a, self.b = self.b, self.a + self.b</span><br><span class="line">        self.cur_idx += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"> </span><br><span class="line">fibo = Fibonacii(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fibo:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用生成器生成斐波那契数列</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fibnacii</span><span class="params">(count)</span>:</span></span><br><span class="line">    num = <span class="number">0</span></span><br><span class="line">    a, b = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> num &lt; count:</span><br><span class="line">        <span class="keyword">yield</span> a</span><br><span class="line">        a, b = b, a+b</span><br><span class="line">        num += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">fi = fibnacii(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> fi:</span><br><span class="line">    print(i)</span><br></pre></td></tr></table></figure>
-
-<h2 id="反转字符数组"><a href="#反转字符数组" class="headerlink" title="反转字符数组"></a>反转字符数组</h2><h3 id="思路：-5"><a href="#思路：-5" class="headerlink" title="思路："></a>思路：</h3><p>直接使用反转</p>
-<h3 id="实现代码：-4"><a href="#实现代码：-4" class="headerlink" title="实现代码："></a>实现代码：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 反转字符串</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(s)</span>:</span></span><br><span class="line">    s[<span class="number">0</span>::] = s[::<span class="number">-1</span>]</span><br><span class="line">    print(s)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    reverseString([<span class="string">'b'</span>, <span class="string">''</span>, <span class="string">'a'</span>, <span class="string">'r'</span>])</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-suan" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/07/06/suan/"
-    >Python五大排序算法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/07/06/suan/" class="article-date">
-  <time datetime="2020-07-06T02:00:20.000Z" itemprop="datePublished">2020-07-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p>插入排序：插入排序的基本操作就是将一个数据插入到已经排好序的有序数据中，从而得到一个新的、个数加一的有序数据，算法适用于少量数据的排序；首先将第一个作为已经排好序的，然后每次从后的取出插入到前面并排序；</p>
-<p>时间复杂度：O(n²)</p>
-<p>空间复杂度：O(1)</p>
-<p>稳定性：稳定</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insert_sort</span><span class="params">(ilist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ilist)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">            <span class="keyword">if</span> ilist[i] &lt; ilist[j]:</span><br><span class="line">                ilist.insert(j, ilist.pop(i))</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> ilist</span><br></pre></td></tr></table></figure>
-
-<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p>冒泡排序：它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成</p>
-<p>时间复杂度：O(n²)</p>
-<p>空间复杂度：O(1)</p>
-<p>稳定性：稳定</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort</span><span class="params">(blist)</span>:</span></span><br><span class="line">    count = len(blist)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, count):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, count):</span><br><span class="line">            <span class="keyword">if</span> blist[i] &gt; blist[j]:</span><br><span class="line">                blist[i], blist[j] = blist[j], blist[i]</span><br><span class="line">    <span class="keyword">return</span> blist</span><br><span class="line"></span><br><span class="line">blist = bubble_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br><span class="line">print(blist)</span><br></pre></td></tr></table></figure>
-
-<h4 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h4><p>快速排序：通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另外一部分的所有数据都要小，然后再按此方法对这两部分数据分别进行快速排序，整个排序过程可以递归进行，以此达到整个数据变成有序序列</p>
-<p>时间复杂度：O(nlog₂n)</p>
-<p>空间复杂度：O(nlog₂n)</p>
-<p>稳定性：不稳定</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(qlist)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> qlist == []:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        qfirst = qlist[<span class="number">0</span>]</span><br><span class="line">        qless = quick_sort([l <span class="keyword">for</span> l <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> l &lt; qfirst])</span><br><span class="line">        qmore = quick_sort([m <span class="keyword">for</span> m <span class="keyword">in</span> qlist[<span class="number">1</span>:] <span class="keyword">if</span> m &gt;= qfirst])</span><br><span class="line">        <span class="keyword">return</span> qless + [qfirst] + qmore</span><br><span class="line"></span><br><span class="line">qlist = quick_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-
-<h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><p>选择排序：第1趟，在待排序记录r1 ~ r[n]中选出最小的记录，将它与r1交换；第2趟，在待排序记录r2 ~ r[n]中选出最小的记录，将它与r2交换；以此类推，第i趟在待排序记录r[i] ~ r[n]中选出最小的记录，将它与r[i]交换，使有序序列不断增长直到全部排序完毕</p>
-<p>时间复杂度：O(n²)</p>
-<p>空间复杂度：O(1)</p>
-<p>稳定性：不稳定</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">select_sort</span><span class="params">(slist)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(slist)):</span><br><span class="line">        x = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i, len(slist)):</span><br><span class="line">            <span class="keyword">if</span> slist[j] &lt; slist[x]:</span><br><span class="line">                x = j</span><br><span class="line">        slist[i], slist[x] = slist[x], slist[i]</span><br><span class="line">    <span class="keyword">return</span> slist</span><br><span class="line"></span><br><span class="line">slist = select_sort([<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">9</span>,<span class="number">8</span>])</span><br></pre></td></tr></table></figure>
-
-<h4 id="归并算法"><a href="#归并算法" class="headerlink" title="归并算法"></a>归并算法</h4><p>归并排序：采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并</p>
-<p>时间复杂度：O(nlog₂n)</p>
-<p>空间复杂度：O(1)</p>
-<p>稳定性：稳定</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span><span class="params">(array)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge_arr</span><span class="params">(arr_l, arr_r)</span>:</span></span><br><span class="line">        array = []</span><br><span class="line">        <span class="keyword">while</span> len(arr_l) <span class="keyword">and</span> len(arr_r):</span><br><span class="line">            <span class="keyword">if</span> arr_l[<span class="number">0</span>] &lt;= arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_l.pop(<span class="number">0</span>))</span><br><span class="line">            <span class="keyword">elif</span> arr_l[<span class="number">0</span>] &gt; arr_r[<span class="number">0</span>]:</span><br><span class="line">                array.append(arr_r.pop(<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">if</span> len(arr_l) != <span class="number">0</span>:</span><br><span class="line">            array += arr_l</span><br><span class="line">        <span class="keyword">elif</span> len(arr_r) != <span class="number">0</span>:</span><br><span class="line">            array += arr_r</span><br><span class="line">        <span class="keyword">return</span> array</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">recursive</span><span class="params">(array)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(array) == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> array</span><br><span class="line">        mid = len(array) // <span class="number">2</span></span><br><span class="line">        arr_l = recursive(array[:mid])</span><br><span class="line">        arr_r = recursive(array[mid:])</span><br><span class="line">        <span class="keyword">return</span> merge_arr(arr_l, arr_r)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> recursive(array)</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
-  </nav>
-  
-</section>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/001.jpg" class="logopng" alt="logo">
+    <p class="logot">
+         Originally 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+             
+        </h3>
+    </p>
 </div>
 
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2019-2020
-        <i class="ri-heart-fill heart_icon"></i> Mr.L
-      </li>
-    </ul>
-    <ul>
-      <li>
+
+<div class="hd">
+    <ol class="breadcrumb">
         
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
-  </div>
-</footer>
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
+
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
 </div>
-
-      </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/001.jpg" alt="Originally"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">HOME</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">ARCHIVE</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about/">ABOUT</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i></p>
-  <div class="reward-box">
+<div class="hd">
     
     
-  </div>
-</div>
-    
-<script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<!-- Tocbot -->
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
+        
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2020年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2020/07/29/solid/">
+            <div class="list">
+                <div class="postname">
+                    面向对象五大原则SOLID
+                </div>
+                <div class="posttime">
+                    July 29th
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/29/vfw/">
+            <div class="list">
+                <div class="postname">
+                    微服务
+                </div>
+                <div class="posttime">
+                    July 29th
+                </div>
             </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/17/celery/">
+            <div class="list">
+                <div class="postname">
+                    Celery+Redis
+                </div>
+                <div class="posttime">
+                    July 17th
+                </div>
             </div>
-
-        </div>
-
-    </div>
-
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/15/redis_cz/">
+            <div class="list">
+                <div class="postname">
+                    django之redis和django-redis的使用
+                </div>
+                <div class="posttime">
+                    July 15th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/14/mysql_yh/">
+            <div class="list">
+                <div class="postname">
+                    关于mysql优化
+                </div>
+                <div class="posttime">
+                    July 14th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/14/redis1/">
+            <div class="list">
+                <div class="postname">
+                    验证码的时效性
+                </div>
+                <div class="posttime">
+                    July 14th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/14/linux1/">
+            <div class="list">
+                <div class="postname">
+                    Linux文件操作
+                </div>
+                <div class="posttime">
+                    July 14th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/06/pyms/">
+            <div class="list">
+                <div class="postname">
+                    Python面试算法题
+                </div>
+                <div class="posttime">
+                    July 6th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/06/suan/">
+            <div class="list">
+                <div class="postname">
+                    Python五大排序算法
+                </div>
+                <div class="posttime">
+                    July 6th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/07/06/sjfzd/">
+            <div class="list">
+                <div class="postname">
+                    Python算法时间复杂度
+                </div>
+                <div class="posttime">
+                    July 6th
+                </div>
+            </div>
+        </a>
+    
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-<!-- MathJax -->
-
-<!-- Katex -->
-
-
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Mr.LU | Theme By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
 
 
-<!-- busuanzi  -->
+<script src="/libs/highlight/highlight.pack.js"></script>
 
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/js.js"></script>
 
-
-<!-- ClickLove -->
-
-
-<script src="/js/clickLove.js"></script>
-
-
-<!-- CodeCopy -->
-
-
-<link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
-
-
-
-    
-  </div>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-
 </html>

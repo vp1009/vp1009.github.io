@@ -1,1179 +1,279 @@
 <!DOCTYPE html>
-
-
-<html lang="en">
-
-
+<html lang="zh">
 <head>
-  <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        Originally
+    </title>
+    <meta name="description" content=  >
+    <meta name="keywords" content=  >
     
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <title>
-     Originally
-  </title>
-  <meta name="generator" content="hexo-theme-ayer">
-  
-  <link rel="shortcut icon" href="/favicon.ico" />
-  
-  
-<link rel="stylesheet" href="/dist/main.css">
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
 
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
 
-  
-<link rel="stylesheet" href="/css/custom.css">
+    
+<link rel="stylesheet" href="/css/style.css">
 
-  
-  
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-  
-  
-
-  
-
-<link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
 </head>
-
-</html>
-
-<body>
-  <div id="app">
-    <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/timg.png" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">Originally</a></h1>
-      <div id="subtitle-box">
-        
-          <span id="subtitle">Make excellence a habit</span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-<div id="main">
-  <section class="outer">
-  <article class="articles">
-    
-    
-    
-    
-    <article id="post-jdt" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/07/jdt/"
-    >安慰剂进度条</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/07/jdt/" class="article-date">
-  <time datetime="2020-05-07T04:20:02.000Z" itemprop="datePublished">2020-05-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-upyun" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/06/upyun/"
-    >又拍云存储</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/06/upyun/" class="article-date">
-  <time datetime="2020-05-05T20:04:30.000Z" itemprop="datePublished">2020-05-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="安装模块"><a href="#安装模块" class="headerlink" title="安装模块"></a>安装模块</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install upyun</span><br></pre></td></tr></table></figure>
-
-<h4 id="django接口"><a href="#django接口" class="headerlink" title="django接口"></a>django接口</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 又拍云存储</span></span><br><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UpYun</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 获取文件</span></span><br><span class="line">        file = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line">        <span class="comment"># 新建又拍云实例</span></span><br><span class="line">        print(file)</span><br><span class="line">        up = upyun.UpYun(<span class="string">'pc-upyun'</span>,<span class="string">'test111'</span>,<span class="string">'3KgVpePLSHkBF0EmWWWkOcgNak2e2STd'</span>)</span><br><span class="line">        <span class="comment"># 声明头部信息</span></span><br><span class="line">        headers=&#123;<span class="string">'x-gmkerl-rotate'</span>:<span class="string">'auto'</span>&#125;</span><br><span class="line">        <span class="comment"># 上传图像</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> file.chunks():</span><br><span class="line">            res = up.put(<span class="string">'/touxiang_test1.jpg'</span>,chunk,checksum=<span class="literal">True</span>,headers=headers)</span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:file.name&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'upyun/'</span>,UpYun.as_view())</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="vue接口"><a href="#vue接口" class="headerlink" title="vue接口"></a>vue接口</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;!-- &lt;/img :src="src" /&gt; --&gt;</span><br><span class="line">        又拍云存储：&lt;Avatar :src="yp_url" :width='150' fil='fill'&gt;&lt;/Avatar&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;input type=<span class="string">"file"</span> @change=<span class="string">"upload_upyun"</span> /&gt;</span><br><span class="line">        &lt;div class="upload"&gt;</span><br><span class="line">            拖拽上传</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            src :<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  mounted:function()&#123;</span><br><span class="line">    // 每次进入页面 获取最新的token</span><br><span class="line">    this.get_token()</span><br><span class="line">    // 注册拖拽容器</span><br><span class="line">    let upload = document.querySelector(<span class="string">"#upload"</span>)</span><br><span class="line">    // 声明监听事件</span><br><span class="line">    upload.addEventListener(<span class="string">'dragenter'</span>,this.onDrag,false);</span><br><span class="line">    upload.addEventListener(<span class="string">'dragover'</span>,this.onDrag,false)</span><br><span class="line">    upload.addEventListener(<span class="string">'drop'</span>,this.onDrop,false)</span><br><span class="line">&#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">        // 监听用户鼠标</span><br><span class="line">        onDrag(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">        &#125;,</span><br><span class="line">        onDrop(e)&#123;</span><br><span class="line">          e.stopPropagation();</span><br><span class="line">          e.preventDefault();</span><br><span class="line">          // 调用自定义方法</span><br><span class="line">          this.upload_upyun(e.dataTransfer.files)</span><br><span class="line">        &#125;,</span><br><span class="line">      // 又拍云 拖拽方法</span><br><span class="line">        upload_upyun:function(e)&#123;</span><br><span class="line">          // 获取拖拽文件</span><br><span class="line">          let file = e.target.files[<span class="number">0</span>]</span><br><span class="line">          // 声明参数</span><br><span class="line">          let param = new FormData();</span><br><span class="line">          param.append(<span class="string">'file'</span>,file);</span><br><span class="line">          // 声明头部信息</span><br><span class="line">          const config = &#123;</span><br><span class="line">            headers:&#123;</span><br><span class="line">              <span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;     this.axios.post('http://127.0.0.1:8000/upyun/',param,config).then((result=&gt;&#123;</span><br><span class="line">            console.log(result)</span><br><span class="line">          &#125;))</span><br><span class="line">        &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.upload &#123;</span><br><span class="line">  margin: <span class="number">100</span>px auto;</span><br><span class="line">  width: <span class="number">300</span>px;</span><br><span class="line">  height: <span class="number">150</span>px;</span><br><span class="line">  border: <span class="number">2</span>px dashed <span class="comment">#f00;</span></span><br><span class="line">  padding-top: <span class="number">50</span>px;</span><br><span class="line">  padding-left: <span class="number">80</span>px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="又拍云文件操作"><a href="#又拍云文件操作" class="headerlink" title="又拍云文件操作"></a>又拍云文件操作</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> upyun</span><br><span class="line"><span class="comment">#实例化</span></span><br><span class="line">up = upyun.UpYun(<span class="string">"空间名"</span>,<span class="string">'操作员'</span>,<span class="string">'密码'</span>)</span><br><span class="line"><span class="comment">#读内存上传</span></span><br><span class="line">up.put(<span class="string">'自定义文件名'</span>,<span class="string">'文件内容'</span>)</span><br><span class="line"><span class="comment">#文件流操作（节省内存）</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#目录操作</span></span><br><span class="line">up.mkdir(<span class="string">'/文件夹名/'</span>)</span><br><span class="line"><span class="comment">#移动文件</span></span><br><span class="line">up.move(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#复制文件</span></span><br><span class="line">up.copy(<span class="string">'/文件路径/文件名'</span>,<span class="string">'/新文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#断点续传</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'文件路径/文件名'</span>,<span class="string">'rb'</span>)<span class="keyword">as</span> f:</span><br><span class="line">    res = up.put(<span class="string">'自定义文件名'</span>,f,checksum=<span class="literal">True</span>，need_resume=<span class="literal">True</span>)</span><br><span class="line"><span class="comment">#下载</span></span><br><span class="line">res = up.get(<span class="string">'/文件路径/文件名'</span>)</span><br><span class="line"><span class="comment">#删除</span></span><br><span class="line">up.delete(<span class="string">'/文件路径/文件名'</span>)</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-qiniu" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/01/qiniu/"
-    >七牛云存储</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/01/qiniu/" class="article-date">
-  <time datetime="2020-04-30T18:10:20.000Z" itemprop="datePublished">2020-05-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="安装七牛云"><a href="#安装七牛云" class="headerlink" title="安装七牛云"></a>安装七牛云</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install qiniu</span><br></pre></td></tr></table></figure>
-
-<h4 id="django接口获取token"><a href="#django接口获取token" class="headerlink" title="django接口获取token"></a>django接口获取token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 七牛云 换取token的一个凭证</span></span><br><span class="line"><span class="keyword">from</span> qiniu <span class="keyword">import</span> Auth</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QiNiu</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment"># 声明验证对象   传参数</span></span><br><span class="line">        q = Auth(<span class="string">'xl8p2s1KY20muvLAL6OKNP7LnJhWX_XLiu2I3QhE'</span>,<span class="string">'8y0ehfGfHy55b2Y8ZvMTpOr34SbsS4a5r88v-7jF'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取token           空间的名称</span></span><br><span class="line">        token  = q.upload_token(<span class="string">"pc1009"</span>)</span><br><span class="line">        <span class="comment"># 返回token</span></span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'token'</span>:token&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'qiniu/'</span>,QiNiu.as_view()),</span><br></pre></td></tr></table></figure>
-
-<h4 id="vue接口请求图片上传"><a href="#vue接口请求图片上传" class="headerlink" title="vue接口请求图片上传"></a>vue接口请求图片上传</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;table&gt;</span><br><span class="line">        &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                七牛用户头像：</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;input type=<span class="string">"file"</span> @change=<span class="string">"qiniu"</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            &lt;td&gt;</span><br><span class="line">                &lt;img :src=<span class="string">"src"</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">            &lt;/td&gt;</span><br><span class="line">            </span><br><span class="line">        &lt;/tr&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    data () &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">        //图片路径变量</span><br><span class="line">            src:<span class="string">''</span>,</span><br><span class="line">        //获取token变量</span><br><span class="line">            token:<span class="string">''</span>,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    //钩子函数</span><br><span class="line">    mounted:function()&#123;</span><br><span class="line">        //获取token</span><br><span class="line">        this.get_token();</span><br><span class="line">        &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">    	// 获取后端token</span><br><span class="line">        get_token:function()&#123;</span><br><span class="line">            this.axios.get('http://127.0.0.1:8000/qiniu/').then(res=&gt;&#123;         </span><br><span class="line">                    console.log(res)</span><br><span class="line">                    this.token = res.data.token</span><br><span class="line">                    console.log(this.token)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        //七牛上传</span><br><span class="line">        qiniu:function(e)&#123;</span><br><span class="line">            //获取文件</span><br><span class="line">            let file = e.target.files[<span class="number">0</span>];</span><br><span class="line">            //声明表单</span><br><span class="line">            let param = new FormData()    </span><br><span class="line">            param.append(<span class="string">'file'</span>,file,file.name)</span><br><span class="line">            param.append(<span class="string">'token'</span>,this.token)   </span><br><span class="line">            //自定义zxios</span><br><span class="line">            const axios_qiniu = this.axios.create(&#123;withCredentials:false&#125;)</span><br><span class="line"></span><br><span class="line">            //发送请求</span><br><span class="line">            axios_qiniu(&#123;</span><br><span class="line">                method:<span class="string">'POST'</span>,</span><br><span class="line">                // 华北</span><br><span class="line">                url:<span class="string">'http://up-z1.qiniu.com'</span>,</span><br><span class="line">                data:param,</span><br><span class="line">                timeout:<span class="number">30000</span></span><br><span class="line">            &#125;).then(res=&gt;&#123;</span><br><span class="line">                console.log(res)</span><br><span class="line">   			    // 拼接照片路由</span><br><span class="line">            	this.src = <span class="string">'http://q9v2u2gy5.bkt.clouddn.com/'</span>+result.data.key</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-ljq" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/01/ljq/"
-    >拦截器</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/01/ljq/" class="article-date">
-  <time datetime="2020-04-30T17:10:10.000Z" itemprop="datePublished">2020-05-01</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">beforeEnter:(to,from,next) =&gt;&#123;</span><br><span class="line">  <span class="keyword">if</span> (localStorage.getItem(<span class="string">"username"</span>))&#123;</span><br><span class="line">    console.log(<span class="string">'已经登陆'</span>)</span><br><span class="line">    next();</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  console.log(<span class="string">'没有登陆'</span>)</span><br><span class="line">  next(<span class="string">'/login'</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-pc" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/30/pc/"
-    >文件上传功能</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/30/pc/" class="article-date">
-  <time datetime="2020-04-30T04:50:20.000Z" itemprop="datePublished">2020-04-30</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="上传文件流程"><a href="#上传文件流程" class="headerlink" title="上传文件流程"></a>上传文件流程</h4><p>vue.js–&gt;axios–&gt;django接口–&gt;file来写文件–&gt;文件操作(可压缩文件，可同步到七牛云-又拍云)–&gt;提取文件名称–&gt;vue.js</p>
-<h4 id="上传文件vue-js"><a href="#上传文件vue-js" class="headerlink" title="上传文件vue.js"></a>上传文件vue.js</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">        &lt;table&gt;</span><br><span class="line">          &lt;tr&gt;</span><br><span class="line">            // Avatar 使图片展示为圆形</span><br><span class="line">            &lt;Avatar :src="src" :width="150" height="150px"&gt;&lt;/Avatar&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">          &lt;tr&gt;</span><br><span class="line">            &lt;td&gt;用户头像：&lt;/td&gt;</span><br><span class="line">            //当图片发生改变是@change不是click点击</span><br><span class="line">            &lt;td&gt;&lt;input type="file" @change="upload"&gt;&lt;/td&gt;</span><br><span class="line">          &lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// <span class="keyword">return</span>中定义s变量</span><br><span class="line"></span><br><span class="line">src:<span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//上传文件</span><br><span class="line">    upload:function (e) &#123;</span><br><span class="line"></span><br><span class="line">      //获取文件</span><br><span class="line">      let file = e.target.files[<span class="number">0</span>];</span><br><span class="line">      //声明表单参数</span><br><span class="line">      let param = new FormData();</span><br><span class="line"></span><br><span class="line">      param.append(<span class="string">'file'</span>,file,file.name);</span><br><span class="line"></span><br><span class="line">      //声明请求头</span><br><span class="line">       let config = &#123;headers:&#123;<span class="string">'Content-Type'</span>:<span class="string">'multipart/form-data'</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">      // 发送请求</span><br><span class="line">      this.axios.post('http://localhost:8000/upload/',param,config).then((res)=&gt;&#123;</span><br><span class="line">      </span><br><span class="line">            console.log(res);</span><br><span class="line">            </span><br><span class="line">            //图片的路径要拼接起来</span><br><span class="line">            this.src = <span class="string">'http://localhost:8000/static/upload/'</span>+res.data.filename;</span><br><span class="line">            </span><br><span class="line">      &#125;)</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="配置setting文件上传路径"><a href="#配置setting文件上传路径" class="headerlink" title="配置setting文件上传路径"></a>配置setting文件上传路径</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line"></span><br><span class="line">STATICFILES_DIRS[</span><br><span class="line">	os.path.join(BASE_DIR,<span class="string">'static'</span>)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义文件夹</span></span><br><span class="line">UPLOAD_ROOT = os.path.join(BASE_DIR,<span class="string">'static/upload'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="上传文件接口"><a href="#上传文件接口" class="headerlink" title="上传文件接口"></a>上传文件接口</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入上传文件夹配置</span></span><br><span class="line"><span class="keyword">from</span> mydjango.settings <span class="keyword">import</span> UPLOAD_ROOT</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment">#文件上传通用类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UploadFile</span><span class="params">(APIView)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self,request)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#接收参数</span></span><br><span class="line">        myfile = request.FILES.get(<span class="string">'file'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#建立文件流对象</span></span><br><span class="line">        f = open(os.path.join(UPLOAD_ROOT,<span class="string">''</span>,myfile.name.replace(<span class="string">'"'</span>,<span class="string">''</span>)),<span class="string">'wb'</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#写入</span></span><br><span class="line">        <span class="keyword">for</span> chunk <span class="keyword">in</span> myfile.chunks():</span><br><span class="line">            f.write(chunk)</span><br><span class="line">        f.close()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Response(&#123;<span class="string">'filename'</span>:myfile.name.replace(<span class="string">'"'</span>,<span class="string">''</span>)&#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-lock" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/29/lock/"
-    >账号锁定功能</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/29/lock/" class="article-date">
-  <time datetime="2020-04-29T11:20:20.000Z" itemprop="datePublished">2020-04-29</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="利用redis数据库实现账户锁定"><a href="#利用redis数据库实现账户锁定" class="headerlink" title="利用redis数据库实现账户锁定"></a>利用redis数据库实现账户锁定</h4><ul>
-<li>需求 –&gt;  用户输入密码错误，连续错误三次以上，封锁账号在设定时间内不能再登录，直至封锁时间结束后用户才能再登录。 </li>
-<li>首先我们用到redis中的 lpush – expire – ttl – llen 其方法</li>
-</ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 建立连接连接</span></span><br><span class="line">host = <span class="string">"localhost"</span></span><br><span class="line">port = <span class="number">6379</span></span><br><span class="line">r = redis.Redis(host=host,port=port)</span><br><span class="line"><span class="comment">#用户名</span></span><br><span class="line">username = <span class="string">'123'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#账号密码输入错误5次后锁住账号逻辑</span></span><br><span class="line"><span class="comment">#列表操作</span></span><br><span class="line">r.lpush(username,<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置过期时间,单位是秒</span></span><br><span class="line">r.expire(username,<span class="number">30</span>)</span><br><span class="line"><span class="comment">#打印过期时间</span></span><br><span class="line">print(r.ttl(username))</span><br><span class="line"><span class="comment">#打印列表长度</span></span><br><span class="line">print(r.llen(username))</span><br><span class="line"><span class="keyword">if</span> r.llen(username) &gt; <span class="number">3</span>:</span><br><span class="line">    print(<span class="string">'你的账号被锁定'</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="以下是在项目中实现锁定功能"><a href="#以下是在项目中实现锁定功能" class="headerlink" title="以下是在项目中实现锁定功能"></a>以下是在项目中实现锁定功能</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#登录接口</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Login</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        <span class="comment">#接收参数</span></span><br><span class="line">        username = request.GET.get(<span class="string">'username'</span>,<span class="literal">None</span>)</span><br><span class="line">        password = request.GET.get(<span class="string">'password'</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="comment">#验证验证码</span></span><br><span class="line">        <span class="keyword">if</span> code != redis_code:</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">403</span>,<span class="string">'message'</span>:<span class="string">'验证码错误'</span>&#125;)</span><br><span class="line">        <span class="comment">#如果用户的列表长度大于等于3</span></span><br><span class="line">        <span class="keyword">if</span> r.llen(username) &gt;= <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">403</span>,<span class="string">'message'</span>:<span class="string">'你的账号已被锁定'</span>&#125;)</span><br><span class="line">        <span class="comment">#查询用户数据</span></span><br><span class="line">        user = User.objects.filter(username=username).first()</span><br><span class="line">        <span class="keyword">if</span> user:</span><br><span class="line">            <span class="comment">#比较密码是否一致，如果一致则登录成功</span></span><br><span class="line">            <span class="keyword">if</span> user.password == make_password(password):</span><br><span class="line">                <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">200</span>,<span class="string">'message'</span>:<span class="string">'登陆成功'</span>,<span class="string">'uid'</span>:user.id,<span class="string">'username'</span>:user.username&#125;)</span><br><span class="line">            <span class="comment">#不一致则计数加1，返回密码错误</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r.lpush(username,<span class="number">1</span>)</span><br><span class="line">                r.expire(username,<span class="number">30</span>)</span><br><span class="line">                <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">403</span>,<span class="string">'message'</span>:<span class="string">'用户名或密码错误'</span>&#125;)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>:<span class="number">403</span>,<span class="string">'message'</span>:<span class="string">'用户名或密码错误'</span>&#125;)</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-pcys" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/29/pcys/"
-    >图片压缩水印</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/29/pcys/" class="article-date">
-  <time datetime="2020-04-28T18:10:20.000Z" itemprop="datePublished">2020-04-29</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#压缩 两种压缩模式，png不适合压缩，jpg适合</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment">#读图</span></span><br><span class="line">img = cv2.imread(<span class="string">'./dingding.png'</span>)</span><br><span class="line"><span class="comment">#开始压缩 png压缩等级清晰0-9模糊</span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.png'</span>,img,[cv2.IMWRITE_PNG_COMPRESSION,<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#jpg压缩等级清晰0-100模糊 </span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.jpg'</span>,img,[cv2.IMWRITE_JPEG_QUALITY,<span class="number">50</span>])</span><br></pre></td></tr></table></figure>
-
-<h4 id="加水印"><a href="#加水印" class="headerlink" title="加水印"></a>加水印</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘画库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw</span><br><span class="line"><span class="comment">#字体库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont</span><br><span class="line"><span class="comment">#图片库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment">#加水印</span></span><br><span class="line">img = Image.open(<span class="string">'.//static/upload/'</span>+myfile_name)</span><br><span class="line"><span class="comment"># 获取宽高</span></span><br><span class="line">width, height = img.size</span><br><span class="line"><span class="comment"># 根据图片大小定义logo大小</span></span><br><span class="line">text = <span class="string">'哈哈哈'</span></span><br><span class="line"><span class="comment">#字体</span></span><br><span class="line">font = ImageFont.truetype(font=<span class="string">'C:\Windows\Fonts\FZXKJW.TTF'</span>,size=<span class="number">35</span>)</span><br><span class="line"><span class="comment"># 获取字体宽高</span></span><br><span class="line">font_width, font_height = font.getsize(text)</span><br><span class="line"><span class="comment"># 使用画笔</span></span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"><span class="comment"># 写入文本 参数（（x,y），水印文字，颜色，字体）</span></span><br><span class="line">draw.text((width-font_width,height-font_height), text,fill=(<span class="number">76</span>,<span class="number">234</span>,<span class="number">124</span>,<span class="number">180</span>), font=font)</span><br><span class="line"><span class="comment"># 根据路径保存文件 </span></span><br><span class="line">img.save(os.path.join(UPLOAD_ROOT, <span class="string">''</span>, myfile_name))</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-login_weibo" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/28/login_weibo/"
-    >微博的第三方登陆</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/28/login_weibo/" class="article-date">
-  <time datetime="2020-04-28T11:19:20.000Z" itemprop="datePublished">2020-04-28</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="申请新浪微博应用流程"><a href="#申请新浪微博应用流程" class="headerlink" title="申请新浪微博应用流程"></a>申请新浪微博应用流程</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">创建微博账号 --&gt; 完善开发者信息 --&gt; 点击应用 --&gt; 如果没有应用我们 点击微连接 --&gt;网站接入 --&gt; 点击立即接入 --&gt; 创建就OK</span><br><span class="line"></span><br><span class="line">创建完成后 -- 点击应用信息</span><br><span class="line"></span><br><span class="line"> <span class="number">1</span>  App Key：<span class="number">4216464481</span> -- appID</span><br><span class="line">    App Secret：a58f0f7f68a0c78fecbb150c163035c9 -- app秘钥</span><br><span class="line"> <span class="number">2</span> 高级信息 -- 自定义回调页</span><br><span class="line"> <span class="number">3</span> 测试信息 -- 加入测试账号</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="第三方登陆流程图"><a href="#第三方登陆流程图" class="headerlink" title="第三方登陆流程图"></a>第三方登陆流程图</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">login (登陆页面)--&gt;新浪微博拼接跳转地址--&gt;新浪微博登陆--&gt;1:如果登陆不成功，则需找回密码 2:如果成功</span><br><span class="line">2 --&gt; 成功之后，回调到django系统 返回code --&gt; 后端接收code，利用code和新浪微博交换token,token带表获取新浪微博的名称 -----&gt;&gt;&gt; 以下 有两种情况</span><br><span class="line">						</span><br><span class="line">			1：曾经登陆过--&gt; 我们直接帮助用户登陆</span><br><span class="line">			<span class="number">2</span>：如果没有登陆过，我直接存入到user库中</span><br><span class="line">			</span><br><span class="line">			   最后共同目标将账号返回给前端</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="创建-click点击事件"><a href="#创建-click点击事件" class="headerlink" title="创建@click点击事件"></a>创建@click点击事件</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">// 新浪微博</span><br><span class="line">xinliang:function()&#123;</span><br><span class="line"></span><br><span class="line">	//拼接url</span><br><span class="line"> 		let clinet_id = <span class="number">4216464481</span>;</span><br><span class="line"></span><br><span class="line"> 		let url = <span class="string">"https://api.weibo.com/oauth2/authorize?client_id=4216464481&amp;redirect_uri=http://127.0.0.1:8000/md_admin_weibo"</span>;</span><br><span class="line"></span><br><span class="line"> 		//跳转</span><br><span class="line">	  window.location.href = url;</span><br><span class="line">&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="将urls路由中配置回调参数"><a href="#将urls路由中配置回调参数" class="headerlink" title="将urls路由中配置回调参数"></a>将urls路由中配置回调参数</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'md_admin_weibo/'</span>,wb_back),</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="获取code值"><a href="#获取code值" class="headerlink" title="获取code值"></a>获取code值</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">wb_back</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 接收参数</span></span><br><span class="line">    code = request.GET.get(<span class="string">'code'</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义token接口地址</span></span><br><span class="line">    url = <span class="string">"https://api.weibo.com/oauth2/access_token"</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义参数</span></span><br><span class="line">    re = requests.post(url, data=&#123;</span><br><span class="line">        <span class="string">"client_id"</span>: <span class="string">"4216464481"</span>,</span><br><span class="line">        <span class="string">"client_secret"</span>: <span class="string">"a58f0f7f68a0c78fecbb150c163035c9"</span>,</span><br><span class="line">        <span class="string">"grant_type"</span>: <span class="string">"authorization_code"</span>, <span class="comment"># 写死</span></span><br><span class="line">        <span class="string">"code"</span>: code,</span><br><span class="line">        <span class="comment"># 回调的地址</span></span><br><span class="line">        <span class="string">"redirect_uri"</span>: <span class="string">"http://127.0.0.1:8000/md_admin_weibo"</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h5 id="post-请求-是将access-token值-取出来，-还有你的微博user-id"><a href="#post-请求-是将access-token值-取出来，-还有你的微博user-id" class="headerlink" title="post 请求 是将access_token值 取出来， 还有你的微博user_id"></a>post 请求 是将access_token值 取出来， 还有你的微博user_id</h5><h4 id="之后换取新浪微博用户昵称"><a href="#之后换取新浪微博用户昵称" class="headerlink" title="之后换取新浪微博用户昵称"></a>之后换取新浪微博用户昵称</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">res = requests.get(<span class="string">'https://api.weibo.com/users/show.json'</span>,params=&#123;<span class="string">'access_token'</span>:re.json()[<span class="string">'access_token'</span>],<span class="string">'uid'</span>:re.json()[<span class="string">'uid'</span>]&#125;)</span><br><span class="line"></span><br><span class="line">    sina_id = <span class="string">''</span>  <span class="comment"># 1009_nan</span></span><br><span class="line">    user_id = <span class="string">''</span>  <span class="comment"># 10</span></span><br><span class="line">    <span class="comment"># 判断是否用新浪微博登陆过</span></span><br><span class="line">    user = User.objects.filter(username=str(res.json()[<span class="string">'name'</span>])).first()</span><br><span class="line">    <span class="keyword">if</span> user:</span><br><span class="line">        <span class="comment"># 代表曾经用账号登陆过</span></span><br><span class="line">        sina_id = user.username</span><br><span class="line">        user_id = user.id</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 首次登陆，入库新浪微博账号</span></span><br><span class="line">        user = User(username=str(res.json()[<span class="string">'name'</span>]),password=<span class="string">''</span>)</span><br><span class="line">        user.save()</span><br><span class="line">        user = User.objects.filter(username=str(res.json()[<span class="string">'name'</span>])).first()</span><br><span class="line">    <span class="comment"># 重定向到主页面</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">"http://localhost:8080?sina_id="</span>+str(sina_id)+<span class="string">"&amp;uid="</span>+str(user_id))</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="返回前端-接收第三方参数"><a href="#返回前端-接收第三方参数" class="headerlink" title="返回前端 接收第三方参数"></a>返回前端 接收第三方参数</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var sina_id = this.$route.query.sina_id  // weibo名称</span><br><span class="line">var user_id = this.$route.query.uid   // userid</span><br><span class="line"><span class="keyword">if</span> (sina_id)&#123;</span><br><span class="line">	//自动帮用户进行登录操作</span><br><span class="line">	// 存入localStorage 取则用localStorage.getItem()</span><br><span class="line">	localStorage.setItem(<span class="string">"username"</span>,sina_id)</span><br><span class="line">	localStorage.setItem(<span class="string">"uid"</span>,user_id)</span><br><span class="line">	this.username = sina_id</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-localStorage" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/localStorage/"
-    >LocalStorage简介</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/localStorage/" class="article-date">
-  <time datetime="2020-04-27T02:20:33.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="localstorage（本地存储）与sessionStorage-会话存储"><a href="#localstorage（本地存储）与sessionStorage-会话存储" class="headerlink" title="localstorage（本地存储）与sessionStorage( 会话存储 )"></a>localstorage（本地存储）与sessionStorage( 会话存储 )</h4><p> localstorage（本地存储）以文件的方式存储在本地,永久保存（不主动删除，则一直存在）；sessionstorage( 会话存储 ) ,临时保存。 </p>
-<p> localStorage和sessionStorage只能存储字符串类型，对于复杂的对象可以使用ECMAScript提供的JSON对象的stringify和parse来处理。 </p>
-<h4 id="localstorage"><a href="#localstorage" class="headerlink" title="localstorage"></a>localstorage</h4><p> localStorage中一般浏览器支持的是4M大小，这个在不同的浏览器中localStorage会有所不同。 </p>
-<h5 id="存储数据"><a href="#存储数据" class="headerlink" title="存储数据"></a>存储数据</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">"username"</span>,this.username)</span><br></pre></td></tr></table></figure>
-
-<h5 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name = localStorage.getItem(<span class="string">"username"</span>)</span><br></pre></td></tr></table></figure>
-
-<h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.removeItem(<span class="string">'username'</span>)</span><br></pre></td></tr></table></figure>
-
-<h5 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h5><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">'username'</span>, <span class="string">' '</span> + response.data.result.username)</span><br></pre></td></tr></table></figure>
-
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/localstorage/" rel="tag">localstorage</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-huadong" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/04/27/huadong/"
-    >滑动验证码</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/04/27/huadong/" class="article-date">
-  <time datetime="2020-04-26T18:10:02.000Z" itemprop="datePublished">2020-04-27</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h4 id="在template中"><a href="#在template中" class="headerlink" title="在template中"></a>在template中</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;drag-verify :width=<span class="string">"width"</span></span><br><span class="line">             :height=<span class="string">"height"</span></span><br><span class="line">             :text=<span class="string">"text"</span></span><br><span class="line">             ref=<span class="string">"Verify"</span>&gt;</span><br><span class="line">&lt;/drag-verify&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="在script设置属性–-gt-npm-install-vue-drag-verify-–save"><a href="#在script设置属性–-gt-npm-install-vue-drag-verify-–save" class="headerlink" title="在script设置属性–&gt; (npm install vue-drag-verify –save)"></a>在script设置属性–&gt; (npm install vue-drag-verify –save)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 导包</span><br><span class="line">import dragVerify from &#39;vue-drag-verify&#39;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      &#x2F;&#x2F; 在data里面设置滑动的属性</span><br><span class="line">      width: 320,</span><br><span class="line">      height: 42,</span><br><span class="line">      text: &#39;请将滑块拖到最右侧&#39;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;，</span><br><span class="line">  &#x2F;&#x2F; 注册标签</span><br><span class="line">  components: &#123;</span><br><span class="line">    &#39;dragVerify&#39;: dragVerify</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;&#x2F;检验是否拖动</span><br><span class="line">  methods：&#123;</span><br><span class="line">      &#x2F;&#x2F;滑块是否拖动false为未拖动至最右侧反之为true</span><br><span class="line">			if(this.$refs.Verify.isPassing &#x3D;&#x3D; false)&#123;</span><br><span class="line">				this.$Notice(&#39;请拖动滑块&#39;)</span><br><span class="line">			&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="使用selnium破解滑块"><a href="#使用selnium破解滑块" class="headerlink" title="使用selnium破解滑块"></a>使用selnium破解滑块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriverfrom selenium.webdriver import ChromeOptionsfrom selenium.webdriver import ActionChainsoption &#x3D; ChromeOptions()  # 实例化一个ChromeOptions对象option.add_experimental_option(&#39;excludeSwitches&#39;, [&#39;enable-automation&#39;])  # 以键值对的形式加入参数browser &#x3D; webdriver.Chrome(options&#x3D;option)#发起请求browser.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;login)#定位滑块button &#x3D; browser.find_element_by_class_name(&quot;dv_handler&quot;)action &#x3D; ActionChains(browser)#获取小球长度mybutton &#x3D; button.size.get(&#39;width&#39;)#获取滑块轨道总长mytext &#x3D; browser.find_element_by_class_name(&#39;dv_text&#39;).size.get(&#39;width&#39;)#按住拖动action.click_and_hold(button).perform()#拖动位置action.move_by_offset(int(mytext)-int(mybutton),0).perform()</span><br></pre></td></tr></table></figure>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-  </article>
-  
-
-  
-  <nav class="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
-  </nav>
-  
-</section>
+<body id="bodyx">
+    <div class="hd logodiv">
+    <img src="/img/001.jpg" class="logopng" alt="logo">
+    <p class="logot">
+         Originally 
+         <span class="logo_2"></span>
+        <h3 class="words" style="font-weight: bold;font-family: Georgia;"> 
+             
+        </h3>
+    </p>
 </div>
 
-      <footer class="footer">
-  <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2019-2020
-        <i class="ri-heart-fill heart_icon"></i> Mr.L
-      </li>
-    </ul>
-    <ul>
-      <li>
+
+<div class="hd">
+    <ol class="breadcrumb">
         
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
-  </div>
-</footer>
-      <div class="float_btns">
-        <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
+
+            
+<script src="/libs/jquery.min.js"></script>
+
+            
+<script src="/js/search.js"></script>
+
+            
+                <form class="site-search-form">
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(100);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
+    </ol>
+    <hr>
 </div>
-
-      </div>
-    </main>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
-  
-  <div class="logo">
-    <a href="/"><img src="/images/001.jpg" alt="Originally"></a>
-  </div>
-  
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">HOME</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">ARCHIVE</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about/">ABOUT</a>
-    </li>
-    
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="Search">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <script>
-      if (window.matchMedia("(max-width: 768px)").matches) {
-        document.querySelector('.content').classList.remove('on');
-        document.querySelector('.sidebar').classList.remove('on');
-      }
-    </script>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i></p>
-  <div class="reward-box">
+<div class="hd">
     
     
-  </div>
-</div>
-    
-<script src="/js/jquery-2.0.3.min.js"></script>
-
-
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<!-- Tocbot -->
-
-<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
+        
+        
+            <div class="titlex">
+                <p><span class="jing"></span><span style="color: #6d9ee7;"> 公元</span> 
+                 2020年 🕛
+                </p>
+            </div>
+            
+        
+        <a class="flink" href="/2020/05/06/upyun/">
+            <div class="list">
+                <div class="postname">
+                    又拍云存储
+                </div>
+                <div class="posttime">
+                    May 6th
                 </div>
             </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/01/qiniu/">
+            <div class="list">
+                <div class="postname">
+                    七牛云存储
+                </div>
+                <div class="posttime">
+                    May 1st
+                </div>
             </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/05/01/ljq/">
+            <div class="list">
+                <div class="postname">
+                    拦截器
+                </div>
+                <div class="posttime">
+                    May 1st
+                </div>
             </div>
-
-        </div>
-
-    </div>
-
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/30/pc/">
+            <div class="list">
+                <div class="postname">
+                    文件上传功能
+                </div>
+                <div class="posttime">
+                    April 30th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/29/lock/">
+            <div class="list">
+                <div class="postname">
+                    账号锁定功能
+                </div>
+                <div class="posttime">
+                    April 29th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/29/pcys/">
+            <div class="list">
+                <div class="postname">
+                    图片压缩水印
+                </div>
+                <div class="posttime">
+                    April 29th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/28/login_weibo/">
+            <div class="list">
+                <div class="postname">
+                    微博的第三方登陆
+                </div>
+                <div class="posttime">
+                    April 28th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/27/localStorage/">
+            <div class="list">
+                <div class="postname">
+                    LocalStorage简介
+                </div>
+                <div class="posttime">
+                    April 27th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/27/huadong/">
+            <div class="list">
+                <div class="postname">
+                    滑动验证码
+                </div>
+                <div class="posttime">
+                    April 27th
+                </div>
+            </div>
+        </a>
+    
+        
+        
+        <a class="flink" href="/2020/04/26/yzmsp/">
+            <div class="list">
+                <div class="postname">
+                    智能识别验证码
+                </div>
+                <div class="posttime">
+                    April 26th
+                </div>
+            </div>
+        </a>
+    
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script>
-
-<!-- MathJax -->
-
-<!-- Katex -->
-
-
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: Mr.LU | Theme By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
     
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
+    <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+        <input type="checkbox" name="switch" id="update_style">
+        <span class="el-switch-style"></span>
+    </label>
+
+    <!--         <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script> -->
+</p>
+</div>
+
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
 
 
-<!-- busuanzi  -->
+<script src="/libs/highlight/highlight.pack.js"></script>
 
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+<script src="/js/js.js"></script>
 
-
-<!-- ClickLove -->
-
-
-<script src="/js/clickLove.js"></script>
-
-
-<!-- CodeCopy -->
-
-
-<link rel="stylesheet" href="/css/clipboard.css">
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
-
-
-
-    
-  </div>
+<style type="text/css">
+.v * {
+color: #698fca;
+}
+.v .vlist .vcard .vhead .vsys {
+color: #3a3e4a;
+}
+.v .vlist .vcard .vh .vmeta .vat {
+color: #638fd5;
+}
+.v .vlist .vcard .vhead .vnick {
+color: #6ba1ff;
+}
+.v a {
+color: #8696b1;
+}
+.v .vlist .vcard .vhead .vnick:hover {
+color: #669bfc;
+}
+</style>
+    <script type="text/javascript" color="173,174,173" opacity='1' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
 </body>
-
 </html>

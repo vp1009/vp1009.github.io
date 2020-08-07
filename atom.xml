@@ -66,31 +66,6 @@
   </entry>
   
   <entry>
-    <title>啊这！生成器</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/scq/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/scq/</id>
-    <published>2020-07-29T11:44:20.000Z</published>
-    <updated>2020-07-29T11:45:14.506Z</updated>
-    
-    <content type="html"><![CDATA[<p>在python中，一边循环一边计算的机制，称之为生成器（generator）</p><h4 id="生成器的存在："><a href="#生成器的存在：" class="headerlink" title="生成器的存在："></a>生成器的存在：</h4><p>列表所有的数据都在内存中，如果有海量的数据将会非常消耗内存。<br>如：仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。<br>如果列表元素按照某种算法退出来，那我们就可以在循环的过程中不断推算出后续的元素，这样就不必创建完整的list，从而节省大量的空间。</p><p>说白点！！ 要想得到庞大的数据，又想让它占用空间少，就就就就用生成器！</p><p>第一种生成生成器的方法把【】改成（）则就是生成器</p><p>第二种 如果一个函数中包含yield关键字，那么这个函数就不在是个普通的函数，而是一个generator。调用函数就是创建了一个生成器。</p><h4 id="生成器的工作原理："><a href="#生成器的工作原理：" class="headerlink" title="生成器的工作原理："></a>生成器的工作原理：</h4><p>首先，生成器是一种特殊的迭代器，它的yield方法将迭代器的next，封装到了yield关键字中，他与return不同的是：遇见return就已经返回了，而遇见yield则我们去计算下一个元素的位置。</p><p>我们也可以通过next（）进行取值，也可以利用for循环（每次执行一次，取生成器里面一个值） 可以使用send（）强行修改yield的值。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>什么是生成器？<br>生成器仅仅保存了一套生成数值的算法，并且没有让这个算法现在就开始执行，而是我什么时候调它，它什么时候开始计算一个新的值，并给你返回。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;在python中，一边循环一边计算的机制，称之为生成器（generator）&lt;/p&gt;
-&lt;h4 id=&quot;生成器的存在：&quot;&gt;&lt;a href=&quot;#生成器的存在：&quot; class=&quot;headerlink&quot; title=&quot;生成器的存在：&quot;&gt;&lt;/a&gt;生成器的存在：&lt;/h4&gt;&lt;p&gt;列表所有
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Celery+Redis</title>
     <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/"/>
     <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/</id>
@@ -142,31 +117,6 @@
   </entry>
   
   <entry>
-    <title>验证码的时效性</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
-    <published>2020-07-14T01:02:20.000Z</published>
-    <updated>2020-07-22T12:00:29.936Z</updated>
-    
-    <content type="html"><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p><p>一，增加内存</p><p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p><p>二，搭建Redis集群</p><ol><li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li><li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li><li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li><li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li></ol><p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p><p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p><p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p><p>(2):什么时候整个集群不可用(cluster_state:fail)? </p><ul><li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li><li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li></ul><h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p><p>　　RDB：对redis中的数据周期性的持久化</p><h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p><p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p><p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p><p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p><p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p><p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p><p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p><p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p><p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p><p>AOF： append-only : true 开启aof策略</p><p>　　　　everysec: 每秒备份</p><p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p><p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p><h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？&lt;/p&gt;
-&lt;h3 id=&quot;思路&quot;&gt;
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Redis" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>关于mysql优化</title>
     <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/mysql_yh/"/>
     <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/mysql_yh/</id>
@@ -188,6 +138,31 @@
     
     
       <category term="Mysql" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>验证码的时效性</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
+    <published>2020-07-14T01:02:20.000Z</published>
+    <updated>2020-07-22T12:00:29.936Z</updated>
+    
+    <content type="html"><![CDATA[<p>redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？</p><h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>Redis场景，服务器内存不够了：</p><p>一，增加内存</p><p>redis存储在内存中，数据太多，占用大多内存，那么增加内存就是直接的方法，但是这个方法一般不采用，因为内存满了就加内存，满了就加，那代价太大，相当于用钱解决的问题，不首先考虑，一般有方面都做到最优化，才考虑此方法。</p><p>二，搭建Redis集群</p><ol><li>所有的redis节点批次互联（PING-PONG机制),内部使用二进制协议优化传输速度和宽带。</li><li>节点的fail是通过集群中超过半数的节点检测时效时才生效。</li><li>客户端与redis节点智联，不需要中间proxy层，客户端不需要连接集群所有的节点，连接集群中任何一个可用的节点即可。</li><li>redis-cluster把所有的物理节点映射到[0-16383]slot上，cluster负责维护node&lt;-&gt;slot&lt;-&gt;value</li></ol><p>Redis 集群中内置了 16384 个哈希槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，redis 会根据节点数量大致均等的将哈希槽映射到不同的节点，最多16384个节点。</p><p>节点间相互通信，一半以上节点ping不同一个节点，则说明此节点挂掉，从节点顶上</p><p>(1)集群中所有master参与投票,如果半数以上master节点与其中一个master节点通信超过(cluster-node-timeout),认为该master节点挂掉.</p><p>(2):什么时候整个集群不可用(cluster_state:fail)? </p><ul><li>如果集群任意master挂掉,且当前master没有slave，则集群进入fail状态。也可以理解成集群的[0-16383]slot映射不完全时进入fail状态。</li><li>如果集群超过半数以上master挂掉，无论是否有slave，集群进入fail状态。</li></ul><h4 id="Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）"><a href="#Redis服务器因某种原因崩掉了，redis的信息是不是就没了-（容灾方式）" class="headerlink" title="Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）"></a>Redis服务器因某种原因崩掉了，redis的信息是不是就没了 （容灾方式）</h4><p>redis 持久化策略：</p><p>　　RDB：对redis中的数据周期性的持久化</p><h4 id="优点"><a href="#优点" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、会生成多个数据文件，每个数据文件都代表了某一个时间的全部数据。非常适合做冷备。可以将数据上传到云服务备份。</p><p>　　　　2、RDB对redis对外提供的服务影响小，可以让redis保持高性能。</p><p>　　　　3、相比较来说，基于RDB文件重启恢复redis更快</p><p>　　AOF：对每条写入命令作为日志。以append-only模式写入日志。</p><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="　　　优点"></a>　　　优点</h4><p>​              1、可以更好的保护数据不丢失，一般AOF每隔1秒，通过后台线程执行一次fsync操作。最多丢失1s数据</p><p>　　　　2、文件以append-only模式写入，没有io开销。文件不容易损坏。损坏也很容易恢复。</p><p>　　　　3、AOF日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在rewrite log的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的merge后的日志文件ready的时候，再交换新老日志文件即可。</p><p>　　　　4、日志文件可读性强。适合做灾难性的误删除的紧急恢复。</p><p>一般线上环境我们会将2中机制都开启。具体的RDB策略和AOF策略都可以在redis.conf里面配置</p><p>RDB： save 60 1000 : 表示每60s有超过1000条数据更新就备份。</p><p>AOF： append-only : true 开启aof策略</p><p>　　　　everysec: 每秒备份</p><p>　　　　auto-aof-rewrite-percentage 100 : 当aof大小膨胀到上次2倍就备份</p><p>　　　　auto-aof-rewrite-min-size 64mb ： 和上面是 且 关系。 aof文件必须超过64m才会备份</p><h4 id="通过RDB恢复数据的步骤："><a href="#通过RDB恢复数据的步骤：" class="headerlink" title="通过RDB恢复数据的步骤："></a>通过RDB恢复数据的步骤：</h4><p>先将云服务的RDB备份数据copy到redis配置的备份目录。然后将aof关闭（一定要关闭，否则优先从aof日志文件本分，但是如果没有的话就创建空的。所以redis是无法加载rdb备份文件的）。然后重启redis，此时我们redis-cli 进入redis发现redis已经自动加载备份的rdb文件数据了。这时候手动命令启动aof。这时候redis就会备份aof日志。这启动aof是暂时的。我们停掉redis，在配置文件中修改将aof开启，然后再开启，现在redis已经恢复数据，且AOF已经开启了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;redis场景，服务器内存不够了，怎么办（或者说被人干蹦了），我们的redis信息是不是就没了，redis服务hi不是挂了，如何优化？容灾方式？分配redis多大内存，是否满足我们的生产的需求，一般我们会缓存到多大的一个数据量，峰值是多少？&lt;/p&gt;
+&lt;h3 id=&quot;思路&quot;&gt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Redis" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Redis/"/>
     
   </entry>
   
@@ -503,6 +478,30 @@
       
       
         &lt;h4 id=&quot;JWT认证&quot;&gt;&lt;a href=&quot;#JWT认证&quot; class=&quot;headerlink&quot; title=&quot;JWT认证&quot;&gt;&lt;/a&gt;JWT认证&lt;/h4&gt;&lt;p&gt; &lt;code&gt;Json web token (JWT)&lt;/code&gt;, 根据官网的定义，是为了在网络应用环境间传递声
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安慰剂进度条</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/</id>
+    <published>2020-05-07T04:20:02.000Z</published>
+    <updated>2020-05-07T15:37:05.454Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">data()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">&#x2F;&#x2F; 定义变量</span><br><span class="line">load_percnet&#x3D;&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">&#x2F;&#x2F;在某方法下写入</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
       
     
     </summary>
