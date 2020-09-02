@@ -142,7 +142,7 @@
     
     
     <span class="dot"></span>
-    <span>216 words</span>
+    <span>215 words</span>
     
   </div>
   
@@ -158,7 +158,7 @@
   
   </header>
   <div id="section" class="post-content">
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
+    <pre class="highlight"><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data()&#123;</span><br><span class="line">		return&#123;</span><br><span class="line">			&#x2F;&#x2F; 定义变量</span><br><span class="line">			load_percnet&#x3D;&#39;&#39;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		&#x2F;&#x2F;在某方法下写入</span><br><span class="line">		</span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre>
 
 
   </div>
@@ -249,31 +249,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

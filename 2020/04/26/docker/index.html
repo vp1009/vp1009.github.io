@@ -159,94 +159,94 @@
   </header>
   <div id="section" class="post-content">
     <h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>显示版本号</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --versions</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker --versions</span><br></pre>
 
 
 
 <p>显示镜像</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker images</span><br></pre>
 
 
 
 <p>保存镜像 </p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker save -o /home/dyufei/tensorflow.tar tensorflow/tensorflow</span><br><span class="line">或者 </span><br><span class="line">docker save tensorflow/tensorflow &gt; /home/dyufei/tensorflow.tar</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker save -o /home/dyufei/tensorflow.tar tensorflow/tensorflow</span><br><span class="line">或者 </span><br><span class="line">docker save tensorflow/tensorflow &gt; /home/dyufei/tensorflow.tar</span><br></pre>
 
 
 
 <p>加载镜像</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i tensorflow.tar</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker load -i tensorflow.tar</span><br></pre>
 
 
 
 <p>登录系统 镜像编号</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti <span class="number">6866</span></span><br><span class="line">docker run -it centos /bin/bash</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker run -ti <span class="number">6866</span></span><br><span class="line">docker run -it centos /bin/bash</span><br></pre>
 
 
 
 <p>登录系统 容器编号</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --privileged=true mycentos /usr/sbin/init</span><br><span class="line">docker <span class="keyword">exec</span> –it 容器编号 /bin/bash</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker run -d --privileged=true mycentos /usr/sbin/init</span><br><span class="line">docker <span class="keyword">exec</span> –it 容器编号 /bin/bash</span><br></pre>
 
 
 
 <p>进入虚拟机</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-machine ssh</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker-machine ssh</span><br></pre>
 
 
 
 <p>挂载共享文件夹</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -v /www:/mnt/www</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker run -v /www:/mnt/www</span><br></pre>
 
 
 
 <p>查看所有容器</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker ps -a</span><br></pre>
 
 
 
 <p>删除容器</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker rm</span><br></pre>
 
 
 
 <p>后台启动服务和端口映射</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -d -p <span class="number">8000</span>:<span class="number">8000</span> mycentos cmd</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker run -it -d -p <span class="number">8000</span>:<span class="number">8000</span> mycentos cmd</span><br></pre>
 
 
 
 
 <p>查看宿主ip</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-machine ip default</span><br><span class="line"><span class="number">192.168</span><span class="number">.99</span><span class="number">.100</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker-machine ip default</span><br><span class="line"><span class="number">192.168</span><span class="number">.99</span><span class="number">.100</span></span><br></pre>
 
 
 
 
 <p>查看容器编号</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/self/cgroup | head <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">cat /proc/self/cgroup | head <span class="number">-1</span></span><br></pre>
 
 
 
 <p>提交更改</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit 容器id 镜像名称</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker commit 容器id 镜像名称</span><br></pre>
 
 
 
 <p>删除镜像</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi -f 镜像id</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">docker rmi -f 镜像id</span><br></pre>
 
 
 
 <p>检查系统</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">cat /etc/redhat-release</span><br></pre>
 
 
 
 <p>退出镜像</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">docker run -it ubuntu:rename /bin/echo <span class="string">"Hello World"</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">exit</span><br><span class="line">docker run -it ubuntu:rename /bin/echo <span class="string">"Hello World"</span></span><br></pre>
 
 
 
 <p>删除镜像缓存</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">docker ps -a | grep <span class="string">"Exited"</span> | awk <span class="string">'&#123;print $1 &#125;'</span>|xargs docker stop</span><br><span class="line"></span><br><span class="line">docker ps -a | grep <span class="string">"Exited"</span> | awk <span class="string">'&#123;print $1 &#125;'</span>|xargs docker rm</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line"></span><br><span class="line">docker ps -a | grep <span class="string">"Exited"</span> | awk <span class="string">'&#123;print $1 &#125;'</span>|xargs docker stop</span><br><span class="line"></span><br><span class="line">docker ps -a | grep <span class="string">"Exited"</span> | awk <span class="string">'&#123;print $1 &#125;'</span>|xargs docker rm</span><br></pre>
 
 
   </div>
@@ -337,31 +337,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

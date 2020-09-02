@@ -142,7 +142,7 @@
     
     
     <span class="dot"></span>
-    <span>466 words</span>
+    <span>465 words</span>
     
   </div>
   
@@ -159,11 +159,11 @@
   </header>
   <div id="section" class="post-content">
     <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p> 客户端发起请求   –&gt;  进到wsgi(模型) –&gt; 中间件(request_process)  –&gt;  路由(urls.py)  –&gt;  中间件(view_process)  –&gt; view(视图操作 -&gt; orm操作 -&gt; mysql )  –&gt; 中间件(process_response before_template) –&gt; wsgi(模型)</p>
-<h4 id="在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项"><a href="#在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项" class="headerlink" title="在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项"></a>在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#加载自定义中间件   文件夹名.文件名.类名</span></span><br><span class="line"><span class="string">'myapp.md_user.MyMiddleware'</span></span><br></pre></td></tr></table></figure>
+<h4 id="在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项"><a href="#在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项" class="headerlink" title="在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项"></a>在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项</h4><pre class="highlight"><span class="line"><span class="comment">#加载自定义中间件   文件夹名.文件名.类名</span></span><br><span class="line"><span class="string">'myapp.md_user.MyMiddleware'</span></span><br></pre>
 
-<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br></pre></td></tr></table></figure>
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><pre class="highlight"><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br></pre>
 
-<h4 id="中间件的四种方法"><a href="#中间件的四种方法" class="headerlink" title="中间件的四种方法"></a>中间件的四种方法</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义中间件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyMiddleware</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="comment"># 请求之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        print(<span class="string">"过滤中间件"</span>)</span><br><span class="line">        <span class="comment"># 获取路由</span></span><br><span class="line">        <span class="keyword">if</span> request.path_info.startswith(<span class="string">"/login"</span>):</span><br><span class="line">            <span class="keyword">return</span> HttpResponse(json.dumps(&#123;<span class="string">'msg'</span>:<span class="string">'您篡改了id'</span>&#125;,ensure_ascii=<span class="literal">False</span>,indent=<span class="number">4</span>),</span><br><span class="line">                            content_type=<span class="string">'application/json'</span>)</span><br><span class="line">    <span class="comment"># 进入视图之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self,request,view_func,view_args,view_kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># request是httprequest对象。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># view_func是即将使用的视图函数，它是实际的函数对象，而不是函数的名称作为字符串。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args是将传递给视图位置的参数的列表。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_kargs是将传递给视图的关键字参数的字典。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args和view_kargs都不包含第一个视图参数（request）</span></span><br><span class="line">    <span class="comment"># 异常捕获方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_exception</span><span class="params">(self,request,exception)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self,request,response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre></td></tr></table></figure>
+<h4 id="中间件的四种方法"><a href="#中间件的四种方法" class="headerlink" title="中间件的四种方法"></a>中间件的四种方法</h4><pre class="highlight"><span class="line"><span class="comment"># 自定义中间件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyMiddleware</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="comment"># 请求之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        print(<span class="string">"过滤中间件"</span>)</span><br><span class="line">        <span class="comment"># 获取路由</span></span><br><span class="line">        <span class="keyword">if</span> request.path_info.startswith(<span class="string">"/login"</span>):</span><br><span class="line">            <span class="keyword">return</span> HttpResponse(json.dumps(&#123;<span class="string">'msg'</span>:<span class="string">'您篡改了id'</span>&#125;,ensure_ascii=<span class="literal">False</span>,indent=<span class="number">4</span>),</span><br><span class="line">                            content_type=<span class="string">'application/json'</span>)</span><br><span class="line">    <span class="comment"># 进入视图之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self,request,view_func,view_args,view_kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># request是httprequest对象。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># view_func是即将使用的视图函数，它是实际的函数对象，而不是函数的名称作为字符串。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args是将传递给视图位置的参数的列表。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_kargs是将传递给视图的关键字参数的字典。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args和view_kargs都不包含第一个视图参数（request）</span></span><br><span class="line">    <span class="comment"># 异常捕获方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_exception</span><span class="params">(self,request,exception)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self,request,response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre>
 
 <p>​      1.中间件的process_request方法是在执行视图函数之前执行的</p>
 <p>​      2.当配置中间件时，会按照MIDDLEWARE的注册顺序，也就是列表的索引值，从前到后依次执行的。</p>
@@ -259,31 +259,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

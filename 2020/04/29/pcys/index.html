@@ -142,7 +142,7 @@
     
     
     <span class="dot"></span>
-    <span>202 words</span>
+    <span>200 words</span>
     
   </div>
   
@@ -158,9 +158,9 @@
   
   </header>
   <div id="section" class="post-content">
-    <h4 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#压缩 两种压缩模式，png不适合压缩，jpg适合</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment">#读图</span></span><br><span class="line">img = cv2.imread(<span class="string">'./dingding.png'</span>)</span><br><span class="line"><span class="comment">#开始压缩 png压缩等级清晰0-9模糊</span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.png'</span>,img,[cv2.IMWRITE_PNG_COMPRESSION,<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#jpg压缩等级清晰0-100模糊 </span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.jpg'</span>,img,[cv2.IMWRITE_JPEG_QUALITY,<span class="number">50</span>])</span><br></pre></td></tr></table></figure>
+    <h4 id="图片压缩"><a href="#图片压缩" class="headerlink" title="图片压缩"></a>图片压缩</h4><pre class="highlight"><span class="line"><span class="comment">#压缩 两种压缩模式，png不适合压缩，jpg适合</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment">#读图</span></span><br><span class="line">img = cv2.imread(<span class="string">'./dingding.png'</span>)</span><br><span class="line"><span class="comment">#开始压缩 png压缩等级清晰0-9模糊</span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.png'</span>,img,[cv2.IMWRITE_PNG_COMPRESSION,<span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#jpg压缩等级清晰0-100模糊 </span></span><br><span class="line">cv2.imwrite(<span class="string">'./dingding1.jpg'</span>,img,[cv2.IMWRITE_JPEG_QUALITY,<span class="number">50</span>])</span><br></pre>
 
-<h4 id="加水印"><a href="#加水印" class="headerlink" title="加水印"></a>加水印</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#绘画库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw</span><br><span class="line"><span class="comment">#字体库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont</span><br><span class="line"><span class="comment">#图片库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment">#加水印</span></span><br><span class="line">img = Image.open(<span class="string">'.//static/upload/'</span>+myfile_name)</span><br><span class="line"><span class="comment"># 获取宽高</span></span><br><span class="line">width, height = img.size</span><br><span class="line"><span class="comment"># 根据图片大小定义logo大小</span></span><br><span class="line">text = <span class="string">'哈哈哈'</span></span><br><span class="line"><span class="comment">#字体</span></span><br><span class="line">font = ImageFont.truetype(font=<span class="string">'C:\Windows\Fonts\FZXKJW.TTF'</span>,size=<span class="number">35</span>)</span><br><span class="line"><span class="comment"># 获取字体宽高</span></span><br><span class="line">font_width, font_height = font.getsize(text)</span><br><span class="line"><span class="comment"># 使用画笔</span></span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"><span class="comment"># 写入文本 参数（（x,y），水印文字，颜色，字体）</span></span><br><span class="line">draw.text((width-font_width,height-font_height), text,fill=(<span class="number">76</span>,<span class="number">234</span>,<span class="number">124</span>,<span class="number">180</span>), font=font)</span><br><span class="line"><span class="comment"># 根据路径保存文件 </span></span><br><span class="line">img.save(os.path.join(UPLOAD_ROOT, <span class="string">''</span>, myfile_name))</span><br></pre></td></tr></table></figure>
+<h4 id="加水印"><a href="#加水印" class="headerlink" title="加水印"></a>加水印</h4><pre class="highlight"><span class="line"><span class="comment">#绘画库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw</span><br><span class="line"><span class="comment">#字体库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageFont</span><br><span class="line"><span class="comment">#图片库</span></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="comment">#加水印</span></span><br><span class="line">img = Image.open(<span class="string">'.//static/upload/'</span>+myfile_name)</span><br><span class="line"><span class="comment"># 获取宽高</span></span><br><span class="line">width, height = img.size</span><br><span class="line"><span class="comment"># 根据图片大小定义logo大小</span></span><br><span class="line">text = <span class="string">'哈哈哈'</span></span><br><span class="line"><span class="comment">#字体</span></span><br><span class="line">font = ImageFont.truetype(font=<span class="string">'C:\Windows\Fonts\FZXKJW.TTF'</span>,size=<span class="number">35</span>)</span><br><span class="line"><span class="comment"># 获取字体宽高</span></span><br><span class="line">font_width, font_height = font.getsize(text)</span><br><span class="line"><span class="comment"># 使用画笔</span></span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"><span class="comment"># 写入文本 参数（（x,y），水印文字，颜色，字体）</span></span><br><span class="line">draw.text((width-font_width,height-font_height), text,fill=(<span class="number">76</span>,<span class="number">234</span>,<span class="number">124</span>,<span class="number">180</span>), font=font)</span><br><span class="line"><span class="comment"># 根据路径保存文件 </span></span><br><span class="line">img.save(os.path.join(UPLOAD_ROOT, <span class="string">''</span>, myfile_name))</span><br></pre>
 
 
   </div>
@@ -251,31 +251,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

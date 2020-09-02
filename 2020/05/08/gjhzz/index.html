@@ -142,7 +142,7 @@
     
     
     <span class="dot"></span>
-    <span>754 words</span>
+    <span>749 words</span>
     
   </div>
   
@@ -158,35 +158,35 @@
   
   </header>
   <div id="section" class="post-content">
-    <h4 id="首先-我们需要一个库：国际化支持模块"><a href="#首先-我们需要一个库：国际化支持模块" class="headerlink" title="首先 我们需要一个库：国际化支持模块"></a>首先 我们需要一个库：国际化支持模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-i18n -- save</span><br></pre></td></tr></table></figure>
+    <h4 id="首先-我们需要一个库：国际化支持模块"><a href="#首先-我们需要一个库：国际化支持模块" class="headerlink" title="首先 我们需要一个库：国际化支持模块"></a>首先 我们需要一个库：国际化支持模块</h4><pre class="highlight"><span class="line">npm install vue-i18n -- save</span><br></pre>
 
 <p>save -&gt; 在当前项目下安装</p>
-<h4 id="在您的项目main-js下-导入"><a href="#在您的项目main-js下-导入" class="headerlink" title="在您的项目main.js下 导入"></a>在您的项目main.js下 导入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import VueI18n from &#39;vue-i18n&#39;</span><br></pre></td></tr></table></figure>
+<h4 id="在您的项目main-js下-导入"><a href="#在您的项目main-js下-导入" class="headerlink" title="在您的项目main.js下 导入"></a>在您的项目main.js下 导入</h4><pre class="highlight"><span class="line">import VueI18n from &#39;vue-i18n&#39;</span><br></pre>
 
-<h4 id="导入成功进行注册使用"><a href="#导入成功进行注册使用" class="headerlink" title="导入成功进行注册使用"></a>导入成功进行注册使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.use(VueI18n)</span><br></pre></td></tr></table></figure>
+<h4 id="导入成功进行注册使用"><a href="#导入成功进行注册使用" class="headerlink" title="导入成功进行注册使用"></a>导入成功进行注册使用</h4><pre class="highlight"><span class="line">Vue.use(VueI18n)</span><br></pre>
 
-<h4 id="在你的src下创建语言包文件"><a href="#在你的src下创建语言包文件" class="headerlink" title="在你的src下创建语言包文件"></a>在你的src下创建语言包文件</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">文件夹名称  简写成：lang</span><br></pre></td></tr></table></figure>
+<h4 id="在你的src下创建语言包文件"><a href="#在你的src下创建语言包文件" class="headerlink" title="在你的src下创建语言包文件"></a>在你的src下创建语言包文件</h4><pre class="highlight"><span class="line">文件夹名称  简写成：lang</span><br></pre>
 
-<h4 id="在lang文件夹中创建中文包-zh-js-and英文包-en-js"><a href="#在lang文件夹中创建中文包-zh-js-and英文包-en-js" class="headerlink" title="在lang文件夹中创建中文包(zh.js)and英文包(en.js)"></a>在lang文件夹中创建中文包(zh.js)and英文包(en.js)</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">例如：</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（英文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;Mei Duo Shp&#39;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（中文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;美多商城&#39;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在lang文件夹中创建中文包-zh-js-and英文包-en-js"><a href="#在lang文件夹中创建中文包-zh-js-and英文包-en-js" class="headerlink" title="在lang文件夹中创建中文包(zh.js)and英文包(en.js)"></a>在lang文件夹中创建中文包(zh.js)and英文包(en.js)</h4><pre class="highlight"><span class="line">例如：</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（英文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;Mei Duo Shp&#39;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F; 双语规范的变量（中文）</span><br><span class="line">    export const m &#x3D; &#123;</span><br><span class="line">        &#39;index&#39;:&#39;美多商城&#39;</span><br><span class="line">    &#125;</span><br></pre>
 
-<h4 id="回到main-js-导入语言包"><a href="#回到main-js-导入语言包" class="headerlink" title="回到main.js 导入语言包"></a>回到main.js 导入语言包</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 导入语言包</span><br><span class="line">const i18n &#x3D; new VueI18n(&#123;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 当前默认语言的声明</span><br><span class="line">  locale:&#39;zh&#39;,</span><br><span class="line">  messages:&#123;</span><br><span class="line">     		&#x2F;&#x2F; 相对路径</span><br><span class="line">    &#39;zh&#39;:require(&#39;.&#x2F;lang&#x2F;zh&#39;),</span><br><span class="line">    &#39;en&#39;:require(&#39;.&#x2F;lang&#x2F;en&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引用i18n</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#39;#app&#39;,</span><br><span class="line">  router,</span><br><span class="line">  i18n, </span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#39;&lt;App&#x2F;&gt;&#39;,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="回到main-js-导入语言包"><a href="#回到main-js-导入语言包" class="headerlink" title="回到main.js 导入语言包"></a>回到main.js 导入语言包</h4><pre class="highlight"><span class="line">&#x2F;&#x2F; 导入语言包</span><br><span class="line">const i18n &#x3D; new VueI18n(&#123;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 当前默认语言的声明</span><br><span class="line">  locale:&#39;zh&#39;,</span><br><span class="line">  messages:&#123;</span><br><span class="line">     		&#x2F;&#x2F; 相对路径</span><br><span class="line">    &#39;zh&#39;:require(&#39;.&#x2F;lang&#x2F;zh&#39;),</span><br><span class="line">    &#39;en&#39;:require(&#39;.&#x2F;lang&#x2F;en&#39;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 引用i18n</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#39;#app&#39;,</span><br><span class="line">  router,</span><br><span class="line">  i18n, </span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &#39;&lt;App&#x2F;&gt;&#39;,</span><br><span class="line">  render: h &#x3D;&gt; h(App)</span><br><span class="line">&#125;)</span><br></pre>
 
-<h4 id="最后使用"><a href="#最后使用" class="headerlink" title="最后使用"></a>最后使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;$t(&#39;m.index&#39;)&#125;&#125;</span><br><span class="line">m:代表规范的变量</span><br><span class="line">index: key的名称  也就是你自己定义的变量</span><br></pre></td></tr></table></figure>
+<h4 id="最后使用"><a href="#最后使用" class="headerlink" title="最后使用"></a>最后使用</h4><pre class="highlight"><span class="line">&#123;&#123;$t(&#39;m.index&#39;)&#125;&#125;</span><br><span class="line">m:代表规范的变量</span><br><span class="line">index: key的名称  也就是你自己定义的变量</span><br></pre>
 
 <h4 id="在钩子方法中可以自动切换语言"><a href="#在钩子方法中可以自动切换语言" class="headerlink" title="在钩子方法中可以自动切换语言"></a>在钩子方法中可以自动切换语言</h4><p>指在浏览器中，例如默认是中文，我们就切换成中文，也就可以理解成老外访问直接是英文状态。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if(navigator.language &#x3D;&#x3D; &#39;en&#39;)&#123;	</span><br><span class="line">		&#x2F;&#x2F; 切换语言</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">if(navigator.language &#x3D;&#x3D; &#39;en&#39;)&#123;	</span><br><span class="line">		&#x2F;&#x2F; 切换语言</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">	&#125;</span><br></pre>
 
 <h4 id="添加个按钮切换语言"><a href="#添加个按钮切换语言" class="headerlink" title="添加个按钮切换语言"></a>添加个按钮切换语言</h4><p>首先我们得有个开关标签</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h-switch v-model&#x3D;&quot;lang&quot; @change&#x3D;&quot;lang_change&quot;&gt;中&#x2F;英&lt;&#x2F;h-switch&gt;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">&lt;h-switch v-model&#x3D;&quot;lang&quot; @change&#x3D;&quot;lang_change&quot;&gt;中&#x2F;英&lt;&#x2F;h-switch&gt;</span><br></pre>
 
 <p>定义开关变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">       return&#123;</span><br><span class="line">		&#x2F;&#x2F;定义开关变量</span><br><span class="line">		lang:1  &#x2F;&#x2F; 代表中文</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">data()&#123;</span><br><span class="line">       return&#123;</span><br><span class="line">		&#x2F;&#x2F;定义开关变量</span><br><span class="line">		lang:1  &#x2F;&#x2F; 代表中文</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;,</span><br></pre>
 
 <p>定义切换时间 change  也就是在你methods方法中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">methods:&#123;</span><br><span class="line">	&#x2F;&#x2F; 切换方法</span><br><span class="line">	lang_change:function()&#123;</span><br><span class="line">		console.log(this.lang)</span><br><span class="line">		if(this.lang &#x3D;&#x3D; true)&#123;</span><br><span class="line">			&#x2F;&#x2F; 切换语言</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;zh&#39;)</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">			</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;en&#39;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">methods:&#123;</span><br><span class="line">	&#x2F;&#x2F; 切换方法</span><br><span class="line">	lang_change:function()&#123;</span><br><span class="line">		console.log(this.lang)</span><br><span class="line">		if(this.lang &#x3D;&#x3D; true)&#123;</span><br><span class="line">			&#x2F;&#x2F; 切换语言</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;zh&#39;)</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;en&#39;</span><br><span class="line">			</span><br><span class="line">			localStorage.setItem(&#39;lang&#39;,&#39;en&#39;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">   &#125;</span><br></pre>
 
 <p>简述逻辑： 首先我们在控制台打印按钮默认为1,0，也就时候判断是true，false。得到之后，我们需要判断如果lang为true 则赋值为中文，则else则是英文，同时我们将lang值存入localstorage中，在钩子函数中判断。首先我们考虑到问题是，用户是否点击按钮切换语言，只要用户发生动作，我们则记录在localstorage中，最终我们判断用户是否点过按钮，如果没有则默认赋值到localstorage里。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 判断本地local有没有</span><br><span class="line">		var lang_locale &#x3D; localStorage.getItem(&quot;lang&quot;)</span><br><span class="line">		if(lang_locale)&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; lang_locale</span><br><span class="line">			if(lang_locale &#x3D;&#x3D; &#39;zh&#39;)&#123;</span><br><span class="line">				this.lang &#x3D; 1</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.lang &#x3D; 0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;;</span><br><span class="line">			this.lang &#x3D; 1</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line">&#x2F;&#x2F; 判断本地local有没有</span><br><span class="line">		var lang_locale &#x3D; localStorage.getItem(&quot;lang&quot;)</span><br><span class="line">		if(lang_locale)&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; lang_locale</span><br><span class="line">			if(lang_locale &#x3D;&#x3D; &#39;zh&#39;)&#123;</span><br><span class="line">				this.lang &#x3D; 1</span><br><span class="line">			&#125;else&#123;</span><br><span class="line">				this.lang &#x3D; 0</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;else&#123;</span><br><span class="line">			this.$i18n.locale &#x3D; &#39;zh&#39;;</span><br><span class="line">			this.lang &#x3D; 1</span><br><span class="line">		&#125;</span><br></pre>
 
 <p>以上代码，我们默认赋值为中文，里层的If是为变量双赋值！</p>
 
@@ -278,31 +278,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

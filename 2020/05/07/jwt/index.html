@@ -142,7 +142,7 @@
     
     
     <span class="dot"></span>
-    <span>632 words</span>
+    <span>631 words</span>
     
   </div>
   
@@ -165,7 +165,7 @@
 <li>密钥</li>
 <li>jwt=&gt;token</li>
 </ol>
-<h4 id="jwt安装"><a href="#jwt安装" class="headerlink" title="jwt安装"></a>jwt安装</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyjwt</span><br></pre></td></tr></table></figure>
+<h4 id="jwt安装"><a href="#jwt安装" class="headerlink" title="jwt安装"></a>jwt安装</h4><pre class="highlight"><span class="line">pip install pyjwt</span><br></pre>
 
 <h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
 <li><p>体积小,传输快</p>
@@ -175,15 +175,15 @@
 <li><p>基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。 </p>
 </li>
 </ul>
-<h4 id="在用户登陆成功生成token"><a href="#在用户登陆成功生成token" class="headerlink" title="在用户登陆成功生成token"></a>在用户登陆成功生成token</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">encode_jwt = jwt.encode(&#123;<span class="string">'uid'</span>: user.id&#125;, <span class="string">'qwe123'</span>, algorithm=<span class="string">'HS256'</span>)</span><br><span class="line">encode_str = str(encode_jwt, <span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="在用户登陆成功生成token"><a href="#在用户登陆成功生成token" class="headerlink" title="在用户登陆成功生成token"></a>在用户登陆成功生成token</h4><pre class="highlight"><span class="line">encode_jwt = jwt.encode(&#123;<span class="string">'uid'</span>: user.id&#125;, <span class="string">'qwe123'</span>, algorithm=<span class="string">'HS256'</span>)</span><br><span class="line">encode_str = str(encode_jwt, <span class="string">'utf-8'</span>)</span><br></pre>
 
 <p> 将这个token交给前端，前端访问任意接口都将在header里带着jwt也就指token，用来做认证，我们把代码逻辑写成装饰器，这样前端访问那个接口，后端直接调用装饰器！</p>
 <h4 id="定义装饰器"><a href="#定义装饰器" class="headerlink" title="定义装饰器"></a>定义装饰器</h4><p>因为在每次登陆时，我们将jwt的值存入localstorage中，所以我们在前端param传参将其读出，这样后端接收jwt 。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 类视图专用</span></span><br><span class="line"><span class="keyword">from</span> django.utils.decorators <span class="keyword">import</span> method_decorator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义权限检测装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(request, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 接收参数</span></span><br><span class="line">        uid = request.GET.get(<span class="string">"uid"</span>, <span class="literal">None</span>)</span><br><span class="line">	    <span class="comment"># 变量不能是关键字 </span></span><br><span class="line">        myjwt = request.GET.get(<span class="string">"jwt"</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        print(myjwt)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 验证用户合法性</span></span><br><span class="line">        decode_jwt = jwt.decode(myjwt, <span class="string">'qwe123'</span>, algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行比对</span></span><br><span class="line">        <span class="keyword">if</span> int(uid) != int(decode_jwt[<span class="string">'uid'</span>]):</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>: <span class="number">401</span>, <span class="string">'message'</span>: <span class="string">'您的密钥无权限'</span>&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#  最后类视图使用method_decorator(装饰器名称)调用</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><span class="line"><span class="comment"># 类视图专用</span></span><br><span class="line"><span class="keyword">from</span> django.utils.decorators <span class="keyword">import</span> method_decorator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义权限检测装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(request, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 接收参数</span></span><br><span class="line">        uid = request.GET.get(<span class="string">"uid"</span>, <span class="literal">None</span>)</span><br><span class="line">	    <span class="comment"># 变量不能是关键字 </span></span><br><span class="line">        myjwt = request.GET.get(<span class="string">"jwt"</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        print(myjwt)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 验证用户合法性</span></span><br><span class="line">        decode_jwt = jwt.decode(myjwt, <span class="string">'qwe123'</span>, algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行比对</span></span><br><span class="line">        <span class="keyword">if</span> int(uid) != int(decode_jwt[<span class="string">'uid'</span>]):</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>: <span class="number">401</span>, <span class="string">'message'</span>: <span class="string">'您的密钥无权限'</span>&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#  最后类视图使用method_decorator(装饰器名称)调用</span></span><br></pre>
 
 
 
-<h4 id="载荷中加入生命周期"><a href="#载荷中加入生命周期" class="headerlink" title="载荷中加入生命周期"></a>载荷中加入生命周期</h4><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">playload = &#123;</span><br><span class="line">	// 代表过期时间        当前时间+延迟加载（以秒计时）</span><br><span class="line">	<span class="string">'exp'</span>: int((datatime.datatime.now() + datetime.timedelta(seconds=<span class="number">30</span>)).timestamp())  //强转时间戳 按照整形</span><br><span class="line">	<span class="string">'data'</span>:&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">encode_jwt = jwt.encode(playload,<span class="string">'lhn123'</span>,algorithm=<span class="string">'HS256'</span>)</span><br><span class="line"><span class="comment"># 转码</span></span><br><span class="line">encode_str = str(encode_jwt,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 解密操作</span></span><br><span class="line">decode_jwt = jwt.decode(encode_str,<span class="string">'lhn123'</span>,algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line">print(encode_str)</span><br><span class="line">print(decode_jwt[<span class="string">'uid'</span>])</span><br></pre></td></tr></table></figure>
+<h4 id="载荷中加入生命周期"><a href="#载荷中加入生命周期" class="headerlink" title="载荷中加入生命周期"></a>载荷中加入生命周期</h4><pre class="highlight"><span class="line">playload = &#123;</span><br><span class="line">	// 代表过期时间        当前时间+延迟加载（以秒计时）</span><br><span class="line">	<span class="string">'exp'</span>: int((datatime.datatime.now() + datetime.timedelta(seconds=<span class="number">30</span>)).timestamp())  //强转时间戳 按照整形</span><br><span class="line">	<span class="string">'data'</span>:&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">encode_jwt = jwt.encode(playload,<span class="string">'lhn123'</span>,algorithm=<span class="string">'HS256'</span>)</span><br><span class="line"><span class="comment"># 转码</span></span><br><span class="line">encode_str = str(encode_jwt,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 解密操作</span></span><br><span class="line">decode_jwt = jwt.decode(encode_str,<span class="string">'lhn123'</span>,algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line">print(encode_str)</span><br><span class="line">print(decode_jwt[<span class="string">'uid'</span>])</span><br></pre>
 
 
 
@@ -276,31 +276,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>

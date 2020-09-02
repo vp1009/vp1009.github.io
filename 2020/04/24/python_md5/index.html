@@ -158,7 +158,7 @@
   
   </header>
   <div id="section" class="post-content">
-    <h3 id="MD5加密"><a href="#MD5加密" class="headerlink" title="MD5加密"></a>MD5加密</h3><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#导入加密库</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># md5加密方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_password</span><span class="params">(mypass)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成md5对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#转码操作</span></span><br><span class="line">    mypass_utf8 = str(mypass).encode(encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加密操作</span></span><br><span class="line">    md5.update(mypass_utf8)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#返回密文</span></span><br><span class="line">    <span class="keyword">return</span> md5.hexdigest()</span><br></pre></td></tr></table></figure>
+    <h3 id="MD5加密"><a href="#MD5加密" class="headerlink" title="MD5加密"></a>MD5加密</h3><pre class="highlight"><span class="line"><span class="comment">#导入加密库</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># md5加密方法</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_password</span><span class="params">(mypass)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成md5对象</span></span><br><span class="line">    md5 = hashlib.md5()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#转码操作</span></span><br><span class="line">    mypass_utf8 = str(mypass).encode(encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 加密操作</span></span><br><span class="line">    md5.update(mypass_utf8)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#返回密文</span></span><br><span class="line">    <span class="keyword">return</span> md5.hexdigest()</span><br></pre>
   </div>
   <div>
   
@@ -247,31 +247,31 @@
   <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
   <div class="tags-list">
     
-    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
     
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
     <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
-    
-    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
-    
-    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
-    
-    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
-    
-    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
     <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
     
     <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
     
-    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
     
     <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
     
     <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
     
   </div>
 </div>
