@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<meta  lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/img/logo.jpg">
+  <title>Mr.Lu</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
+      }
+    };
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
+      var script = document.createElement('script');
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="Originally" type="application/atom+xml">
+</head>
+
+
+<body>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/img/logo.jpg">
+      
+      <span class="navbar-logo-dsc">Mr.Lu</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+    <a href="/" class="navbar-menu-item">Home </a>
+    
+    <a href="/archives" class="navbar-menu-item">Archive </a>
+    
+    <a href="/tags" class="navbar-menu-item">Tags </a>
+    
+    <a href="/categories" class="navbar-menu-item">Categories </a>
+    
+    <a href="/about" class="navbar-menu-item">About </a>
+    
+    <a href="/links" class="navbar-menu-item">Friends </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+  </div>
+</nav>
+    
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<article class="card card-content">
+  <header>
+    <h1 class="post-title">
+      简述逻辑外键
+    </h1>
+  </header>
+  <div class="post-meta post-show-meta">
+    <time datetime="2020-05-10T19:20:22.000Z" style="display: flex; align-items: center;">
+      <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+      <span>2020-05-11</span>
+    </time>
+    
+    
+    <span class="dot"></span>
+    <span>410 words</span>
+    
+  </div>
+  
+  <div class="post-meta post-show-meta" style="margin-top: -10px;">
+    <div style="display: flex; align-items: center;">
+      <i class="iconfont icon-biaoqian" style="margin-right: 2px; font-size: 1.15rem;"></i>
+      
+      
+        <a href="/tags/django/" class="post-meta-link">django</a>
+      
+    </div>
+  </div>
+  
+  </header>
+  <div id="section" class="post-content">
+    <h4 id="goods表创建逻辑外键"><a href="#goods表创建逻辑外键" class="headerlink" title="goods表创建逻辑外键"></a>goods表创建逻辑外键</h4><p>前端数据我需要做二次处理，获取表单数据进行二次处理，转成json数据，这样后端接收存入数据库。</p>
+<h4 id="之后在添加方法中获取id-向后端发起请求"><a href="#之后在添加方法中获取id-向后端发起请求" class="headerlink" title="之后在添加方法中获取id 向后端发起请求"></a>之后在添加方法中获取id 向后端发起请求</h4><pre class="highlight"><span class="line"></span><br><span class="line">&#x2F;&#x2F; 添加商品事件</span><br><span class="line">submit:function()&#123;</span><br><span class="line">    &#x2F;&#x2F; 非空验证</span><br><span class="line">    if (this.name &#x3D;&#x3D; &#39;&#39;)&#123;</span><br><span class="line">        this.$Message(&quot;商品名称不能为空&quot;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        &#x2F;&#x2F; 存入字段为json</span><br><span class="line">        var param &#x3D; &#123;&#125;;</span><br><span class="line">        param[&#39;color&#39;] &#x3D; this.color</span><br><span class="line">        param[&#39;size&#39;] &#x3D; this.size</span><br><span class="line">        param[&#39;season&#39;] &#x3D; this.season</span><br><span class="line">        &#x2F;&#x2F;转为json数据</span><br><span class="line">        param&#x3D;JSON.stringify(param)</span><br><span class="line">        &#x2F;&#x2F; 接收表单数据</span><br><span class="line">        var pc &#x3D; this.$refs.upload</span><br><span class="line">        let file &#x3D; pc.files[0]</span><br><span class="line">        var data &#x3D; new FormData()</span><br><span class="line">        data.append(&#39;img&#39;,file)</span><br><span class="line">        data.append(&#39;flows&#39;,this.flows)</span><br><span class="line">        &#x2F;&#x2F; 反向赋值</span><br><span class="line">        data.append(&#39;cid&#39;,this.cate[this.selected])</span><br><span class="line">        &#x2F;&#x2F; 声明请求头</span><br><span class="line">        let config&#x3D;&#123;</span><br><span class="line">            &#39;Content-Type&#39;:&#39;multipart&#x2F;form-data&#39;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 发起请求</span><br><span class="line">        this.axios.post(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;addgoods&#x2F;&#39;,data,config).then((res&#x3D;&gt;&#123;</span><br><span class="line">            console.log(res)</span><br><span class="line">            this.$Message(res.data.msg)</span><br><span class="line">        &#125;))</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre>
+
+<p>把json数据存入规格字段中，cid存入外键的cid</p>
+<p>之后，我们展示分类</p>
+<pre class="highlight"><span class="line">// 定义规格名称</span><br><span class="line">color:<span class="string">''</span>,</span><br><span class="line">       size:<span class="string">''</span>,</span><br><span class="line">       season:<span class="string">''</span>,</span><br><span class="line">       // 分类表默认选中</span><br><span class="line">       selected:<span class="string">'衣服'</span>,</span><br><span class="line">       cate:[]，</span><br><span class="line">       // 接受商品分类</span><br><span class="line">       category:[]</span><br><span class="line">       </span><br><span class="line">       // 创建方法</span><br><span class="line">       	</span><br><span class="line">       // 获取商品分类</span><br><span class="line">       get_cate:function()&#123;</span><br><span class="line">           //发送请求</span><br><span class="line">           this.axios.get('http://127.0.0.1:8000/cate/').then((res=&gt;&#123;</span><br><span class="line">               console.log(res)</span><br><span class="line">               // 二次处理数据</span><br><span class="line">               var mycate=[]</span><br><span class="line">               <span class="keyword">for</span>(let i=<span class="number">0</span>;i&lt;res.data.length;i++)&#123;</span><br><span class="line">                   mycate.push(res.data[i][<span class="string">'name'</span>])</span><br><span class="line">                   // 反向赋值 将分类表的id存入goods表中</span><br><span class="line">                   this.cate[res.data[i][<span class="string">'name'</span>]] = res.data[i][<span class="string">'id'</span>];</span><br><span class="line">               &#125;</span><br><span class="line">               // 赋值</span><br><span class="line">               this.category = mycate</span><br><span class="line">           &#125;))</span><br><span class="line">       &#125;,</span><br></pre>
+
+
+  </div>
+  <div>
+  
+  </div>
+</article>
+<div class="nav">
+  
+  <div class="nav-item-prev">
+    <a href="/2020/05/11/d_l/" class="nav-link">
+      <i class="iconfont icon-left nav-prev-icon"></i>
+      <div>
+        <div class="nav-label">Prev</div>
+        
+        <div class="nav-title">简述详情页 </div>
+        
+      </div>
+    </a>
+  </div>
+  
+  
+  <div class="nav-item-next">
+    <a href="/2020/05/10/a_s/" class="nav-link">
+      <div>
+        <div class="nav-label">Next</div>
+        
+        <div class="nav-title">暗夜模式配置 </div>
+        
+      </div>
+      <i class="iconfont icon-right nav-next-icon"></i>
+    </a>
+  </div>
+  
+</div>
+
+<div class="card card-content toc-card" id="mobiletoc">
+  <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>TOC</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#goods表创建逻辑外键"><span class="toc-text">goods表创建逻辑外键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#之后在添加方法中获取id-向后端发起请求"><span class="toc-text">之后在添加方法中获取id 向后端发起请求</span></a></li></ol>
+</div></main>
+          <aside class="left-column">
+            
+            <div class="card card-author">
+              
+<img src="/img/logo.jpg" class="author-img">
+
+<p class="author-name">鲁浩男</p>
+<p class="author-description">Let excellence be every day</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>45</span>
+    <span>Posts</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>0</span>
+    <span>Categories</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>13</span>
+    <span>Tags</span>
+  </a>
+</div>
+
+            </div>
+            
+            <div class="sticky-tablet">
+  
+  
+  <article class="display-when-two-columns spacer">
+    <div class="card card-content toc-card">
+      <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>TOC</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#goods表创建逻辑外键"><span class="toc-text">goods表创建逻辑外键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#之后在添加方法中获取id-向后端发起请求"><span class="toc-text">之后在添加方法中获取id 向后端发起请求</span></a></li></ol>
+    </div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>Categories</div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
+  <div class="tags-list">
+    
+    <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
+    
+    <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
+    
+    <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
+    
+    <a href="\tags\django" title="django"><div class="tags-list-item">django</div></a>
+    
+    <a href="\tags\Hexo" title="Hexo"><div class="tags-list-item">Hexo</div></a>
+    
+    <a href="\tags\Linux" title="Linux"><div class="tags-list-item">Linux</div></a>
+    
+    <a href="\tags\Vue" title="Vue"><div class="tags-list-item">Vue</div></a>
+    
+    <a href="\tags\Git" title="Git"><div class="tags-list-item">Git</div></a>
+    
+    <a href="\tags\Mysql" title="Mysql"><div class="tags-list-item">Mysql</div></a>
+    
+    <a href="\tags\localstorage" title="localstorage"><div class="tags-list-item">localstorage</div></a>
+    
+    <a href="\tags\spider" title="spider"><div class="tags-list-item">spider</div></a>
+    
+    <a href="\tags\docker" title="docker"><div class="tags-list-item">docker</div></a>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  <article class="card card-content toc-card">
+    <div class="toc-header"><i class="iconfont icon-menu" style="padding-right: 2px;"></i>TOC</div>
+<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#goods表创建逻辑外键"><span class="toc-text">goods表创建逻辑外键</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#之后在添加方法中获取id-向后端发起请求"><span class="toc-text">之后在添加方法中获取id 向后端发起请求</span></a></li></ol>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>Recent Posts</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-29</div>
+        <a href="/2020/07/29/s_i/"><div class="recent-posts-item-content">面向对象五大原则SOLID</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-29</div>
+        <a href="/2020/07/29/v_w/"><div class="recent-posts-item-content">微服务</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-23</div>
+        <a href="/2020/07/23/l_m/"><div class="recent-posts-item-content">项目成员了解</div></a>
+      </div>
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2020-07-23</div>
+        <a href="/2020/07/23/d_g/"><div class="recent-posts-item-content">Django工程搭建</div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
+          
+          2018 -
+          
+          2020
+        </span>
+        <a href="/" class="footer-link">Mr.Lu </a>
+      </div>
+    </div>
+
+    
+    
+    
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
+
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
+
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
+</body>
+
+</html>

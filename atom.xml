@@ -18,8 +18,8 @@
   
   <entry>
     <title>面向对象五大原则SOLID</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/solid/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/solid/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/s_i/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/s_i/</id>
     <published>2020-07-29T15:40:20.000Z</published>
     <updated>2020-07-29T23:47:43.397Z</updated>
     
@@ -42,8 +42,8 @@
   
   <entry>
     <title>微服务</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/vfw/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/vfw/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/29/v_w/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/29/v_w/</id>
     <published>2020-07-29T15:24:30.000Z</published>
     <updated>2020-07-29T23:40:12.076Z</updated>
     
@@ -66,9 +66,89 @@
   </entry>
   
   <entry>
+    <title>项目成员了解</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/23/l_m/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/23/l_m/</id>
+    <published>2020-07-23T11:20:20.000Z</published>
+    <updated>2020-09-02T11:01:00.113Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一个项目成员"><a href="#一个项目成员" class="headerlink" title="一个项目成员:"></a>一个项目成员:</h4><ul><li>老板: 考虑市场预期, 决定资金使用</li><li>项目负责人: 协调资源, 和外部客户确定大概需求, 大概工期, 费用. </li><li>技术负责人: 确定使用的技术, 确定技术架构</li><li>产品: 确定产品功能, 业务逻辑, 产出原型图</li><li>ui:   (vi),  产品相关的页面出设计图</li><li>h5:  根据设计图, 写html,css ,js</li><li>安卓: 实现app的界面</li><li>ISO: 实现app的界面</li><li>接口开发: 实现业务api, 需要和前端联调, 出接口文档</li><li>后台开发: 实现管理后台, 都是前后端不分离, (业务人员: 老板, 财务, 运营, 客服, 管理员)</li><li>测试: 管理测试数据, 测试环境, 运行一些测试用例, (自动化测试用例: 开发人员写好的)</li><li>运维:专门搞环境, 一个公司开发环境, 一个灰度测试环境, 一个线上环境,  分析日志, 备份数据, 权限设置(服务器权限, 数据库权限), </li></ul><h4 id="项目生命周期"><a href="#项目生命周期" class="headerlink" title="项目生命周期"></a>项目生命周期</h4><ul><li><p>传统项目生命周期</p><ul><li>优点:</li><li>阶段分明, 注意力集中, 单个阶段内更容易把控</li><li>缺点:<ul><li>每个阶段完成后才能进行下个阶段, 周期长, 风险大</li><li>灵活性低,不能适应用户需求的变化</li></ul></li></ul></li><li><p>新型项目生命周期(敏捷开发)</p><ul><li>优点:</li><li>快速应对市场变化, 更契合市场需求</li><li>缺点:<ul><li>需求阶段的产出不完整,容易产生技术瓶颈</li><li>需要有资深人员合理架构</li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一个项目成员&quot;&gt;&lt;a href=&quot;#一个项目成员&quot; class=&quot;headerlink&quot; title=&quot;一个项目成员:&quot;&gt;&lt;/a&gt;一个项目成员:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;老板: 考虑市场预期, 决定资金使用&lt;/li&gt;
+&lt;li&gt;项目负责人: 协调资源, 和外部客户
+      
+    
+    </summary>
+    
+    
+    
+      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Django工程搭建</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/23/d_g/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/23/d_g/</id>
+    <published>2020-07-22T17:20:23.000Z</published>
+    <updated>2020-09-02T10:55:52.656Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="后端django工程"><a href="#后端django工程" class="headerlink" title="后端django工程"></a>后端django工程</h3><ol><li><p>框架</p><ul><li>django</li></ul></li><li><p>用户模型</p><ul><li>django内置的user模型<ul><li>添加导包路径 apps 目录添加到 sys.path里</li><li>配置pycharm的包搜索路径</li></ul></li><li>扩展用户模型: 增加手机号,昵称,头像,地址,…..</li></ul></li><li><p>认证模型</p><ul><li>前后端不分离: session认证(基于cookie, 服务端存储session信息)</li><li>前后端分离: jwt认证(不受限于跨域, 服务端不存储信息)</li></ul></li><li><p>基础结构及配置</p><ul><li>基础目录配置</li><li>cors配置</li></ul></li><li><p>drf初始化</p><ul><li><p>安装: pip install djangorestframework, django-filter</p></li><li><p>注册应用: INSTALLED_APPS 中 […’rest_framework’, ‘django_filters’]</p></li><li><p>添加配置:</p><pre class="highlight"><span class="line"><span class="comment"># 过滤器</span></span><br><span class="line"><span class="comment"># 1,安装 django-filter</span></span><br><span class="line"><span class="comment"># 2,注册应用</span></span><br><span class="line"><span class="comment"># 3,配置settings, 在view里配置可过滤的字段</span></span><br><span class="line"><span class="comment"># 4,使用 查询字符串携带过滤信息</span></span><br><span class="line"></span><br><span class="line">REST_FRAMEWORK = &#123;</span><br><span class="line">    <span class="comment"># 文档报错： AttributeError: ‘AutoSchema’ object has no attribute ‘get_link’</span></span><br><span class="line">    <span class="comment"># 用下面的设置可以解决</span></span><br><span class="line">    <span class="string">'DEFAULT_SCHEMA_CLASS'</span>: <span class="string">'rest_framework.schemas.AutoSchema'</span>,</span><br><span class="line">    <span class="comment"># 默认设置是:</span></span><br><span class="line">    <span class="comment"># 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.openapi.AutoSchema',</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 异常处理器</span></span><br><span class="line">    <span class="comment"># 'EXCEPTION_HANDLER': 'user.utils.exception_handler',</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Base API policies</span></span><br><span class="line">    <span class="string">'DEFAULT_RENDERER_CLASSES'</span>: [</span><br><span class="line">        <span class="string">'rest_framework.renderers.JSONRenderer'</span>,</span><br><span class="line">        <span class="string">'rest_framework.renderers.BrowsableAPIRenderer'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'DEFAULT_PARSER_CLASSES'</span>: [</span><br><span class="line">        <span class="string">'rest_framework.parsers.JSONParser'</span>,</span><br><span class="line">        <span class="string">'rest_framework.parsers.FormParser'</span>,</span><br><span class="line">        <span class="string">'rest_framework.parsers.MultiPartParser'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'DEFAULT_AUTHENTICATION_CLASSES'</span>: [  <span class="comment"># 认证器</span></span><br><span class="line">        <span class="string">'rest_framework.authentication.SessionAuthentication'</span>,  <span class="comment"># 使用session时的认证器</span></span><br><span class="line">        <span class="string">'rest_framework.authentication.BasicAuthentication'</span>  <span class="comment"># 提交表单时的认证器</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'DEFAULT_PERMISSION_CLASSES'</span>: [  <span class="comment"># 权限配置, 顺序靠上的严格</span></span><br><span class="line">        <span class="string">'rest_framework.permissions.IsAdminUser'</span>,  <span class="comment"># 管理员可以访问</span></span><br><span class="line">        <span class="string">'rest_framework.permissions.IsAuthenticated'</span>,  <span class="comment"># 认证用户可以访问</span></span><br><span class="line">        <span class="string">'rest_framework.permissions.IsAuthenticatedOrReadOnly'</span>,  <span class="comment"># 认证用户可以访问, 否则只能读取</span></span><br><span class="line">        <span class="string">'rest_framework.permissions.AllowAny'</span>,  <span class="comment"># 所有用户都可以访问</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="comment"># 限流</span></span><br><span class="line">    <span class="string">'DEFAULT_THROTTLE_CLASSES'</span>: [</span><br><span class="line">        <span class="string">'rest_framework.throttling.AnonRateThrottle'</span>,</span><br><span class="line">        <span class="string">'rest_framework.throttling.UserRateThrottle'</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment"># 限流策略</span></span><br><span class="line">    <span class="string">'DEFAULT_THROTTLE_RATES'</span>: &#123;</span><br><span class="line">        <span class="string">'user'</span>: <span class="string">'10/hour'</span>,</span><br><span class="line">        <span class="string">'anon'</span>: <span class="string">'3/day'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="string">'DEFAULT_CONTENT_NEGOTIATION_CLASS'</span>: <span class="string">'rest_framework.negotiation.DefaultContentNegotiation'</span>,</span><br><span class="line">    <span class="string">'DEFAULT_METADATA_CLASS'</span>: <span class="string">'rest_framework.metadata.SimpleMetadata'</span>,</span><br><span class="line">    <span class="string">'DEFAULT_VERSIONING_CLASS'</span>: <span class="literal">None</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 全局分页器, 例如 省市区的数据自定义分页器, 不需要分页</span></span><br><span class="line">    <span class="string">'DEFAULT_PAGINATION_CLASS'</span>: <span class="string">'rest_framework.pagination.PageNumberPagination'</span>,</span><br><span class="line">    <span class="comment"># 每页返回数量</span></span><br><span class="line">    <span class="string">'PAGE_SIZE'</span>: <span class="number">10</span>,  <span class="comment"># 默认 None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 过滤器后端</span></span><br><span class="line">    <span class="string">'DEFAULT_FILTER_BACKENDS'</span>: [</span><br><span class="line">        <span class="string">'django_filters.rest_framework.DjangoFilterBackend'</span>,</span><br><span class="line">        <span class="comment"># 'django_filters.rest_framework.backends.DjangoFilterBackend', 包路径有变化</span></span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Filtering 过滤排序</span></span><br><span class="line">    <span class="string">'SEARCH_PARAM'</span>: <span class="string">'search'</span>,</span><br><span class="line">    <span class="string">'ORDERING_PARAM'</span>: <span class="string">'ordering'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'NUM_PROXIES'</span>: <span class="literal">None</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Versioning  接口版本控制</span></span><br><span class="line">    <span class="string">'DEFAULT_VERSION'</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">'ALLOWED_VERSIONS'</span>: <span class="literal">None</span>,</span><br><span class="line">    <span class="string">'VERSION_PARAM'</span>: <span class="string">'version'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Authentication  认证</span></span><br><span class="line">    <span class="comment"># 未认证用户使用的用户类型</span></span><br><span class="line">    <span class="string">'UNAUTHENTICATED_USER'</span>: <span class="string">'django.contrib.auth.models.AnonymousUser'</span>,</span><br><span class="line">    <span class="comment"># 未认证用户使用的Token值</span></span><br><span class="line">    <span class="string">'UNAUTHENTICATED_TOKEN'</span>: <span class="literal">None</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># View configuration</span></span><br><span class="line">    <span class="string">'VIEW_NAME_FUNCTION'</span>: <span class="string">'rest_framework.views.get_view_name'</span>,</span><br><span class="line">    <span class="string">'VIEW_DESCRIPTION_FUNCTION'</span>: <span class="string">'rest_framework.views.get_view_description'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'NON_FIELD_ERRORS_KEY'</span>: <span class="string">'non_field_errors'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Testing</span></span><br><span class="line">    <span class="string">'TEST_REQUEST_RENDERER_CLASSES'</span>: [</span><br><span class="line">        <span class="string">'rest_framework.renderers.MultiPartRenderer'</span>,</span><br><span class="line">        <span class="string">'rest_framework.renderers.JSONRenderer'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'TEST_REQUEST_DEFAULT_FORMAT'</span>: <span class="string">'multipart'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Hyperlink settings</span></span><br><span class="line">    <span class="string">'URL_FORMAT_OVERRIDE'</span>: <span class="string">'format'</span>,</span><br><span class="line">    <span class="string">'FORMAT_SUFFIX_KWARG'</span>: <span class="string">'format'</span>,</span><br><span class="line">    <span class="string">'URL_FIELD_NAME'</span>: <span class="string">'url'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Input and output formats</span></span><br><span class="line">    <span class="string">'DATE_FORMAT'</span>: ISO_8601,</span><br><span class="line">    <span class="string">'DATE_INPUT_FORMATS'</span>: [ISO_8601],</span><br><span class="line"></span><br><span class="line">    <span class="string">'DATETIME_FORMAT'</span>: ISO_8601,</span><br><span class="line">    <span class="string">'DATETIME_INPUT_FORMATS'</span>: [ISO_8601],</span><br><span class="line"></span><br><span class="line">    <span class="string">'TIME_FORMAT'</span>: ISO_8601,</span><br><span class="line">    <span class="string">'TIME_INPUT_FORMATS'</span>: [ISO_8601],</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Encoding</span></span><br><span class="line">    <span class="string">'UNICODE_JSON'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'COMPACT_JSON'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'STRICT_JSON'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'COERCE_DECIMAL_TO_STRING'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'UPLOADED_FILES_USE_URL'</span>: <span class="literal">True</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Browseable API</span></span><br><span class="line">    <span class="string">'HTML_SELECT_CUTOFF'</span>: <span class="number">1000</span>,</span><br><span class="line">    <span class="string">'HTML_SELECT_CUTOFF_TEXT'</span>: <span class="string">"More than &#123;count&#125; items..."</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Schemas</span></span><br><span class="line">    <span class="string">'SCHEMA_COERCE_PATH_PK'</span>: <span class="literal">True</span>,</span><br><span class="line">    <span class="string">'SCHEMA_COERCE_METHOD_NAMES'</span>: &#123;</span><br><span class="line">        <span class="string">'retrieve'</span>: <span class="string">'read'</span>,</span><br><span class="line">        <span class="string">'destroy'</span>: <span class="string">'delete'</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></li></ul></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;后端django工程&quot;&gt;&lt;a href=&quot;#后端django工程&quot; class=&quot;headerlink&quot; title=&quot;后端django工程&quot;&gt;&lt;/a&gt;后端django工程&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;框架&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;django&lt;/li&gt;
+&lt;
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Django" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>集群or分布式</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/20/r_d/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/20/r_d/</id>
+    <published>2020-07-19T19:09:23.000Z</published>
+    <updated>2020-09-02T10:56:48.223Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="集群-or-分布式"><a href="#集群-or-分布式" class="headerlink" title="集群 or 分布式"></a>集群 or 分布式</h3><p>一开始, 一个人干</p><p>能力不足了,  为了提高性能</p><p>一群人一起干,   干同样的事情,   集群( 一个地点)</p><p>分布式(分步式),  炒菜</p><p>每个人擅长的部分不一样, </p><p>买菜,  一个人</p><p>洗菜,  一个人</p><p>切菜, 两个人(集群)</p><p>炒菜, 五个人(集群)</p><p>分布式 (很多业务, 每个业务又是一个集群)</p><p>结论:  </p><p>​    集群: (很多机器, 合作起来提供一个服务)</p><p>​    分布式: 分步骤, 合作完成一个功能 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;集群-or-分布式&quot;&gt;&lt;a href=&quot;#集群-or-分布式&quot; class=&quot;headerlink&quot; title=&quot;集群 or 分布式&quot;&gt;&lt;/a&gt;集群 or 分布式&lt;/h3&gt;&lt;p&gt;一开始, 一个人干&lt;/p&gt;
+&lt;p&gt;能力不足了,  为了提高性能&lt;/p&gt;
+&lt;p&gt;一群人
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Django" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Django/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Celery+Redis</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/17/celery/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/17/c_y/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/17/c_y/</id>
     <published>2020-07-17T05:53:00.000Z</published>
     <updated>2020-07-23T04:05:08.444Z</updated>
     
@@ -93,8 +173,8 @@
   
   <entry>
     <title>django之redis和django-redis的使用</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/15/redis_cz/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/15/redis_cz/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/15/r_z/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/15/r_z/</id>
     <published>2020-07-15T13:10:20.000Z</published>
     <updated>2020-07-15T13:39:33.973Z</updated>
     
@@ -118,8 +198,8 @@
   
   <entry>
     <title>验证码的时效性</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/redis1/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/r_s/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/r_s/</id>
     <published>2020-07-14T01:02:20.000Z</published>
     <updated>2020-07-22T12:00:29.936Z</updated>
     
@@ -143,8 +223,8 @@
   
   <entry>
     <title>关于mysql优化</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/mysql_yh/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/mysql_yh/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/m_s/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/m_s/</id>
     <published>2020-07-14T01:02:20.000Z</published>
     <updated>2020-07-21T16:01:22.708Z</updated>
     
@@ -168,8 +248,8 @@
   
   <entry>
     <title>Linux文件操作</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/linux1/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/linux1/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/</id>
     <published>2020-07-14T01:02:20.000Z</published>
     <updated>2020-07-14T14:18:11.143Z</updated>
     
@@ -192,8 +272,8 @@
   
   <entry>
     <title>Python面试算法题</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/pyms/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/pyms/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/p_y/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/p_y/</id>
     <published>2020-07-06T03:00:20.000Z</published>
     <updated>2020-07-06T03:59:14.143Z</updated>
     
@@ -240,8 +320,8 @@
   
   <entry>
     <title>Python算法时间复杂度</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/sjfzd/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/sjfzd/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/s_d/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/s_d/</id>
     <published>2020-07-06T01:20:20.000Z</published>
     <updated>2020-07-06T03:51:50.184Z</updated>
     
@@ -272,8 +352,8 @@
   
   <entry>
     <title>Python基础数据类型</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/shuju/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/shuju/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/06/s_u/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/06/s_u/</id>
     <published>2020-07-06T01:02:20.000Z</published>
     <updated>2020-07-06T01:38:14.387Z</updated>
     
@@ -297,8 +377,8 @@
   
   <entry>
     <title>分页</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/12/drffy/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/12/drffy/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/12/d_y/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/12/d_y/</id>
     <published>2020-05-11T21:12:22.000Z</published>
     <updated>2020-05-12T15:34:37.567Z</updated>
     
@@ -321,10 +401,10 @@
   
   <entry>
     <title>简述详情页</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/11/detail/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/11/detail/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/11/d_l/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/11/d_l/</id>
     <published>2020-05-10T20:20:22.000Z</published>
-    <updated>2020-05-12T15:54:09.108Z</updated>
+    <updated>2020-09-02T01:23:36.516Z</updated>
     
     <content type="html"><![CDATA[<h4 id="后端代码"><a href="#后端代码" class="headerlink" title="后端代码"></a>后端代码</h4><pre class="highlight"><span class="line"><span class="comment"># 商品详情</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodInfo</span><span class="params">(APIView)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        id = request.GET.get(<span class="string">'id'</span>,<span class="literal">None</span>)</span><br><span class="line">        <span class="comment"># 查询</span></span><br><span class="line">        good = Goods.objects.get(id=id)</span><br><span class="line">        <span class="comment"># 序列化 </span></span><br><span class="line">        good_str = GoodsSer(good)</span><br><span class="line">        <span class="keyword">return</span> Response(good_str.data)</span><br></pre><p>前端代码</p><pre class="highlight"><span class="line">&#x2F;&#x2F; 带参跳转</span><br><span class="line">&lt;a :href&#x3D;&quot;&#39;http:&#x2F;&#x2F;127.0.0.1:8080&#x2F;item?id&#x3D;&#39;+item.id&quot;&gt;</span><br></pre><pre class="highlight"><span class="line">&#x2F;&#x2F; 获取商品id</span><br><span class="line"> this.id &#x3D; this.$route.query.id</span><br></pre><pre class="highlight"><span class="line">param:&#123;&#125;</span><br></pre><pre class="highlight"><span class="line"></span><br><span class="line"> &#x2F;&#x2F; 获取商品详情</span><br><span class="line">   get_good:function()&#123;</span><br><span class="line"> this.axios.get(&#39;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;goodinfo&#x2F;?id&#x3D;&#39;,&#123;params:&#123;&#39;id&#39;:this.id&#125;&#125;).then((res&#x3D;&gt;&#123;</span><br><span class="line"> console.log(res)</span><br><span class="line"> &#x2F;&#x2F; 赋值</span><br><span class="line"> this.info&#x3D;res.data</span><br><span class="line"> &#x2F;&#x2F; 类型转换</span><br><span class="line"> this.param &#x3D; JSON.parse(this.info.params)</span><br><span class="line"> &#125;))</span><br><span class="line">&#125;</span><br></pre><h4 id="展示规格"><a href="#展示规格" class="headerlink" title="展示规格"></a>展示规格</h4><pre class="highlight"><span class="line">颜色：&#123;&#123;param.color&#125;&#125; </span><br><span class="line">&lt;br&gt;</span><br><span class="line">尺码：&#123;&#123;param.size&#125;&#125;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">季节：&#123;&#123;param.season&#125;&#125;</span><br></pre>]]></content>
     
@@ -345,8 +425,8 @@
   
   <entry>
     <title>简述逻辑外键</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/11/jsonb/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/11/jsonb/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/11/j_b/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/11/j_b/</id>
     <published>2020-05-10T19:20:22.000Z</published>
     <updated>2020-05-12T15:47:53.816Z</updated>
     
@@ -369,8 +449,8 @@
   
   <entry>
     <title>暗夜模式配置</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/10/ahms/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/10/ahms/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/10/a_s/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/10/a_s/</id>
     <published>2020-05-10T05:53:00.000Z</published>
     <updated>2020-05-10T13:02:51.161Z</updated>
     
@@ -418,8 +498,8 @@
   
   <entry>
     <title>国际化支持</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/08/gjhzz/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/08/gjhzz/</id>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/08/g_z/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/08/g_z/</id>
     <published>2020-05-07T21:00:02.000Z</published>
     <updated>2020-05-08T14:02:01.488Z</updated>
     
@@ -430,78 +510,6 @@
       
       
         &lt;h4 id=&quot;首先-我们需要一个库：国际化支持模块&quot;&gt;&lt;a href=&quot;#首先-我们需要一个库：国际化支持模块&quot; class=&quot;headerlink&quot; title=&quot;首先 我们需要一个库：国际化支持模块&quot;&gt;&lt;/a&gt;首先 我们需要一个库：国际化支持模块&lt;/h4&gt;&lt;pre clas
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>中间件应用</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/08/zjj/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/08/zjj/</id>
-    <published>2020-05-07T19:00:02.000Z</published>
-    <updated>2020-05-08T14:02:13.504Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p> 客户端发起请求   –&gt;  进到wsgi(模型) –&gt; 中间件(request_process)  –&gt;  路由(urls.py)  –&gt;  中间件(view_process)  –&gt; view(视图操作 -&gt; orm操作 -&gt; mysql )  –&gt; 中间件(process_response before_template) –&gt; wsgi(模型)</p><h4 id="在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项"><a href="#在Python项目中一直都在有使用中间件，在django项目中的setting-py文件中看到MIDDLEWARE配置项" class="headerlink" title="在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项"></a>在Python项目中一直都在有使用中间件，在django项目中的setting.py文件中看到MIDDLEWARE配置项</h4><pre class="highlight"><span class="line"><span class="comment">#加载自定义中间件   文件夹名.文件名.类名</span></span><br><span class="line"><span class="string">'myapp.md_user.MyMiddleware'</span></span><br></pre><h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><pre class="highlight"><span class="line"><span class="keyword">from</span> django.utils.deprecation <span class="keyword">import</span> MiddlewareMixin</span><br></pre><h4 id="中间件的四种方法"><a href="#中间件的四种方法" class="headerlink" title="中间件的四种方法"></a>中间件的四种方法</h4><pre class="highlight"><span class="line"><span class="comment"># 自定义中间件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyMiddleware</span><span class="params">(MiddlewareMixin)</span>:</span></span><br><span class="line">    <span class="comment"># 请求之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span><span class="params">(self,request)</span>:</span></span><br><span class="line">        print(<span class="string">"过滤中间件"</span>)</span><br><span class="line">        <span class="comment"># 获取路由</span></span><br><span class="line">        <span class="keyword">if</span> request.path_info.startswith(<span class="string">"/login"</span>):</span><br><span class="line">            <span class="keyword">return</span> HttpResponse(json.dumps(&#123;<span class="string">'msg'</span>:<span class="string">'您篡改了id'</span>&#125;,ensure_ascii=<span class="literal">False</span>,indent=<span class="number">4</span>),</span><br><span class="line">                            content_type=<span class="string">'application/json'</span>)</span><br><span class="line">    <span class="comment"># 进入视图之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self,request,view_func,view_args,view_kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># request是httprequest对象。</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># view_func是即将使用的视图函数，它是实际的函数对象，而不是函数的名称作为字符串。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args是将传递给视图位置的参数的列表。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_kargs是将传递给视图的关键字参数的字典。</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># view_args和view_kargs都不包含第一个视图参数（request）</span></span><br><span class="line">    <span class="comment"># 异常捕获方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_exception</span><span class="params">(self,request,exception)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="comment"># 返回之前</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_response</span><span class="params">(self,request,response)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> response</span><br></pre><p>​      1.中间件的process_request方法是在执行视图函数之前执行的</p><p>​      2.当配置中间件时，会按照MIDDLEWARE的注册顺序，也就是列表的索引值，从前到后依次执行的。</p><p>​      3.不同中间件之间传递的request都是同一个对象。</p><h4 id="中间件的应用场景"><a href="#中间件的应用场景" class="headerlink" title="中间件的应用场景"></a>中间件的应用场景</h4><p>1.做IP限制  –&gt; 放在中间件类的列表中，阻止某些ip访问；</p><p>2.URL访问过滤  –&gt; 如果用户访问的是logo视图（放过）如果访问其他视图，需要检测是否已经有session或localstrage，已经有了放行，如果没有返回login，这样就省的在多个视图函数上写装饰器了！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;流程&quot;&gt;&lt;a href=&quot;#流程&quot; class=&quot;headerlink&quot; title=&quot;流程&quot;&gt;&lt;/a&gt;流程&lt;/h4&gt;&lt;p&gt; 客户端发起请求   –&amp;gt;  进到wsgi(模型) –&amp;gt; 中间件(request_process)  –&amp;gt;  路由(url
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jwt认证</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jwt/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jwt/</id>
-    <published>2020-05-07T09:40:02.000Z</published>
-    <updated>2020-05-07T15:49:36.412Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="JWT认证"><a href="#JWT认证" class="headerlink" title="JWT认证"></a>JWT认证</h4><p> <code>Json web token (JWT)</code>, 根据官网的定义，是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密 </p><h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>发送请求用户信息   —&gt;   axios(uid)(同时获取令牌)   —&gt;   获取uid查询数据库以Json的形式返回给前端（验证token成功返回）   —&gt;   发送请求用户信息（如果错误返回没有权限）(正确返回用户信息)</p><h4 id="token的构成"><a href="#token的构成" class="headerlink" title="token的构成"></a>token的构成</h4><ol><li>头部信息.载荷(playload) –&gt; uid或username</li><li>密钥</li><li>jwt=&gt;token</li></ol><h4 id="jwt安装"><a href="#jwt安装" class="headerlink" title="jwt安装"></a>jwt安装</h4><pre class="highlight"><span class="line">pip install pyjwt</span><br></pre><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul><li><p>体积小,传输快</p></li><li><p>支持跨域验证</p></li><li><p>基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。 </p></li></ul><h4 id="在用户登陆成功生成token"><a href="#在用户登陆成功生成token" class="headerlink" title="在用户登陆成功生成token"></a>在用户登陆成功生成token</h4><pre class="highlight"><span class="line">encode_jwt = jwt.encode(&#123;<span class="string">'uid'</span>: user.id&#125;, <span class="string">'qwe123'</span>, algorithm=<span class="string">'HS256'</span>)</span><br><span class="line">encode_str = str(encode_jwt, <span class="string">'utf-8'</span>)</span><br></pre><p> 将这个token交给前端，前端访问任意接口都将在header里带着jwt也就指token，用来做认证，我们把代码逻辑写成装饰器，这样前端访问那个接口，后端直接调用装饰器！</p><h4 id="定义装饰器"><a href="#定义装饰器" class="headerlink" title="定义装饰器"></a>定义装饰器</h4><p>因为在每次登陆时，我们将jwt的值存入localstorage中，所以我们在前端param传参将其读出，这样后端接收jwt 。</p><pre class="highlight"><span class="line"><span class="comment"># 类视图专用</span></span><br><span class="line"><span class="keyword">from</span> django.utils.decorators <span class="keyword">import</span> method_decorator</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义权限检测装饰器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(request, *args, **kwargs)</span>:</span></span><br><span class="line">        <span class="comment"># 接收参数</span></span><br><span class="line">        uid = request.GET.get(<span class="string">"uid"</span>, <span class="literal">None</span>)</span><br><span class="line">    <span class="comment"># 变量不能是关键字 </span></span><br><span class="line">        myjwt = request.GET.get(<span class="string">"jwt"</span>, <span class="literal">None</span>)</span><br><span class="line"></span><br><span class="line">        print(myjwt)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 验证用户合法性</span></span><br><span class="line">        decode_jwt = jwt.decode(myjwt, <span class="string">'qwe123'</span>, algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进行比对</span></span><br><span class="line">        <span class="keyword">if</span> int(uid) != int(decode_jwt[<span class="string">'uid'</span>]):</span><br><span class="line">            <span class="keyword">return</span> Response(&#123;<span class="string">'code'</span>: <span class="number">401</span>, <span class="string">'message'</span>: <span class="string">'您的密钥无权限'</span>&#125;)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> func(request, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#  最后类视图使用method_decorator(装饰器名称)调用</span></span><br></pre><h4 id="载荷中加入生命周期"><a href="#载荷中加入生命周期" class="headerlink" title="载荷中加入生命周期"></a>载荷中加入生命周期</h4><pre class="highlight"><span class="line">playload = &#123;</span><br><span class="line">// 代表过期时间        当前时间+延迟加载（以秒计时）</span><br><span class="line"><span class="string">'exp'</span>: int((datatime.datatime.now() + datetime.timedelta(seconds=<span class="number">30</span>)).timestamp())  //强转时间戳 按照整形</span><br><span class="line"><span class="string">'data'</span>:&#123;<span class="string">'uid'</span>:<span class="number">2</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 生成</span></span><br><span class="line">encode_jwt = jwt.encode(playload,<span class="string">'lhn123'</span>,algorithm=<span class="string">'HS256'</span>)</span><br><span class="line"><span class="comment"># 转码</span></span><br><span class="line">encode_str = str(encode_jwt,<span class="string">'utf-8'</span>)</span><br><span class="line"><span class="comment"># 解密操作</span></span><br><span class="line">decode_jwt = jwt.decode(encode_str,<span class="string">'lhn123'</span>,algorithms=[<span class="string">'HS256'</span>])</span><br><span class="line">print(encode_str)</span><br><span class="line">print(decode_jwt[<span class="string">'uid'</span>])</span><br></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;JWT认证&quot;&gt;&lt;a href=&quot;#JWT认证&quot; class=&quot;headerlink&quot; title=&quot;JWT认证&quot;&gt;&lt;/a&gt;JWT认证&lt;/h4&gt;&lt;p&gt; &lt;code&gt;Json web token (JWT)&lt;/code&gt;, 根据官网的定义，是为了在网络应用环境间传递声
-      
-    
-    </summary>
-    
-    
-    
-      <category term="python" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>安慰剂进度条</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/05/07/jdt/</id>
-    <published>2020-05-07T04:20:02.000Z</published>
-    <updated>2020-05-07T15:37:05.454Z</updated>
-    
-    <content type="html"><![CDATA[<pre class="highlight"><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">  &#x2F;&#x2F; 因为我们只有两种情况 所以使用v-show v-show默认是0  也可用v-if</span><br><span class="line">    &lt;Progress v-show&#x3D;&quot;load_int&quot; :percent&#x3D;&quot;load_int&quot; color&#x3D;&#39;green&#39;&gt;&lt;&#x2F;Progress&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">data()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">&#x2F;&#x2F; 定义变量</span><br><span class="line">load_percnet&#x3D;&#39;&#39;</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">&#x2F;&#x2F;在某方法下写入</span><br><span class="line"></span><br><span class="line">            &#x2F;&#x2F; 上传过程中的方法</span><br><span class="line">            onUploadProgress:(e)&#x3D;&gt;&#123;</span><br><span class="line">              &#x2F;&#x2F; 计算上传百分比</span><br><span class="line">              var complete &#x3D; (e.loaded &#x2F; e.total)</span><br><span class="line">              &#x2F;&#x2F; 处理美化</span><br><span class="line">              if(complete &lt; 1)&#123;</span><br><span class="line">               &#x2F;&#x2F; %代表转换字符串</span><br><span class="line">                this.load_percent &#x3D; (complete * 100).toFixed(2) + &#39;%&#39;，</span><br><span class="line">                this.load_int &#x3D; parseInt((complete * 100).toFixed(2))</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">          &#x2F;&#x2F; 成功之后</span><br><span class="line">          </span><br><span class="line">          &#x2F;&#x2F; 直接赋值成百分之百</span><br><span class="line">          this.load_percent &#x3D; &#39;100%&#39;</span><br><span class="line">          &#x2F;&#x2F; 整形赋值</span><br><span class="line">          this.load_int &#x3D; 100;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;pre class=&quot;highlight&quot;&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;div&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#x2F;&amp;
       
     
     </summary>

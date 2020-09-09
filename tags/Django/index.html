@@ -141,7 +141,7 @@
       <div class="archive-timeline-post">
         <div class="card card-content">
           <div class="archive-timeline-post-date">2020-05-12</div>
-          <div class="archive-timeline-post-content"><a href="/2020/05/12/drffy/" class="archive-timeline-post-item">分页</a></div>
+          <div class="archive-timeline-post-content"><a href="/2020/05/12/d_y/" class="archive-timeline-post-item">分页</a></div>
         </div>
       </div>
     </div>
@@ -151,7 +151,7 @@
       <div class="archive-timeline-post">
         <div class="card card-content">
           <div class="archive-timeline-post-date">2020-05-11</div>
-          <div class="archive-timeline-post-content"><a href="/2020/05/11/detail/" class="archive-timeline-post-item">简述详情页</a></div>
+          <div class="archive-timeline-post-content"><a href="/2020/05/11/d_l/" class="archive-timeline-post-item">简述详情页</a></div>
         </div>
       </div>
     </div>
@@ -161,7 +161,7 @@
       <div class="archive-timeline-post">
         <div class="card card-content">
           <div class="archive-timeline-post-date">2020-05-11</div>
-          <div class="archive-timeline-post-content"><a href="/2020/05/11/jsonb/" class="archive-timeline-post-item">简述逻辑外键</a></div>
+          <div class="archive-timeline-post-content"><a href="/2020/05/11/j_b/" class="archive-timeline-post-item">简述逻辑外键</a></div>
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@
 <p class="author-description">Let excellence be every day</p>
 <div class="author-message">
   <a class="author-posts-count" href="/archives">
-    <span>42</span>
+    <span>45</span>
     <span>Posts</span>
   </a>
   <a class="author-categories-count" href="/categories">
@@ -212,9 +212,9 @@
     
     <a href="\tags\python" title="python"><div class="tags-list-item">python</div></a>
     
-    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
-    
     <a href="\tags\Django" title="Django"><div class="tags-list-item">Django</div></a>
+    
+    <a href="\tags\Python" title="Python"><div class="tags-list-item">Python</div></a>
     
     <a href="\tags\Redis" title="Redis"><div class="tags-list-item">Redis</div></a>
     
@@ -416,9 +416,21 @@
     
       
         
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
           <a href="/archives/2020" class="archive-card-list-item">
               2020
-              <span class="archive-card-list-item-badge">41</span>
+              <span class="archive-card-list-item-badge">44</span>
           </a>
         
         
@@ -449,22 +461,22 @@
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-29</div>
-        <a href="/2020/07/29/solid/"><div class="recent-posts-item-content">面向对象五大原则SOLID</div></a>
+        <a href="/2020/07/29/s_i/"><div class="recent-posts-item-content">面向对象五大原则SOLID</div></a>
       </div>
     
       <div class="recent-posts-item">
         <div class="recent-posts-item-title">2020-07-29</div>
-        <a href="/2020/07/29/vfw/"><div class="recent-posts-item-content">微服务</div></a>
+        <a href="/2020/07/29/v_w/"><div class="recent-posts-item-content">微服务</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2020-07-17</div>
-        <a href="/2020/07/17/celery/"><div class="recent-posts-item-content">Celery+Redis</div></a>
+        <div class="recent-posts-item-title">2020-07-23</div>
+        <a href="/2020/07/23/l_m/"><div class="recent-posts-item-content">项目成员了解</div></a>
       </div>
     
       <div class="recent-posts-item">
-        <div class="recent-posts-item-title">2020-07-15</div>
-        <a href="/2020/07/15/redis_cz/"><div class="recent-posts-item-content">django之redis和django-redis的使用</div></a>
+        <div class="recent-posts-item-title">2020-07-23</div>
+        <a href="/2020/07/23/d_g/"><div class="recent-posts-item-content">Django工程搭建</div></a>
       </div>
     
   </div>
@@ -647,9 +659,21 @@
     
       
         
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
           <a href="/archives/2020" class="archive-card-list-item">
               2020
-              <span class="archive-card-list-item-badge">41</span>
+              <span class="archive-card-list-item-badge">44</span>
           </a>
         
         
@@ -749,7 +773,32 @@
   
 </body>
 
-</html>/js/main.js"></script>
+</html>onfont icon-weather button-icon"></i>
+</a>
+
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
+<script src="/js/main.js"></script>
 
   
   
