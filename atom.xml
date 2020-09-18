@@ -462,6 +462,30 @@
   </entry>
   
   <entry>
+    <title>Linux文件操作</title>
+    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/"/>
+    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/</id>
+    <published>2020-07-14T01:02:20.000Z</published>
+    <updated>2020-07-14T14:18:11.143Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p><p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p><p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p><p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p><p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p><p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot;&gt;&lt;a href=&quot;#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot; class=&quot;headerlink&quot; title=&quot;Li
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于mysql优化</title>
     <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/m_s/"/>
     <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/m_s/</id>
@@ -483,30 +507,6 @@
     
     
       <category term="Mysql" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux文件操作</title>
-    <link href="https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/"/>
-    <id>https://github.com/vp1009/vp1009.github.io.git/2020/07/14/l_n/</id>
-    <published>2020-07-14T01:02:20.000Z</published>
-    <updated>2020-07-14T14:18:11.143Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）"><a href="#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）" class="headerlink" title="Linux文件操作（看大小，tail -f -n grep head cut wc sort）"></a>Linux文件操作（看大小，tail -f -n grep head cut wc sort）</h2><p>命令head默认是查看文件的前10行，通过命令head /etc/passwd查看文件的前10行，也可以增加参数-n 15查看前15行，参数n在这里是指定行数的意思。我们可以通过命令man head查看更多的参数使用方法。</p><p>命令tail默认是查看文件的最后10行，通过命令tail /etc/passwd查看文件的最后10行，也可以增加参数-n 5查看最后5行，参数n在这里是指定行数的意思。我们可以通过man tail查看更多的参数使用方法。命令tail经常被用来查看最新的日志信息。可以用tailf命令或者tail –f来实时查看日志信息。</p><p>命令grep用来过滤信息，通过命令cat /etc/passwd | grep thomas从passwd文件中快速找到还有thomas信息的内容。通过命令cat /etc/passwd | grep –n tcpdump从passwd文件中快速找到tcpdump信息的内容并显示出行号，参数-v是取反，如上面2个例子找的信息里面不包括thomas和tcpdump的信息，我们通过man grep可以学习更多的参数使用方法。</p><p>命令cut可以只显示某一列的内容，如果我们只想看某个文件的第一列的话可以用cut –d: -f1 /etc/passwd,参数f1在这里的意思是第一列，我们可以通过man cut来查看更多的参数使用方法。</p><p>命令wc是用来统计字符数的，为文件信息的搜集提供帮助，如我们想知道根目录下有多少个目录，直接可以用ls / | wc –l直接计算出根目录下有多少行数，在目录和文件数特别多的时候非常好用。如我们用ls –R /etc | wc –l来查看/etc目录和文件数行数是多少，其中参数R是递归查找，意思是可以查到目录下面的文件。通过man wc查看更多的参数使用方法。</p><p>命令sort是用来排序的，我们用命令sort –n 参数n是以数字排列顺序，参数t是以什么为分隔符，参数k是选择第几列，通过命令sort –n –t: -k3 /etc/passwd来对/etc/目录下passwd文件已冒号为分界符第3列用数字排序。我们通过man sort可以查看更多的参数使用方法。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot;&gt;&lt;a href=&quot;#Linux文件操作（看大小，tail-f-n-grep-head-cut-wc-sort）&quot; class=&quot;headerlink&quot; title=&quot;Li
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Linux" scheme="https://github.com/vp1009/vp1009.github.io.git/tags/Linux/"/>
     
   </entry>
   
